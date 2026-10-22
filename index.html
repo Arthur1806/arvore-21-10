@@ -109,6 +109,476 @@
             background: #f59e0b;
         }
     </style>
+
+    <style id="light-theme-overrides">
+        /* =========================================================
+     TEMA CLARO
+     Somente aparência: nenhuma estrutura, dado ou funcionalidade
+     do sistema é alterada.
+     ========================================================= */
+
+        html,
+        body {
+            background: #f8fafc !important;
+            color: #1e293b !important;
+        }
+
+        /* Fundos escuros */
+        [class~="bg-slate-950"],
+        [class~="bg-slate-950/95"],
+        [class~="bg-slate-950/90"],
+        [class~="bg-slate-950/85"],
+        [class~="bg-slate-950/80"],
+        [class~="bg-slate-950/60"],
+        [class~="bg-slate-900"],
+        [class~="bg-slate-900/95"],
+        [class~="bg-slate-900/90"],
+        [class~="bg-slate-900/80"],
+        [class~="bg-slate-900/60"],
+        [class~="bg-slate-800"],
+        [class~="bg-slate-800/60"],
+        [class~="bg-slate-700"],
+        [class~="bg-slate-600"] {
+            background-color: #ffffff !important;
+        }
+
+        /* Cabeçalho e rodapé */
+        header,
+        footer {
+            background-color: rgba(255, 255, 255, .96) !important;
+            border-color: #e2e8f0 !important;
+        }
+
+        /* Textos */
+        [class~="text-white"] {
+            color: #0f172a !important;
+        }
+
+        [class~="text-slate-100"],
+        [class~="text-slate-200"] {
+            color: #1e293b !important;
+        }
+
+        [class~="text-slate-300"] {
+            color: #334155 !important;
+        }
+
+        [class~="text-slate-400"] {
+            color: #475569 !important;
+        }
+
+        [class~="text-slate-500"] {
+            color: #64748b !important;
+        }
+
+        [class~="text-slate-600"] {
+            color: #64748b !important;
+        }
+
+        [class~="text-slate-950"] {
+            color: #0f172a !important;
+        }
+
+        /* Bordas */
+        [class~="border-slate-800"],
+        [class~="border-slate-800/80"],
+        [class~="border-slate-700"],
+        [class~="border-slate-700/80"],
+        [class~="border-slate-700/60"] {
+            border-color: #cbd5e1 !important;
+        }
+
+        /* Inputs */
+        input,
+        textarea,
+        select {
+            background-color: #ffffff !important;
+            color: #1e293b !important;
+            border-color: #cbd5e1 !important;
+        }
+
+        input::placeholder,
+        textarea::placeholder {
+            color: #94a3b8 !important;
+        }
+
+        /* Hover dos controles que eram escuros */
+        [class~="hover:bg-slate-700"]:hover,
+        [class~="hover:bg-slate-800"]:hover,
+        [class~="hover:bg-slate-600"]:hover {
+            background-color: #e2e8f0 !important;
+        }
+
+        [class~="hover:text-white"]:hover {
+            color: #0f172a !important;
+        }
+
+        /* Áreas que usam gradientes escuros */
+        [class~="from-slate-900"] {
+            --tw-gradient-from: #ffffff !important;
+        }
+
+        [class~="to-slate-900"] {
+            --tw-gradient-to: #f8fafc !important;
+        }
+
+        /* Preview da ficha */
+        #previewTextoManifestacao {
+            background-color: #f8fafc !important;
+            border-color: #cbd5e1 !important;
+            color: #475569 !important;
+        }
+
+        /* Modal do catálogo de TAGS */
+        #tagsWideModal {
+            background-color: rgba(15, 23, 42, .45) !important;
+        }
+
+        #tagsWideModal>div {
+            background-color: #ffffff !important;
+            border-color: #cbd5e1 !important;
+        }
+
+        /* Modal do sugestor */
+        #classificationSuggesterModal {
+            background-color: rgba(15, 23, 42, .45) !important;
+        }
+
+        #classificationSuggesterModal>div {
+            background-color: #ffffff !important;
+            border-color: #cbd5e1 !important;
+        }
+
+        #classificationSuggesterModal .sticky {
+            background-color: rgba(255, 255, 255, .96) !important;
+            border-color: #e2e8f0 !important;
+        }
+
+        /* Barras de rolagem */
+        ::-webkit-scrollbar-track {
+            background: #e2e8f0 !important;
+        }
+
+        ::-webkit-scrollbar-thumb {
+            background: #94a3b8 !important;
+        }
+
+        ::-webkit-scrollbar-thumb:hover {
+            background: #64748b !important;
+        }
+
+        .presets-scrollbar {
+            scrollbar-color: #94a3b8 #e2e8f0 !important;
+        }
+
+        .presets-scrollbar::-webkit-scrollbar-track {
+            background: #e2e8f0 !important;
+        }
+
+        .presets-scrollbar::-webkit-scrollbar-thumb {
+            background: #94a3b8 !important;
+        }
+
+        .presets-scrollbar::-webkit-scrollbar-thumb:hover {
+            background: #f59e0b !important;
+        }
+
+        /* Seleção */
+        ::selection {
+            background: #1351b4 !important;
+            color: #ffffff !important;
+        }
+    </style>
+
+
+    <style id="light-theme-contrast-fixes">
+        /* Ajustes de contraste para o tema claro. Apenas cores; sem alterar conteúdo ou lógica. */
+
+        /* Textos coloridos que ficavam claros demais sobre fundos claros */
+        [class~="text-amber-200"],
+        [class~="text-amber-300"],
+        [class~="text-amber-400"],
+        [class~="hover:text-amber-200"]:hover {
+            color: #854d0e !important;
+        }
+
+        [class~="text-emerald-100"],
+        [class~="text-emerald-200"],
+        [class~="text-emerald-300"],
+        [class~="text-emerald-400"],
+        [class~="hover:text-emerald-200"]:hover {
+            color: #166534 !important;
+        }
+
+        [class~="text-blue-200"],
+        [class~="text-blue-300"] {
+            color: #1d4ed8 !important;
+        }
+
+        [class~="text-red-300"],
+        [class~="text-red-400"] {
+            color: #b91c1c !important;
+        }
+
+        [class~="text-yellow-200"],
+        [class~="text-yellow-300"],
+        [class~="text-yellow-400"] {
+            color: #854d0e !important;
+        }
+
+        /* Caixas de destaque: fundo claro e texto escuro, legível */
+        [class~="bg-amber-500/20"],
+        [class~="bg-amber-950/20"],
+        [class~="bg-amber-600/40"],
+        [class~="bg-amber-950/80"],
+        [class~="from-amber-950/40"] {
+            background-color: #fffbeb !important;
+        }
+
+        [class~="border-amber-500/30"],
+        [class~="border-amber-500/40"],
+        [class~="border-amber-700/50"] {
+            border-color: #d6a243 !important;
+        }
+
+        /* Botões coloridos mantêm sua identidade, mas ganham contraste adequado */
+        button[class~="bg-emerald-600"],
+        button[class~="bg-emerald-800"],
+        button[class~="bg-emerald-900/60"],
+        button[class~="bg-emerald-500"],
+        button[class~="hover:bg-emerald-800/70"] {
+            background-color: #166534 !important;
+            color: #ffffff !important;
+            border-color: #166534 !important;
+        }
+
+        button[class~="bg-amber-500"],
+        button[class~="bg-amber-500/20"] {
+            background-color: #fef3c7 !important;
+            color: #78350f !important;
+            border-color: #d97706 !important;
+        }
+
+        button[class~="bg-blue-800"],
+        button[class~="bg-blue-600/30"] {
+            background-color: #dbeafe !important;
+            color: #1e3a8a !important;
+            border-color: #93c5fd !important;
+        }
+
+        /* Rótulos e títulos com acento dourado/verde */
+        #classificationSuggesterModal [class~="text-amber-200"],
+        #classificationSuggesterModal [class~="text-amber-300"],
+        #classificationSuggesterModal [class~="text-amber-400"],
+        #tagsWideModal [class~="text-amber-200"],
+        #tagsWideModal [class~="text-amber-300"],
+        #tagsWideModal [class~="text-amber-400"] {
+            color: #854d0e !important;
+        }
+
+        /* Mantém legíveis os estados selecionados e as etiquetas */
+        [class~="bg-emerald-400"] {
+            background-color: #15803d !important;
+        }
+
+        [class~="bg-emerald-800"],
+        [class~="bg-emerald-900/60"] {
+            background-color: #166534 !important;
+        }
+
+        /* Links e pequenos textos informativos */
+        a,
+        [role="link"] {
+            color: #1d4ed8;
+        }
+
+        /* Texto em botões escuros ou de destaque */
+        button[class~="bg-emerald-600"] *,
+        button[class~="bg-emerald-800"] *,
+        button[class~="bg-emerald-900/60"] * {
+            color: #ffffff !important;
+        }
+
+        /* Mensagens de sugestão: assegurar contraste mesmo com estilos inline */
+        #classificationSuggesterModal .text-emerald-400,
+        #classificationSuggesterModal .text-emerald-300 {
+            color: #166534 !important;
+        }
+    </style>
+
+    <style id="light-theme-conflict-fixes">
+        /* Correções finais de contraste: fundos coloridos com textos que o tema claro escureceu ou clareou demais. Apenas cores. */
+
+        /* Azul institucional: texto branco sobre azul escuro */
+        [class~="bg-govblue-600"],
+        [class~="bg-govblue-500"],
+        [class~="from-govblue-600"],
+        [class~="to-blue-600"],
+        [class~="hover:bg-govblue-500"]:hover,
+        [class~="hover:from-govblue-500"]:hover,
+        [class~="hover:to-blue-500"]:hover {
+            color: #ffffff !important;
+        }
+
+        [class~="bg-govblue-600"] *,
+        [class~="bg-gradient-to-r"] * {
+            color: #ffffff !important;
+        }
+
+        [class~="bg-govblue-600"],
+        [class~="bg-gradient-to-r"] {
+            background-color: #1351b4 !important;
+        }
+
+        [class~="bg-govblue-600/80"] {
+            background-color: #dbeafe !important;
+            color: #1e3a8a !important;
+        }
+
+        [class~="bg-govblue-950/80"],
+        [class~="to-govblue-950/80"] {
+            --tw-gradient-to: #eff6ff !important;
+        }
+
+        /* Verde selecionado: texto claro sobre verde escuro */
+        [class~="bg-emerald-800"],
+        [class~="bg-emerald-900/60"] {
+            background-color: #166534 !important;
+        }
+
+        span[class~="bg-emerald-800"],
+        span[class~="bg-emerald-800"] * {
+            color: #ffffff !important;
+        }
+
+        /* Azul de contagem (ex.: badge do assunto selecionado) */
+        span[class~="bg-blue-800"] {
+            background-color: #dbeafe !important;
+            color: #1e3a8a !important;
+        }
+
+        /* Chips e cartões tingidos que não estavam cobertos pelo tema claro */
+        [class~="bg-amber-950/70"],
+        [class~="bg-amber-950/40"],
+        [class~="bg-amber-950/20"] {
+            background-color: #fffbeb !important;
+            color: #854d0e !important;
+        }
+
+        [class~="bg-slate-800/80"],
+        [class~="bg-slate-950/40"],
+        [class~="bg-slate-950/50"] {
+            background-color: #f1f5f9 !important;
+            color: #334155 !important;
+        }
+
+        [class~="bg-emerald-950/20"] {
+            background-color: #ecfdf5 !important;
+        }
+
+        /* Estados selecionados de âmbar: mais saturados para se destacarem dos não selecionados */
+        button[class~="bg-amber-500"] {
+            background-color: #fbbf24 !important;
+            color: #422006 !important;
+            border-color: #b45309 !important;
+        }
+
+        button[class~="bg-amber-500"] * {
+            color: #422006 !important;
+        }
+
+        /* Botões sem fundo colorido mas com texto escuro sobre cinza */
+        [class~="hover:bg-slate-700"]:hover,
+        [class~="hover:bg-slate-800"]:hover {
+            color: #0f172a !important;
+        }
+
+        /* Contadores de subassuntos (ex.: 14, 4) que ficavam escuros sobre texto escuro */
+        [class~="bg-slate-700/80"] {
+            background-color: #e2e8f0 !important;
+            color: #334155 !important;
+        }
+
+        [class~="group"]:hover [class~="group-hover:text-slate-200"],
+        [class~="group-hover:text-slate-200"] {
+            color: #1e293b !important;
+        }
+
+        /* Cabeçalho âmbar da seção de tags recomendadas: gradiente claro de ponta a ponta */
+        [class~="from-amber-950/40"] {
+            --tw-gradient-from: #fffbeb !important;
+        }
+
+        [class~="to-slate-900"] {
+            --tw-gradient-to: #f8fafc !important;
+        }
+
+        #recommendedTagsSection {
+            background-image: linear-gradient(to right, #fffbeb, #f8fafc) !important;
+            background-color: #f8fafc !important;
+            border-color: #d6a243 !important;
+        }
+
+        /* Título da faixa de tags recomendadas: texto escuro */
+        #recommendedTagsSection>div:first-child>span,
+        #recommendedTagsSection>div:first-child>span>span {
+            color: #854d0e !important;
+        }
+
+        #recommendedTagsSection .text-amber-300,
+        #recommendedTagsSection span.font-bold {
+            color: #854d0e !important;
+        }
+
+        /* Mensagens de orientação da faixa de tags recomendadas: texto escuro */
+        #recommendedTagsList .italic,
+        #recommendedTagsList span.italic,
+        #recommendedTagsSection span.italic {
+            color: #334155 !important;
+        }
+
+        /* Tags recomendadas (chips): fundo claro e texto escuro; selecionadas em âmbar forte */
+        #recommendedTagsList button {
+            background-color: #fffbeb !important;
+            color: #78350f !important;
+            border-color: #d6a243 !important;
+        }
+
+        #recommendedTagsList button:hover {
+            background-color: #fef3c7 !important;
+        }
+
+        #recommendedTagsList button *,
+        #recommendedTagsList button span {
+            color: inherit !important;
+        }
+
+        #recommendedTagsList button[class~="bg-amber-500"] {
+            background-color: #fbbf24 !important;
+            color: #422006 !important;
+            border-color: #b45309 !important;
+        }
+
+        /* Botão "Marcar Todas": texto escuro, mesmo quando desabilitado */
+        #applyAllRecBtn,
+        #applyAllRecBtn:disabled {
+            opacity: 1 !important;
+            background-color: #fef3c7 !important;
+            color: #78350f !important;
+            border-color: #d97706 !important;
+        }
+
+        #applyAllRecBtn * {
+            color: #78350f !important;
+        }
+
+        #applyAllRecBtn:disabled {
+            background-color: #f5f5f4 !important;
+            color: #57534e !important;
+            border-color: #a8a29e !important;
+            cursor: not-allowed;
+        }
+    </style>
 </head>
 
 <body
@@ -182,13 +652,10 @@
                     <h2 class="text-2xl md:text-3xl font-extrabold text-white mt-0.5">Teste a Nova Estrutura na Prática
                     </h2>
                 </div>
-                <button onclick="resetSimulation()"
-                    class="self-start sm:self-auto text-xs bg-slate-800 hover:bg-slate-700 text-slate-300 px-3 py-1.5 rounded-lg border border-slate-700 transition flex items-center gap-1.5">
-                    <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                            d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15" />
-                    </svg>
-                    <span>Limpar Simulação</span>
+                <button onclick="openClassificationSuggesterModal()"
+                    class="self-start sm:self-auto text-xs bg-emerald-900/60 hover:bg-emerald-800/70 text-emerald-300 hover:text-emerald-200 px-3 py-1.5 rounded-lg border border-emerald-700/70 transition flex items-center gap-1.5"
+                    title="Sugerir classificação a partir do teor da manifestação">
+                    <span>🔎</span><span>Sugestor de Classificação</span>
                 </button>
             </div>
 
@@ -534,6 +1001,42 @@
                         <span>✓ Aplicar e Retornar</span>
                     </button>
                 </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Sugestor de Classificação: análise local, sem armazenamento e sem envio externo -->
+    <div id="classificationSuggesterModal"
+        class="fixed inset-0 z-[80] hidden items-center justify-center p-4 bg-slate-950/80 backdrop-blur-sm"
+        role="dialog" aria-modal="true">
+        <div
+            class="w-full max-w-4xl max-h-[92vh] overflow-y-auto bg-slate-900 border border-slate-700 rounded-2xl shadow-2xl">
+            <div
+                class="sticky top-0 z-10 flex items-center justify-between gap-3 px-5 py-4 bg-slate-900/95 backdrop-blur border-b border-slate-800">
+                <div>
+                    <h3 class="text-lg font-extrabold text-white">🔎 Sugestor de Classificação</h3>
+                    <p class="text-[11px] text-slate-400 mt-0.5">Análise local por regras. Nenhum teor é salvo ou
+                        enviado.</p>
+                </div>
+                <button type="button" onclick="closeClassificationSuggesterModal()"
+                    class="w-8 h-8 rounded-lg bg-slate-800 hover:bg-slate-700 text-slate-300"
+                    aria-label="Fechar">✕</button>
+            </div>
+            <div class="p-5 space-y-4">
+                <div>
+                    <label for="classificationSuggesterText" class="block text-xs font-bold text-slate-200 mb-2">Teor da
+                        manifestação</label>
+                    <textarea id="classificationSuggesterText" rows="7" autocomplete="off" spellcheck="true"
+                        class="w-full rounded-xl bg-slate-950 border border-slate-700 focus:border-emerald-500 focus:ring-1 focus:ring-emerald-500 text-sm text-slate-200 placeholder-slate-600 p-3.5 outline-none resize-y"
+                        placeholder="Cole aqui o teor da manifestação para receber uma sugestão de classificação..."></textarea>
+                    <div class="flex items-center justify-between gap-3 mt-2">
+                        <span class="text-[10px] text-slate-500">O conteúdo existe somente enquanto esta página estiver
+                            aberta.</span>
+                        <button type="button" onclick="classifyManifestation()"
+                            class="px-4 py-2 rounded-lg bg-emerald-600 hover:bg-emerald-500 text-white font-bold text-xs transition">Classificar</button>
+                    </div>
+                </div>
+                <div id="classificationSuggestionResult" class="hidden"></div>
             </div>
         </div>
     </div>
@@ -1024,6 +1527,317 @@
         let currentTagSearch = '';
         let tagViewMode = 'list'; // 'list' (organizada por categoria) ou 'cloud' (nuvem densa)
         let activePresetId = null;
+
+        // Sugestor: estado exclusivamente em memória. Não usa localStorage, sessionStorage,
+        // cookies, IndexedDB, APIs ou modelos externos.
+        let suggestedClassification = null;
+
+        // -------------------------------------------------------------
+        // Regras locais do Sugestor
+        // Hierarquia de evidências:
+        //  - strong (fato principal, peso 10): só termos explícitos do fato denunciado.
+        //  - context (peso 3): termos de contexto. Sozinhos NÃO classificam.
+        //  - weak (peso 1,5): termos amplos. Sozinhos NÃO classificam.
+        //  Uma regra só é candidata se tiver ao menos um termo strong.
+        // O teor nunca sai do navegador e não é persistido.
+        // -------------------------------------------------------------
+        const classificationSuggestionRules = [
+            // Atendimento
+            { a: 'atendimento_publico', s: 'Disque Esporte', strong: ['disque esporte', 'telefone do esporte'], context: ['ligacao', 'telefone'], weak: ['atendimento'] },
+            { a: 'atendimento_publico', s: 'Ouvidoria', strong: ['ouvidoria', 'atendimento da ouvidoria'], context: ['ouvidoria'], weak: ['atendimento'] },
+            { a: 'atendimento_publico', s: 'Fala.BR', strong: ['fala br', 'falabr', 'registrar uma manifestacao', 'registrar manifestacao'], context: ['manifestacao', 'protocolo'], weak: [] },
+
+            // Assédio envolvendo agentes públicos: exige contexto funcional para não competir com Esporte Seguro.
+            { a: 'assedio_moral', s: 'Relação entre agentes públicos', strong: ['assedio moral', 'humilhacao no trabalho', 'perseguicao no trabalho'], context: ['servidor', 'chefe', 'superior', 'chefia', 'ambiente de trabalho', 'orgao publico', 'servico publico'], weak: ['assedio'] },
+            { a: 'assedio_sexual', s: 'Relação entre agentes públicos', strong: ['assedio sexual', 'abuso sexual', 'importunacao sexual'], context: ['servidor', 'chefe', 'superior', 'chefia', 'ambiente de trabalho', 'orgao publico', 'servico publico'], weak: ['assedio'] },
+
+            // Esporte
+            { a: 'esporte', s: 'Bolsa Atleta', strong: ['bolsa atleta', 'bolsa-atleta', 'pagamento da bolsa atleta', 'beneficio bolsa atleta'], context: ['atleta', 'pagamento', 'atraso', 'receber', 'recebimento', 'beneficio'], weak: ['bolsa'] },
+            { a: 'esporte', s: 'Entidades Desportivas', strong: ['entidade desportiva', 'entidade esportiva', 'confederacao brasileira de futebol', 'cbf', 'federacao', 'federacao esportiva', 'clube esportivo'], context: ['confederacao', 'federacao', 'clube', 'liga', 'associacao'], weak: [] },
+            { a: 'esporte', s: 'Competições e Eventos Esportivos', strong: ['competicao esportiva', 'evento esportivo', 'campeonato esportivo', 'torneio esportivo', 'alterou a data', 'mudou a data', 'alteracao de data', 'alterar a data', 'adiou a competicao', 'cancelou a competicao'], context: ['competicao', 'campeonato', 'torneio', 'evento', 'data'], weak: ['competicao', 'campeonato', 'torneio', 'evento'] },
+            { a: 'esporte', s: 'Olimpíadas e Ciclo Olímpico', strong: ['olimpiada', 'jogos olimpicos', 'ciclo olimpico'], context: ['olimpico', 'olimpiada'], weak: [] },
+            { a: 'esporte', s: 'Paralimpíadas e Ciclo Paralímpico', strong: ['paralimpiada', 'jogos paralimpicos', 'ciclo paralimpico'], context: ['paralimpico', 'paralimpiada'], weak: [] },
+            { a: 'esporte', s: 'Futebol Feminino', strong: ['futebol feminino', 'futebol das mulheres'], context: ['futebol', 'mulheres'], weak: [] },
+            { a: 'esporte', s: 'Paradesporto', strong: ['paradesporto', 'esporte para pessoas com deficiencia', 'esporte para pessoa com deficiencia'], context: ['paradesporto', 'acessibilidade', 'inclusao'], weak: [] },
+            { a: 'esporte', s: 'Esporte Comunitário', strong: ['esporte comunitario', 'projeto comunitario', 'esporte para a comunidade'], context: ['comunidade', 'quadra', 'materiais'], weak: [] },
+            { a: 'esporte', s: 'Lei de Incentivo ao Esporte', strong: ['lei de incentivo ao esporte', 'lei de incentivo', 'incentivo ao esporte', 'projeto incentivado', 'captacao de recursos'], context: ['proponente', 'proposta', 'documentacao', 'captacao'], weak: ['incentivo'] },
+            { a: 'esporte', s: 'Projetos Esportivos', strong: ['projeto esportivo', 'projetos esportivos'], context: ['projeto', 'proponente', 'prestacao de contas', 'termo de fomento'], weak: [] },
+            { a: 'esporte', s: 'Editais e Chamamentos', strong: ['edital', 'chamamento publico', 'chamamento'], context: ['edital', 'chamamento', 'inscricao', 'prazo', 'resultado', 'recurso'], weak: [] },
+            { a: 'esporte', s: 'Infraestrutura Esportiva', strong: ['infraestrutura esportiva', 'centro olimpico', 'ginasio esportivo', 'quadra esportiva'], context: ['ginasio', 'quadra', 'reforma', 'manutencao', 'acessibilidade'], weak: [] },
+            { a: 'esporte', s: 'Rede de Desenvolvimento do Esporte *', strong: ['rede de desenvolvimento do esporte'], context: ['capacitacao', 'orientacao'], weak: [] },
+            { a: 'esporte', s: 'Tecnologia da Informação e Sistemas', strong: ['sistema bolsa atleta', 'sistema da lei de incentivo', 'slie', 'sistema slie'], context: ['sistema', 'erro', 'falha', 'acesso', 'portal', 'site'], weak: [] },
+
+            // Esporte Seguro: termos explícitos do tipo de assédio. Contexto esportivo não basta.
+            { a: 'esporte_seguro', s: 'Assédio moral no ambiente esportivo', strong: ['assedio moral', 'assedio moral no ambiente esportivo', 'assedio moral no esporte', 'humilha', 'humilhar', 'humilhacao', 'humilhado', 'humilhada', 'perseguicao', 'perseguir', 'chama de incapaz', 'incapaz'], context: ['ambiente esportivo', 'esporte', 'atleta', 'clube', 'treinador', 'treinamento', 'comissao tecnica', 'equipe', 'campeonato', 'competicao', 'torneio', 'vestiario', 'time'], weak: ['assedio'] },
+            { a: 'esporte_seguro', s: 'Assédio sexual no ambiente esportivo', strong: ['assedio sexual', 'assedio sexual no ambiente esportivo', 'assedio sexual no esporte', 'abuso sexual', 'importunacao sexual', 'comentarios sexuais', 'comentario sexual', 'tocou sem consentimento', 'toque sem consentimento', 'me tocou', 'sem consentimento'], context: ['ambiente esportivo', 'esporte', 'atleta', 'clube', 'treinador', 'treinamento', 'comissao tecnica', 'equipe', 'campeonato', 'competicao', 'torneio', 'vestiario', 'time'], weak: ['assedio'] },
+
+            // TI
+            { a: 'ti_sistemas', s: 'Protocolo Digital', strong: ['protocolo digital', 'sistema de protocolo'], context: ['protocolo', 'documento', 'erro', 'falha', 'acesso'], weak: [] },
+            { a: 'ti_sistemas', s: 'Portal do Ministério do Esporte', strong: ['portal do ministerio do esporte', 'site do ministerio do esporte', 'portal do mesp', 'site do mesp'], context: ['portal', 'site', 'acesso', 'erro', 'falha'], weak: [] },
+
+            // Apostas e manipulação de resultados
+            { a: 'premios_apostas', s: 'Manipulação de resultados', strong: ['manipulacao de resultados', 'manipulacao de resultado', 'manipular resultado', 'manipular o resultado', 'resultado combinado', 'resultado previamente combinado', 'combinar o resultado', 'combinar resultado', 'pagar jogadores', 'pagamento a jogadores', 'pagar atletas', 'favorecer uma equipe', 'favorecer equipe', 'alterar deliberadamente o resultado', 'alterar o resultado', 'fraude em uma partida', 'fraude em partida', 'fraude em competicao', 'fraude em uma competicao', 'jogo comprado', 'partida combinada', 'resultado manipulado'], context: ['manipulacao', 'resultado', 'aposta', 'apostas', 'bets', 'partida', 'jogadores', 'pagamento', 'competicao', 'campeonato', 'equipe', 'favorecer', 'fraude'], weak: [] },
+            { a: 'premios_apostas', s: 'Regulamentação e Fiscalização', strong: ['apostas esportivas', 'aposta esportiva', 'casa de aposta', 'casas de apostas', 'regulamentacao de apostas', 'fiscalizacao de apostas'], context: ['aposta', 'apostas', 'bets', 'fiscalizacao', 'regulamentacao'], weak: [] },
+
+            // Corrupção
+            { a: 'corrupcao', s: 'Contratos e Contratações Públicas', strong: ['contrato publico', 'contratos publicos', 'contratacao publica', 'licitacao', 'pregao', 'empresa contratada'], context: ['contrato', 'contratacao', 'licitacao', 'pregao', 'pagamento'], weak: [] },
+            { a: 'corrupcao', s: 'Parcerias e Repasses', strong: ['repasse de recursos', 'repasse de recurso', 'convenio', 'parceria', 'termo de fomento'], context: ['repasse', 'repasses', 'convenio', 'parceria', 'proponente'], weak: [] },
+            { a: 'corrupcao', s: 'Gestão de Recursos Públicos', strong: ['recursos publicos', 'recurso publico', 'dinheiro publico', 'verba publica', 'desvio de recursos', 'gestao de recursos publicos'], context: ['recursos', 'verba', 'dinheiro', 'desvio', 'prestacao de contas'], weak: [] },
+            { a: 'corrupcao', s: 'Conduta e Benefícios Indevidos', strong: ['nepotismo', 'favorecimento de familiar', 'beneficio indevido', 'vantagem indevida', 'favorecimento indevido'], context: ['nepotismo', 'familiar', 'favorecimento', 'vantagem', 'servidor'], weak: [] }
+        ];
+
+        // Termos genéricos: nunca aceitam comparação aproximada (evita que "equipe" vire "equipa", etc.)
+        const CLASSIFICATION_NO_FUZZY = new Set([
+            'assedio', 'campeonato', 'competicao', 'competicoes', 'torneio', 'evento', 'equipe', 'atleta', 'atletas',
+            'esporte', 'esportivo', 'clube', 'resultado', 'resultados', 'pagamento', 'partida', 'federacao', 'confederacao',
+            'treinador', 'data', 'jogo', 'jogos', 'sistema', 'portal', 'site', 'acesso', 'erro', 'falha', 'projeto', 'edital',
+            'recurso', 'servidor', 'contrato', 'aposta', 'apostas', 'fraude', 'jogadores', 'sem', 'uma', 'para', 'com', 'que'
+        ]);
+
+        function normalizeClassificationText(value) {
+            return String(value || '').toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g, '')
+                .replace(/f\s*a\s*l\s*a\s*\.\s*b\s*r/g, 'fala br')
+                .replace(/[^a-z0-9\s]/g, ' ').replace(/\s+/g, ' ').trim();
+        }
+
+        function classificationSimilarity(a, b) {
+            if (a === b) return 1;
+            if (!a || !b) return 0;
+            if (a.length < 4 || b.length < 4) return 0;
+            const prev = Array.from({ length: b.length + 1 }, (_, i) => i);
+            for (let i = 1; i <= a.length; i++) {
+                const cur = [i];
+                for (let j = 1; j <= b.length; j++) {
+                    cur[j] = Math.min(cur[j - 1] + 1, prev[j] + 1, prev[j - 1] + (a[i - 1] === b[j - 1] ? 0 : 1));
+                }
+                for (let j = 0; j < cur.length; j++) prev[j] = cur[j];
+            }
+            return 1 - (prev[b.length] / Math.max(a.length, b.length));
+        }
+
+        // Limiar de tolerância: palavras curtas exigem similaridade maior e nunca são aproximadas se forem genéricas.
+        function fuzzyAllowed(word, token) {
+            if (word.length < 5 || token.length < 5) return false;
+            if (CLASSIFICATION_NO_FUZZY.has(word) || CLASSIFICATION_NO_FUZZY.has(token)) return false;
+            if (Math.abs(word.length - token.length) > 2) return false;
+            return true;
+        }
+        function fuzzyThreshold(word) {
+            return word.length >= 6 ? 0.84 : 0.8;
+        }
+
+        function hasPhrase(normalizedText, phraseTokens) {
+            return (' ' + normalizedText + ' ').includes(' ' + phraseTokens.join(' ') + ' ');
+        }
+
+        function classificationPhraseMatch(text, phrase, tokens) {
+            const p = normalizeClassificationText(phrase).split(' ').filter(Boolean);
+            if (!p.length) return { matched: false, approx: false, score: 0 };
+            const normalized = normalizeClassificationText(text);
+            if (hasPhrase(normalized, p)) return { matched: true, approx: false, score: 1 };
+
+            // Expressão de uma palavra: aproximação só para termos não genéricos e com tamanho suficiente
+            if (p.length === 1) {
+                if (!fuzzyAllowed(p[0], p[0])) return { matched: false, approx: false, score: 0 };
+                let best = 0;
+                tokens.forEach(t => {
+                    if (!fuzzyAllowed(p[0], t) || t === p[0]) return;
+                    const sim = classificationSimilarity(t, p[0]);
+                    if (sim >= fuzzyThreshold(p[0]) && sim > best) best = sim;
+                });
+                return best > 0 ? { matched: true, approx: true, score: best } : { matched: false, approx: false, score: 0 };
+            }
+
+            // Expressão de várias palavras: cada palavra precisa coincidir exatamente ou por aproximação permitida
+            for (let i = 0; i <= tokens.length - p.length; i++) {
+                let total = 0, ok = true;
+                for (let j = 0; j < p.length; j++) {
+                    const t = tokens[i + j];
+                    if (t === p[j]) { total += 1; continue; }
+                    if (!fuzzyAllowed(p[j], t)) { ok = false; break; }
+                    const sim = classificationSimilarity(t, p[j]);
+                    if (sim < fuzzyThreshold(p[j])) { ok = false; break; }
+                    total += sim;
+                }
+                if (ok) return { matched: true, approx: true, score: total / p.length };
+            }
+            return { matched: false, approx: false, score: 0 };
+        }
+
+        // Pontua uma regra. Sem termo forte, a regra não é candidata (contexto não classifica sozinho).
+        function scoreClassificationRule(rule, text, tokens) {
+            let score = 0, strongHits = 0, matched = [];
+            const add = (items, weight, isStrong) => items.forEach(item => {
+                const hit = classificationPhraseMatch(text, item, tokens);
+                if (hit.matched) {
+                    score += weight * (hit.approx ? Math.max(0.8, hit.score) : 1);
+                    if (isStrong) strongHits++;
+                    matched.push({ term: item, approx: hit.approx, kind: isStrong ? 'forte' : 'contexto' });
+                }
+            });
+            add(rule.strong, 10, true);
+            add(rule.context, 3, false);
+            add(rule.weak, 1.5, false);
+
+            if (strongHits === 0) return { score: 0, strongHits: 0, matched: [] };
+
+            // Eventos amplos não vencem uma denúncia clara de assédio ou abuso.
+            if (rule.s === 'Competições e Eventos Esportivos' && /\b(assedio|abuso|humilh\w*|perseguic\w*|constrangimento|comentarios? sexuais?)\b/.test(text)) score *= 0.25;
+
+            const seen = new Set();
+            const unique = matched.filter(m => { if (seen.has(m.term)) return false; seen.add(m.term); return true; });
+            return { score: Math.round(score * 10) / 10, strongHits, matched: unique };
+        }
+
+        function getSuggestedTags(assuntoId, subassunto) {
+            // Somente as recomendações já existentes para a classificação escolhida. Nenhuma tag nova.
+            return [...new Set(recommendedTagsMap[`${assuntoId}_${subassunto}`] || [])].slice(0, 8);
+        }
+
+        function clearClassificationSuggester() {
+            const input = document.getElementById('classificationSuggesterText');
+            const result = document.getElementById('classificationSuggestionResult');
+            if (input) { input.value = ''; input.setAttribute('autocomplete', 'off'); }
+            if (result) { result.innerHTML = ''; result.classList.add('hidden'); }
+            suggestedClassification = null;
+        }
+
+        function openClassificationSuggesterModal() {
+            const modal = document.getElementById('classificationSuggesterModal');
+            if (!modal) return;
+            clearClassificationSuggester();
+            modal.classList.remove('hidden'); modal.classList.add('flex');
+            setTimeout(() => document.getElementById('classificationSuggesterText')?.focus(), 50);
+        }
+
+        function closeClassificationSuggesterModal() {
+            const modal = document.getElementById('classificationSuggesterModal');
+            if (!modal) return;
+            clearClassificationSuggester();
+            modal.classList.add('hidden'); modal.classList.remove('flex');
+        }
+
+        function renderSuggestionCard(candidate, index, isBest) {
+            const assunto = classificationTree.find(a => a.id === candidate.a);
+            const tags = getSuggestedTags(candidate.a, candidate.s);
+            const strongEvidence = candidate.matched.filter(m => m.kind === 'forte').slice(0, 6);
+            const contextEvidence = candidate.matched.filter(m => m.kind === 'contexto').slice(0, 4);
+            const evidenceChip = (m) => `<span class="inline-block mr-1 mb-1 px-1.5 py-0.5 rounded ${m.kind === 'forte' ? 'bg-slate-800 text-slate-200' : 'bg-slate-900 text-slate-500'}">${m.term}${m.approx ? ' (aproximação)' : ''}</span>`;
+            return `
+        <div class="rounded-2xl border ${isBest ? 'border-emerald-700/60 bg-emerald-950/20' : 'border-slate-700 bg-slate-950/50'} overflow-hidden">
+          <div class="px-4 py-3 border-b border-slate-800 flex flex-wrap items-center justify-between gap-2">
+            <div>
+              <div class="text-[10px] uppercase tracking-wider font-bold ${isBest ? 'text-emerald-400' : 'text-slate-500'}">${isBest ? 'Sugestão principal' : 'Outra possibilidade'}</div>
+              <div class="text-base font-extrabold text-white mt-0.5">${assunto?.nome || candidate.a}</div>
+            </div>
+            <span class="px-2.5 py-1 rounded-full bg-slate-800 border border-slate-700 text-slate-300 text-[10px] font-bold">Evidência: ${candidate.level}</span>
+          </div>
+          <div class="p-4 space-y-3">
+            <div><div class="text-[10px] uppercase tracking-wider text-slate-500 font-bold">Subassunto</div><div class="text-sm text-slate-100 font-bold mt-1">${candidate.s}</div></div>
+            <div><div class="text-[10px] uppercase tracking-wider text-slate-500 font-bold mb-2">Tags recomendadas</div>
+              <div class="flex flex-wrap gap-1.5">${tags.length ? tags.map(t => `<span class="px-2 py-1 rounded-md bg-slate-800 border border-slate-700 text-[10px] text-slate-300">${t}</span>`).join('') : '<span class="text-[10px] text-slate-500">Nenhuma recomendação cadastrada para esta combinação.</span>'}</div>
+            </div>
+            <div><div class="text-[10px] uppercase tracking-wider text-slate-500 font-bold">Evidências do fato principal</div>
+              <p class="text-xs text-slate-400 mt-1">${strongEvidence.length ? strongEvidence.map(evidenceChip).join('') : 'Nenhuma evidência forte.'}</p>
+            </div>
+            ${contextEvidence.length ? `<div><div class="text-[10px] uppercase tracking-wider text-slate-500 font-bold">Contexto secundário (não define a classificação sozinho)</div><p class="text-xs text-slate-500 mt-1">${contextEvidence.map(evidenceChip).join('')}</p></div>` : ''}
+            ${candidate.generic ? '<p class="text-[11px] text-amber-300">O teor menciona assédio sem especificar se foi moral ou sexual. Escolha a alternativa adequada após revisão.</p>' : ''}
+            <div class="flex justify-end pt-1">
+              <button type="button" onclick="applySuggestedClassification(${index})" class="px-3 py-1.5 rounded-lg bg-govblue-600 hover:bg-govblue-500 text-white text-xs font-bold">Aplicar esta classificação</button>
+            </div>
+          </div>
+        </div>`;
+        }
+
+        function classifyManifestation() {
+            const input = document.getElementById('classificationSuggesterText');
+            const result = document.getElementById('classificationSuggestionResult');
+            if (!input || !result) return;
+            const raw = input.value.trim();
+            if (!raw) {
+                result.classList.remove('hidden');
+                result.innerHTML = '<div class="rounded-xl border border-amber-700/50 bg-amber-950/20 p-4 text-sm text-amber-200">Informe o teor da manifestação antes de clicar em <strong>Classificar</strong>.</div>';
+                suggestedClassification = null; return;
+            }
+
+            const text = normalizeClassificationText(raw);
+            const tokens = text.split(' ').filter(Boolean);
+            let scored = classificationSuggestionRules
+                .map(rule => ({ a: rule.a, s: rule.s, ...scoreClassificationRule(rule, text, tokens) }))
+                .filter(x => x.score > 0);
+
+            // Assédio genérico em contexto esportivo, sem tipo especificado: apresenta as duas alternativas.
+            const hasTypedHarassment = scored.some(x => x.a === 'esporte_seguro');
+            const genericAssedio = classificationPhraseMatch(text, 'assedio', tokens).matched && !hasTypedHarassment;
+            const sportsContext = ['treinador', 'atleta', 'clube', 'equipe', 'campeonato', 'competicao', 'torneio', 'esporte', 'vestiario', 'comissao tecnica', 'treinamento']
+                .some(t => classificationPhraseMatch(text, t, tokens).matched);
+            if (genericAssedio && sportsContext) {
+                scored = scored.filter(x => x.a !== 'esporte_seguro');
+                scored.push({ a: 'esporte_seguro', s: 'Assédio moral no ambiente esportivo', score: 8, strongHits: 0, generic: true, matched: [{ term: 'assédio (tipo não especificado)', approx: false, kind: 'forte' }] });
+                scored.push({ a: 'esporte_seguro', s: 'Assédio sexual no ambiente esportivo', score: 8, strongHits: 0, generic: true, matched: [{ term: 'assédio (tipo não especificado)', approx: false, kind: 'forte' }] });
+            }
+
+            scored.sort((a, b) => b.score - a.score);
+
+            if (!scored.length || scored[0].score < 5) {
+                suggestedClassification = null;
+                result.classList.remove('hidden');
+                result.innerHTML = '<div class="rounded-xl border border-slate-700 bg-slate-950/60 p-4"><strong class="text-white text-sm">⚠️ Não há evidência suficiente para sugerir uma classificação.</strong><p class="text-xs text-slate-400 mt-2">Os termos encontrados não bastam para indicar um assunto com segurança. Recomenda-se classificar manualmente no simulador. O teor não é salvo.</p></div>';
+                return;
+            }
+
+            const best = scored[0];
+            // Alternativas: outras opções com evidência forte e pontuação próxima
+            let candidates = scored.filter((x, i) => i === 0 || (x.score >= Math.max(5, best.score * 0.58) && (x.strongHits > 0 || x.generic)));
+            // Fatos separados: se outro assunto tem evidência forte própria, mantém como alternativa
+            scored.forEach(x => {
+                if (candidates.length >= 3) return;
+                if (x.strongHits >= 1 && x.score >= 10 && !candidates.some(c => c.a === x.a)) candidates.push(x);
+            });
+            candidates = candidates.slice(0, 3);
+
+            // Nível de evidência (não é probabilidade de acerto)
+            candidates.forEach((c, i) => {
+                if (c.generic) c.level = 'baixa (tipo não especificado)';
+                else if (candidates.length > 1 && i === 0) c.level = 'média (há alternativas)';
+                else if (c.strongHits >= 1 && c.score >= 12) c.level = 'alta';
+                else c.level = 'baixa';
+            });
+            const lowConfidence = candidates.every(c => c.level.startsWith('baixa'));
+
+            suggestedClassification = { candidates };
+
+            result.classList.remove('hidden');
+            result.innerHTML = `
+        <div class="space-y-3">
+          <div class="rounded-xl border border-slate-800 bg-slate-950/60 p-3">
+            <div class="text-xs font-bold text-white">Foram encontradas ${candidates.length} possibilidade${candidates.length > 1 ? 's' : ''} de classificação.</div>
+            <p class="text-[11px] text-slate-500 mt-1">A sugestão considera primeiro os termos que descrevem o fato principal. Termos de contexto, como “campeonato”, “equipe” ou “atleta”, não classificam sozinhos.</p>
+            ${lowConfidence ? '<p class="text-[11px] text-amber-300 mt-1">Evidência insuficiente para uma sugestão segura. Recomenda-se revisão manual.</p>' : ''}
+          </div>
+          ${candidates.map((candidate, index) => renderSuggestionCard(candidate, index, index === 0)).join('')}
+          <div class="flex justify-end gap-2 pt-1">
+            <button type="button" onclick="clearClassificationSuggester()" class="px-3 py-1.5 rounded-lg bg-slate-800 hover:bg-slate-700 text-slate-300 text-xs border border-slate-700">Limpar teor</button>
+          </div>
+        </div>`;
+        }
+
+        function applySuggestedClassification(index = 0) {
+            const candidate = suggestedClassification?.candidates?.[index];
+            if (!candidate) return;
+            const assunto = classificationTree.find(a => a.id === candidate.a);
+            if (!assunto || !assunto.subassuntos.includes(candidate.s)) return;
+            const tags = getSuggestedTags(candidate.a, candidate.s);
+            selectAssunto(candidate.a); selectSubassunto(candidate.s);
+            selectedTags = new Set(tags.filter(t => globalTags.some(g => g.nome === t)));
+            renderRecommendedTags(); renderTagsCloud(); renderWideTagsGrid(); updateWideModalSelectedBadges(); updateSimulationPreview();
+            closeClassificationSuggesterModal();
+        }
+
+        function resetClassificationSuggesterOnPageLoad() {
+            // Segurança: nunca recuperar o teor nem o resultado de uma sessão anterior.
+            clearClassificationSuggester();
+        }
 
 
         // -------------------------------------------------------------
@@ -1807,7 +2621,18 @@
 
         // Inicialização ao carregar página
         document.addEventListener('DOMContentLoaded', () => {
+            resetClassificationSuggesterOnPageLoad();
             initSimulator();
+        });
+
+        // Evita que o navegador restaure automaticamente o teor após recarregar/voltar.
+        window.addEventListener('pageshow', () => resetClassificationSuggesterOnPageLoad());
+
+        document.addEventListener('keydown', (event) => {
+            if (event.key === 'Escape') {
+                const modal = document.getElementById('classificationSuggesterModal');
+                if (modal && !modal.classList.contains('hidden')) closeClassificationSuggesterModal();
+            }
         });
     </script>
 </body>
