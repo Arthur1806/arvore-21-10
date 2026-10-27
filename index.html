@@ -112,18 +112,16 @@
 
     <style id="light-theme-overrides">
         /* =========================================================
-     TEMA CLARO
-     Somente aparência: nenhuma estrutura, dado ou funcionalidade
-     do sistema é alterada.
-     ========================================================= */
+           TEMA CLARO (Ajustado para menor cansaço visual)
+           ========================================================= */
 
         html,
         body {
-            background: #f8fafc !important;
-            color: #1e293b !important;
+            background: #f1f5f9 !important; /* Fundo geral mais suave (slate-100) */
+            color: #334155 !important; /* Texto base escuro, não preto puro */
         }
 
-        /* Fundos escuros */
+        /* Painéis e Blocos principais */
         [class~="bg-slate-950"],
         [class~="bg-slate-950/95"],
         [class~="bg-slate-950/90"],
@@ -140,39 +138,37 @@
         [class~="bg-slate-700"],
         [class~="bg-slate-600"] {
             background-color: #ffffff !important;
+            border-color: #e2e8f0 !important;
         }
 
         /* Cabeçalho e rodapé */
         header,
         footer {
-            background-color: rgba(255, 255, 255, .96) !important;
+            background-color: #ffffff !important;
             border-color: #e2e8f0 !important;
         }
 
         /* Textos */
         [class~="text-white"] {
-            color: #0f172a !important;
+            color: #0f172a !important; /* slate-900 */
         }
 
         [class~="text-slate-100"],
         [class~="text-slate-200"] {
-            color: #1e293b !important;
+            color: #1e293b !important; /* slate-800 */
         }
 
         [class~="text-slate-300"] {
-            color: #334155 !important;
+            color: #334155 !important; /* slate-700 */
         }
 
         [class~="text-slate-400"] {
-            color: #475569 !important;
+            color: #475569 !important; /* slate-600 */
         }
 
-        [class~="text-slate-500"] {
-            color: #64748b !important;
-        }
-
+        [class~="text-slate-500"],
         [class~="text-slate-600"] {
-            color: #64748b !important;
+            color: #64748b !important; /* slate-500 */
         }
 
         [class~="text-slate-950"] {
@@ -185,7 +181,7 @@
         [class~="border-slate-700"],
         [class~="border-slate-700/80"],
         [class~="border-slate-700/60"] {
-            border-color: #cbd5e1 !important;
+            border-color: #e2e8f0 !important;
         }
 
         /* Inputs */
@@ -202,11 +198,12 @@
             color: #94a3b8 !important;
         }
 
-        /* Hover dos controles que eram escuros */
+        /* Hover dos controles */
         [class~="hover:bg-slate-700"]:hover,
         [class~="hover:bg-slate-800"]:hover,
         [class~="hover:bg-slate-600"]:hover {
-            background-color: #e2e8f0 !important;
+            background-color: #f8fafc !important;
+            color: #0f172a !important;
         }
 
         [class~="hover:text-white"]:hover {
@@ -229,58 +226,46 @@
             color: #475569 !important;
         }
 
-        /* Modal do catálogo de TAGS */
-        #tagsWideModal {
-            background-color: rgba(15, 23, 42, .45) !important;
-        }
-
-        #tagsWideModal>div {
-            background-color: #ffffff !important;
-            border-color: #cbd5e1 !important;
-        }
-
-        /* Modal do sugestor */
+        /* Modais */
+        #tagsWideModal,
         #classificationSuggesterModal {
             background-color: rgba(15, 23, 42, .45) !important;
         }
 
+        #tagsWideModal>div,
         #classificationSuggesterModal>div {
             background-color: #ffffff !important;
-            border-color: #cbd5e1 !important;
+            border-color: #e2e8f0 !important;
         }
 
         #classificationSuggesterModal .sticky {
-            background-color: rgba(255, 255, 255, .96) !important;
+            background-color: #ffffff !important;
             border-color: #e2e8f0 !important;
         }
 
         /* Barras de rolagem */
         ::-webkit-scrollbar-track {
-            background: #e2e8f0 !important;
+            background: #f1f5f9 !important;
         }
 
         ::-webkit-scrollbar-thumb {
-            background: #94a3b8 !important;
+            background: #cbd5e1 !important;
         }
 
         ::-webkit-scrollbar-thumb:hover {
-            background: #64748b !important;
-        }
-
-        .presets-scrollbar {
-            scrollbar-color: #94a3b8 #e2e8f0 !important;
-        }
-
-        .presets-scrollbar::-webkit-scrollbar-track {
-            background: #e2e8f0 !important;
-        }
-
-        .presets-scrollbar::-webkit-scrollbar-thumb {
             background: #94a3b8 !important;
         }
 
-        .presets-scrollbar::-webkit-scrollbar-thumb:hover {
-            background: #f59e0b !important;
+        .presets-scrollbar {
+            scrollbar-color: #cbd5e1 #f1f5f9 !important;
+        }
+
+        .presets-scrollbar::-webkit-scrollbar-track {
+            background: #f1f5f9 !important;
+        }
+
+        .presets-scrollbar::-webkit-scrollbar-thumb {
+            background: #cbd5e1 !important;
         }
 
         /* Seleção */
@@ -292,14 +277,13 @@
 
 
     <style id="light-theme-contrast-fixes">
-        /* Ajustes de contraste para o tema claro. Apenas cores; sem alterar conteúdo ou lógica. */
+        /* Ajustes de contraste para o tema claro */
 
-        /* Textos coloridos que ficavam claros demais sobre fundos claros */
         [class~="text-amber-200"],
         [class~="text-amber-300"],
         [class~="text-amber-400"],
         [class~="hover:text-amber-200"]:hover {
-            color: #854d0e !important;
+            color: #92400e !important;
         }
 
         [class~="text-emerald-100"],
@@ -312,7 +296,7 @@
 
         [class~="text-blue-200"],
         [class~="text-blue-300"] {
-            color: #1d4ed8 !important;
+            color: #1e40af !important;
         }
 
         [class~="text-red-300"],
@@ -326,7 +310,6 @@
             color: #854d0e !important;
         }
 
-        /* Caixas de destaque: fundo claro e texto escuro, legível */
         [class~="bg-amber-500/20"],
         [class~="bg-amber-950/20"],
         [class~="bg-amber-600/40"],
@@ -341,7 +324,6 @@
             border-color: #d6a243 !important;
         }
 
-        /* Botões coloridos mantêm sua identidade, mas ganham contraste adequado */
         button[class~="bg-emerald-600"],
         button[class~="bg-emerald-800"],
         button[class~="bg-emerald-900/60"],
@@ -366,17 +348,15 @@
             border-color: #93c5fd !important;
         }
 
-        /* Rótulos e títulos com acento dourado/verde */
         #classificationSuggesterModal [class~="text-amber-200"],
         #classificationSuggesterModal [class~="text-amber-300"],
         #classificationSuggesterModal [class~="text-amber-400"],
         #tagsWideModal [class~="text-amber-200"],
         #tagsWideModal [class~="text-amber-300"],
         #tagsWideModal [class~="text-amber-400"] {
-            color: #854d0e !important;
+            color: #92400e !important;
         }
 
-        /* Mantém legíveis os estados selecionados e as etiquetas */
         [class~="bg-emerald-400"] {
             background-color: #15803d !important;
         }
@@ -386,20 +366,17 @@
             background-color: #166534 !important;
         }
 
-        /* Links e pequenos textos informativos */
         a,
         [role="link"] {
             color: #1d4ed8;
         }
 
-        /* Texto em botões escuros ou de destaque */
         button[class~="bg-emerald-600"] *,
         button[class~="bg-emerald-800"] *,
         button[class~="bg-emerald-900/60"] * {
             color: #ffffff !important;
         }
 
-        /* Mensagens de sugestão: assegurar contraste mesmo com estilos inline */
         #classificationSuggesterModal .text-emerald-400,
         #classificationSuggesterModal .text-emerald-300 {
             color: #166534 !important;
@@ -407,9 +384,6 @@
     </style>
 
     <style id="light-theme-conflict-fixes">
-        /* Correções finais de contraste: fundos coloridos com textos que o tema claro escureceu ou clareou demais. Apenas cores. */
-
-        /* Azul institucional: texto branco sobre azul escuro */
         [class~="bg-govblue-600"],
         [class~="bg-govblue-500"],
         [class~="from-govblue-600"],
@@ -440,7 +414,6 @@
             --tw-gradient-to: #eff6ff !important;
         }
 
-        /* Verde selecionado: texto claro sobre verde escuro */
         [class~="bg-emerald-800"],
         [class~="bg-emerald-900/60"] {
             background-color: #166534 !important;
@@ -451,13 +424,11 @@
             color: #ffffff !important;
         }
 
-        /* Azul de contagem (ex.: badge do assunto selecionado) */
         span[class~="bg-blue-800"] {
             background-color: #dbeafe !important;
             color: #1e3a8a !important;
         }
 
-        /* Chips e cartões tingidos que não estavam cobertos pelo tema claro */
         [class~="bg-amber-950/70"],
         [class~="bg-amber-950/40"],
         [class~="bg-amber-950/20"] {
@@ -468,7 +439,7 @@
         [class~="bg-slate-800/80"],
         [class~="bg-slate-950/40"],
         [class~="bg-slate-950/50"] {
-            background-color: #f1f5f9 !important;
+            background-color: #f8fafc !important;
             color: #334155 !important;
         }
 
@@ -476,7 +447,6 @@
             background-color: #ecfdf5 !important;
         }
 
-        /* Estados selecionados de âmbar: mais saturados para se destacarem dos não selecionados */
         button[class~="bg-amber-500"] {
             background-color: #fbbf24 !important;
             color: #422006 !important;
@@ -487,13 +457,11 @@
             color: #422006 !important;
         }
 
-        /* Botões sem fundo colorido mas com texto escuro sobre cinza */
         [class~="hover:bg-slate-700"]:hover,
         [class~="hover:bg-slate-800"]:hover {
             color: #0f172a !important;
         }
 
-        /* Contadores de subassuntos (ex.: 14, 4) que ficavam escuros sobre texto escuro */
         [class~="bg-slate-700/80"] {
             background-color: #e2e8f0 !important;
             color: #334155 !important;
@@ -504,7 +472,6 @@
             color: #1e293b !important;
         }
 
-        /* Cabeçalho âmbar da seção de tags recomendadas: gradiente claro de ponta a ponta */
         [class~="from-amber-950/40"] {
             --tw-gradient-from: #fffbeb !important;
         }
@@ -514,30 +481,27 @@
         }
 
         #recommendedTagsSection {
-            background-image: linear-gradient(to right, #fffbeb, #f8fafc) !important;
-            background-color: #f8fafc !important;
+            background-image: linear-gradient(to right, #fffbeb, #ffffff) !important;
+            background-color: #ffffff !important;
             border-color: #d6a243 !important;
         }
 
-        /* Título da faixa de tags recomendadas: texto escuro */
         #recommendedTagsSection>div:first-child>span,
         #recommendedTagsSection>div:first-child>span>span {
-            color: #854d0e !important;
+            color: #92400e !important;
         }
 
         #recommendedTagsSection .text-amber-300,
         #recommendedTagsSection span.font-bold {
-            color: #854d0e !important;
+            color: #92400e !important;
         }
 
-        /* Mensagens de orientação da faixa de tags recomendadas: texto escuro */
         #recommendedTagsList .italic,
         #recommendedTagsList span.italic,
         #recommendedTagsSection span.italic {
             color: #334155 !important;
         }
 
-        /* Tags recomendadas (chips): fundo claro e texto escuro; selecionadas em âmbar forte */
         #recommendedTagsList button {
             background-color: #fffbeb !important;
             color: #78350f !important;
@@ -559,7 +523,6 @@
             border-color: #b45309 !important;
         }
 
-        /* Botão "Marcar Todas": texto escuro, mesmo quando desabilitado */
         #applyAllRecBtn,
         #applyAllRecBtn:disabled {
             opacity: 1 !important;
@@ -573,16 +536,230 @@
         }
 
         #applyAllRecBtn:disabled {
-            background-color: #f5f5f4 !important;
-            color: #57534e !important;
-            border-color: #a8a29e !important;
+            background-color: #f1f5f9 !important;
+            color: #64748b !important;
+            border-color: #cbd5e1 !important;
             cursor: not-allowed;
+        }
+    </style>
+
+    <!-- ESTILOS PARA O TEMA ESCURO HARMÔNICO -->
+    <style id="dark-theme-overrides">
+        body.theme-dark {
+            background-color: #0f172a !important;
+            color: #cbd5e1 !important;
+        }
+
+        body.theme-dark header,
+        body.theme-dark footer {
+            background-color: #1e293b !important;
+            border-color: #334155 !important;
+        }
+
+        body.theme-dark [class~="bg-slate-950"],
+        body.theme-dark [class~="bg-slate-950/95"],
+        body.theme-dark [class~="bg-slate-950/90"],
+        body.theme-dark [class~="bg-slate-950/85"],
+        body.theme-dark [class~="bg-slate-950/80"],
+        body.theme-dark [class~="bg-slate-950/60"],
+        body.theme-dark [class~="bg-slate-900"],
+        body.theme-dark [class~="bg-slate-900/95"],
+        body.theme-dark [class~="bg-slate-900/90"],
+        body.theme-dark [class~="bg-slate-900/80"],
+        body.theme-dark [class~="bg-slate-900/60"],
+        body.theme-dark [class~="bg-slate-800"],
+        body.theme-dark [class~="bg-slate-800/60"],
+        body.theme-dark [class~="bg-slate-700"],
+        body.theme-dark [class~="bg-slate-600"] {
+            background-color: #1e293b !important;
+        }
+
+        body.theme-dark [class~="border-slate-800"],
+        body.theme-dark [class~="border-slate-800/80"],
+        body.theme-dark [class~="border-slate-700"],
+        body.theme-dark [class~="border-slate-700/80"],
+        body.theme-dark [class~="border-slate-700/60"] {
+            border-color: #334155 !important;
+        }
+
+        body.theme-dark [class~="text-white"],
+        body.theme-dark [class~="text-slate-100"],
+        body.theme-dark [class~="text-slate-200"] {
+            color: #f8fafc !important;
+        }
+
+        body.theme-dark [class~="text-slate-300"],
+        body.theme-dark [class~="text-slate-400"] {
+            color: #94a3b8 !important;
+        }
+
+        body.theme-dark [class~="text-slate-500"],
+        body.theme-dark [class~="text-slate-600"] {
+            color: #64748b !important;
+        }
+
+        /* Modais */
+        body.theme-dark #tagsWideModal,
+        body.theme-dark #classificationSuggesterModal {
+            background-color: rgba(0, 0, 0, .7) !important;
+        }
+        
+        body.theme-dark #tagsWideModal > div,
+        body.theme-dark #classificationSuggesterModal > div {
+            background-color: #1e293b !important;
+            border-color: #334155 !important;
+        }
+        
+        body.theme-dark #classificationSuggesterModal .sticky {
+            background-color: rgba(30, 41, 59, .96) !important;
+            border-color: #334155 !important;
+        }
+
+        body.theme-dark input,
+        body.theme-dark textarea,
+        body.theme-dark select {
+            background-color: #0f172a !important;
+            color: #f8fafc !important;
+            border-color: #334155 !important;
+        }
+        body.theme-dark input::placeholder,
+        body.theme-dark textarea::placeholder {
+            color: #64748b !important;
+        }
+
+        body.theme-dark [class~="bg-slate-950/80"] {
+            background-color: #0f172a !important;
+        }
+
+        /* Correções de blocos brancos no tema escuro */
+        body.theme-dark [class~="bg-slate-900/90"],
+        body.theme-dark [class~="bg-slate-900"],
+        body.theme-dark [class~="bg-slate-800/60"],
+        body.theme-dark [class~="bg-slate-800"],
+        body.theme-dark [class~="bg-gradient-to-br"],
+        body.theme-dark [class~="from-slate-900"],
+        body.theme-dark [class~="to-slate-900"],
+        body.theme-dark [class~="from-amber-950/40"],
+        body.theme-dark [class~="to-slate-900"] {
+            background-color: #1e293b !important;
+            background-image: none !important;
+        }
+
+        body.theme-dark #recommendedTagsSection {
+            background-image: linear-gradient(to right, rgba(69, 26, 3, 0.4), #1e293b) !important;
+            background-color: #1e293b !important;
+            border-color: rgba(245, 158, 11, 0.3) !important;
+        }
+
+        body.theme-dark #recommendedTagsSection *,
+        body.theme-dark #recommendedTagsSection span,
+        body.theme-dark #recommendedTagsSection .text-amber-300,
+        body.theme-dark #recommendedTagsSection span.font-bold {
+            color: #fcd34d !important;
+        }
+
+        body.theme-dark #recommendedTagsList button {
+            background-color: rgba(69, 26, 3, 0.7) !important;
+            color: #fcd34d !important;
+            border-color: rgba(245, 158, 11, 0.6) !important;
+        }
+
+        body.theme-dark #recommendedTagsList button[class~="bg-amber-500"] {
+            background-color: #f59e0b !important;
+            color: #0f172a !important;
+            border-color: #fbbf24 !important;
+        }
+
+        body.theme-dark #recommendedTagsList button span {
+            color: inherit !important;
+        }
+
+        body.theme-dark #applyAllRecBtn,
+        body.theme-dark #applyAllRecBtn:disabled {
+            background-color: rgba(245, 158, 11, 0.2) !important;
+            color: #fcd34d !important;
+            border-color: rgba(245, 158, 11, 0.4) !important;
+        }
+        body.theme-dark #applyAllRecBtn * {
+            color: inherit !important;
+        }
+
+        body.theme-dark span[class~="bg-slate-700/80"],
+        body.theme-dark span[class~="bg-slate-700"] {
+            background-color: #334155 !important;
+            color: #cbd5e1 !important;
+        }
+
+        body.theme-dark [class~="bg-gradient-to-br"] {
+            background-image: none !important;
+            background-color: #1e293b !important;
+        }
+
+        body.theme-dark #previewTextoManifestacao {
+            background-color: #0f172a !important;
+            border-color: #334155 !important;
+            color: #94a3b8 !important;
+        }
+
+        body.theme-dark button[class~="bg-slate-800"][class~="text-slate-300"] {
+            background-color: #1e293b !important;
+            color: #cbd5e1 !important;
+            border-color: #334155 !important;
+        }
+        body.theme-dark button[class~="bg-slate-800"][class~="text-slate-300"]:hover {
+            background-color: #334155 !important;
+            color: #ffffff !important;
+        }
+        body.theme-dark button[class~="bg-slate-800"][class~="text-slate-300"] span[class~="bg-slate-700"] {
+            background-color: #0f172a !important;
+            color: #94a3b8 !important;
+        }
+
+        body.theme-dark [class~="bg-slate-950/80"],
+        body.theme-dark [class~="bg-slate-900/95"] {
+            background-color: #0f172a !important;
+        }
+
+        /* CORREÇÃO ESPECÍFICA DO BUG NO MODAL DE TAGS NO TEMA DARK */
+        body.theme-dark #wideTagsGridContainer {
+            background-color: #0f172a !important; 
+        }
+        
+        body.theme-dark #wideTagsGridContainer > div {
+            background-color: #1e293b !important;
+            border-color: #334155 !important;
+        }
+
+        body.theme-dark #wideTagsGridContainer button {
+            background-color: #0f172a !important;
+            color: #cbd5e1 !important;
+            border-color: #334155 !important;
+        }
+        
+        body.theme-dark #wideTagsGridContainer button:hover {
+            background-color: #334155 !important;
+            color: #ffffff !important;
+        }
+
+        body.theme-dark #wideTagsGridContainer button[class~="bg-amber-500"] {
+            background-color: #fbbf24 !important;
+            color: #422006 !important;
+            border-color: #b45309 !important;
+        }
+
+        body.theme-dark ::-webkit-scrollbar-track {
+            background: #0f172a !important;
+        }
+        body.theme-dark ::-webkit-scrollbar-thumb {
+            background: #475569 !important;
+        }
+        body.theme-dark ::-webkit-scrollbar-thumb:hover {
+            background: #64748b !important;
         }
     </style>
 </head>
 
-<body
-    class="bg-slate-950 text-slate-100 font-sans min-h-screen flex flex-col justify-between overflow-x-hidden selection:bg-govblue-500 selection:text-white">
+<body class="bg-slate-950 text-slate-100 font-sans min-h-screen flex flex-col justify-between overflow-x-hidden selection:bg-govblue-500 selection:text-white">
 
     <!-- Top Header / Bar -->
     <header
@@ -624,6 +801,13 @@
                 title="Ver catálogo completo de tags">
                 <span>📋</span>
                 <span>Catálogo de TAGS</span>
+            </button>
+
+            <!-- BOTÃO DE TEMA APENAS COM ÍCONE -->
+            <button id="themeToggleBtn" onclick="toggleTheme()"
+                class="px-2.5 py-1.5 rounded-md bg-slate-800 hover:bg-slate-700 text-slate-300 hover:text-white transition flex items-center justify-center border border-slate-700 min-w-[32px]"
+                title="Alternar Tema (Claro / Escuro)">
+                <span id="themeIcon">🌙</span>
             </button>
 
             <button onclick="toggleFullScreen()"
@@ -672,7 +856,6 @@
                             Casos</span>
                     </div>
 
-                    <!-- Controls: Modo Grade / Linha e Dica de rolagem -->
                     <div class="flex items-center gap-2">
                         <span class="text-[10px] text-slate-500 hidden md:inline">Use as setas, o scroll do mouse ou
                             arraste:</span>
@@ -685,22 +868,17 @@
                     </div>
                 </div>
 
-                <!-- Slider Bar with Left/Right Arrows & Scrollable Area -->
                 <div class="relative flex items-center gap-1.5">
-                    <!-- Left Arrow Button -->
                     <button id="casePresetsScrollLeft" type="button" onclick="scrollCasePresets(-260)"
                         class="shrink-0 w-7 h-7 rounded-lg bg-slate-800 hover:bg-slate-700 active:bg-slate-600 text-slate-300 hover:text-white border border-slate-700 flex items-center justify-center text-sm font-bold transition shadow disabled:opacity-30 disabled:cursor-not-allowed"
                         title="Rolar casos anteriores para a esquerda">
                         ‹
                     </button>
 
-                    <!-- Scrollable Presets Container -->
                     <div id="casePresetsContainer"
                         class="flex items-center gap-1.5 overflow-x-auto py-1 text-[10px] presets-scrollbar select-none cursor-grab active:cursor-grabbing flex-1">
-                        <!-- Dynamically populated via JS -->
                     </div>
 
-                    <!-- Right Arrow Button -->
                     <button id="casePresetsScrollRight" type="button" onclick="scrollCasePresets(260)"
                         class="shrink-0 w-7 h-7 rounded-lg bg-slate-800 hover:bg-slate-700 active:bg-slate-600 text-slate-300 hover:text-white border border-slate-700 flex items-center justify-center text-sm font-bold transition shadow disabled:opacity-30 disabled:cursor-not-allowed"
                         title="Rolar próximos casos para a direita">
@@ -712,7 +890,7 @@
             <!-- Main Interactive Sandbox Grid -->
             <div class="grid grid-cols-1 lg:grid-cols-12 gap-5 flex-1 items-start">
 
-                <!-- Coluna 1: Seleção de Assunto (8 assuntos reais) -->
+                <!-- Coluna 1: Seleção de Assunto -->
                 <div
                     class="lg:col-span-4 bg-slate-900/90 border border-slate-800 rounded-xl p-4 flex flex-col h-[530px]">
                     <div class="flex items-center justify-between pb-2 mb-3 border-b border-slate-800">
@@ -725,11 +903,10 @@
                     </div>
 
                     <div class="space-y-1.5 overflow-y-auto pr-1 flex-1" id="assuntosListContainer">
-                        <!-- Dynamically populated -->
                     </div>
                 </div>
 
-                <!-- Coluna 2: Subassuntos Correspondentes (Dependência Dinâmica) -->
+                <!-- Coluna 2: Subassuntos Correspondentes -->
                 <div
                     class="lg:col-span-4 bg-slate-900/90 border border-slate-800 rounded-xl p-4 flex flex-col h-[530px]">
                     <div class="flex items-center justify-between pb-2 mb-3 border-b border-slate-800">
@@ -756,10 +933,8 @@
                     </div>
                 </div>
 
-                <!-- Coluna 3: Tags Recomendadas, Universais & Resumo da Ocorrência -->
+                <!-- Coluna 3: Tags Recomendadas -->
                 <div class="lg:col-span-4 flex flex-col gap-3 h-[530px]">
-
-                    <!-- Tags Picker Container -->
                     <div
                         class="bg-slate-900/90 border border-slate-800 rounded-xl p-3.5 flex-1 flex flex-col overflow-hidden">
                         <div class="flex items-center justify-between pb-1.5 mb-2 border-b border-slate-800">
@@ -769,7 +944,6 @@
                                 <h3 class="text-xs font-bold text-white uppercase tracking-wider">TAGS Transversais</h3>
                             </div>
                             <div class="flex items-center gap-1.5">
-                                <!-- Seletor de Modo: Lista Organizada vs Nuvem -->
                                 <div
                                     class="bg-slate-950 p-0.5 rounded-lg border border-slate-800 flex items-center text-[9px]">
                                     <button id="tagViewListBtn" type="button" onclick="setTagViewMode('list')"
@@ -781,7 +955,6 @@
                                         class="px-2 py-0.5 rounded text-slate-400 hover:text-white transition">🏷️
                                         Nuvem</button>
                                 </div>
-                                <!-- Botão de Visão Ampla -->
                                 <button type="button" onclick="openTagsWideModal()"
                                     title="Abrir catálogo amplo em tela cheia com todas as categorias"
                                     class="px-2 py-0.5 rounded-lg bg-gradient-to-r from-govblue-600 to-blue-600 hover:from-govblue-500 hover:to-blue-500 text-white font-semibold text-[10px] flex items-center gap-1 shadow-sm transition">
@@ -791,7 +964,6 @@
                             </div>
                         </div>
 
-                        <!-- Bloco Dinâmico: Tags Recomendadas para o Contexto -->
                         <div id="recommendedTagsSection"
                             class="mb-2 p-2 rounded-xl bg-gradient-to-r from-amber-950/40 to-slate-900 border border-amber-500/30 transition">
                             <div class="flex items-center justify-between mb-1.5">
@@ -810,7 +982,6 @@
                             </div>
                         </div>
 
-                        <!-- Pesquisa de TAG -->
                         <div class="mb-2">
                             <div class="text-[10px] text-slate-400 font-medium mb-1 flex items-center justify-between">
                                 <span class="flex items-center gap-1">
@@ -832,23 +1003,18 @@
                             </div>
                         </div>
 
-                        <!-- Tag category pills filter (12 categorias) -->
                         <div class="text-[10px] text-slate-400 font-medium mb-1 flex items-center justify-between">
                             <span>Catálogo Completo por Categoria:</span>
                         </div>
                         <div id="tagCategoryContainer"
                             class="flex items-center gap-1.5 overflow-x-auto pb-1.5 mb-2 no-scrollbar text-[10px]">
-                            <!-- Gerado via JS com as 12 categorias oficiais -->
                         </div>
 
-                        <!-- Tags Cloud container -->
                         <div id="tagsCloudContainer"
                             class="flex flex-wrap gap-1.5 overflow-y-auto pr-1 flex-1 content-start">
-                            <!-- Dynamically populated -->
                         </div>
                     </div>
 
-                    <!-- Live Fala.BR Record Preview -->
                     <div
                         class="bg-gradient-to-br from-slate-900 to-govblue-950/80 border-2 border-blue-500/40 rounded-xl p-3 shadow-md">
                         <div
@@ -861,7 +1027,6 @@
 
                         <div id="previewTextoManifestacao"
                             class="hidden text-[10px] text-slate-300 italic bg-slate-950/80 p-1.5 rounded border border-slate-800 mb-1.5 leading-snug">
-                            <!-- Caso prático citado -->
                         </div>
 
                         <div class="space-y-0.5 text-xs">
@@ -882,17 +1047,10 @@
                             </div>
                         </div>
                     </div>
-
                 </div>
 
             </div>
         </section>
-
-        <!-- ============================================================== -->
-        <!-- SLIDE 6: VISÃO GERAL DOS 8 ASSUNTOS E SEUS SUBASSUNTOS         -->
-        <!-- ============================================================== -->
-
-
     </main>
 
     <!-- Bottom Status Footer -->
@@ -920,7 +1078,6 @@
         class="no-print fixed inset-0 bg-slate-950/85 backdrop-blur-md z-50 hidden flex items-center justify-center p-3 md:p-6">
         <div
             class="bg-slate-900 border border-slate-700/80 rounded-2xl max-w-7xl w-full max-h-[92vh] flex flex-col shadow-2xl overflow-hidden">
-            <!-- Modal Header -->
             <div class="px-6 py-4 border-b border-slate-800 flex items-center justify-between bg-slate-950/60">
                 <div>
                     <div class="flex items-center gap-2">
@@ -949,10 +1106,8 @@
                 </div>
             </div>
 
-            <!-- Modal Toolbar: Busca & Categorias -->
             <div
                 class="px-6 py-3 border-b border-slate-800 bg-slate-900 flex flex-col md:flex-row items-center justify-between gap-3">
-                <!-- Search bar -->
                 <div class="relative w-full md:w-80">
                     <input type="text" id="wideTagSearchInput"
                         placeholder="🔍 Pesquisar em todas as tags... (ex: bolsa, futebol)"
@@ -964,13 +1119,10 @@
                     </button>
                 </div>
 
-                <!-- Filter pills by category -->
                 <div id="wideTagCategoryContainer"
                     class="flex items-center gap-1.5 overflow-x-auto w-full md:flex-1 pb-1 md:pb-0 text-[11px] no-scrollbar">
-                    <!-- Populated via JS -->
                 </div>
 
-                <!-- Quick actions -->
                 <div class="flex items-center gap-2 shrink-0">
                     <button type="button" onclick="clearAllSelectedTags()"
                         class="text-xs text-slate-400 hover:text-rose-300 px-2.5 py-1 rounded-lg border border-slate-800 hover:border-rose-900 transition flex items-center gap-1">
@@ -980,13 +1132,10 @@
                 </div>
             </div>
 
-            <!-- Modal Grid: Organized Categories & Tags -->
             <div id="wideTagsGridContainer"
                 class="flex-1 overflow-y-auto p-5 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4 bg-slate-950/40">
-                <!-- Populated via JS -->
             </div>
 
-            <!-- Modal Footer -->
             <div
                 class="px-6 py-3 border-t border-slate-800 bg-slate-950/90 flex flex-col sm:flex-row items-center justify-between gap-2 text-xs">
                 <div class="flex items-center gap-2 overflow-x-auto max-w-2xl py-1 no-scrollbar">
@@ -1005,7 +1154,7 @@
         </div>
     </div>
 
-    <!-- Sugestor de Classificação: análise local, sem armazenamento e sem envio externo -->
+    <!-- Sugestor de Classificação -->
     <div id="classificationSuggesterModal"
         class="fixed inset-0 z-[80] hidden items-center justify-center p-4 bg-slate-950/80 backdrop-blur-sm"
         role="dialog" aria-modal="true">
@@ -1046,92 +1195,14 @@
         // Data Model: Árvore de Classificação do Usuário
         // -------------------------------------------------------------
         const classificationTree = [
-            {
-                id: 'assedio_moral',
-                nome: 'Assédio moral',
-                categoria: 'sensivel',
-                subassuntos: [
-                    'Relação entre agentes públicos'
-                ]
-            },
-            {
-                id: 'assedio_sexual',
-                nome: 'Assédio sexual',
-                categoria: 'sensivel',
-                subassuntos: [
-                    'Relação entre agentes públicos'
-                ]
-            },
-            {
-                id: 'atendimento_publico',
-                nome: 'Atendimento ao público',
-                categoria: 'cidadao',
-                subassuntos: [
-                    'Disque Esporte',
-                    'Ouvidoria',
-                    'Fala.BR'
-                ]
-            },
-            {
-                id: 'esporte',
-                nome: 'Esporte',
-                categoria: 'finalistico',
-                subassuntos: [
-                    'Bolsa Atleta',
-                    'Entidades Desportivas',
-                    'Competições e Eventos Esportivos',
-                    'Olimpíadas e Ciclo Olímpico',
-                    'Paralimpíadas e Ciclo Paralímpico',
-                    'Futebol Feminino',
-                    'Paradesporto',
-                    'Esporte Comunitário',
-                    'Lei de Incentivo ao Esporte',
-                    'Projetos Esportivos',
-                    'Editais e Chamamentos',
-                    'Infraestrutura Esportiva',
-                    'Rede de Desenvolvimento do Esporte *',
-                    'Tecnologia da Informação e Sistemas'
-                ]
-            },
-            {
-                id: 'esporte_seguro',
-                nome: 'Esporte Seguro',
-                categoria: 'seguro',
-                subassuntos: [
-                    'Assédio moral no ambiente esportivo',
-                    'Assédio sexual no ambiente esportivo'
-                ]
-            },
-            {
-                id: 'ti_sistemas',
-                nome: 'Tecnologia da Informação e Sistemas',
-                categoria: 'ti',
-                subassuntos: [
-                    'Protocolo Digital',
-                    'Portal do Ministério do Esporte'
-                ]
-            },
-            {
-                id: 'premios_apostas',
-                nome: 'Prêmios e Apostas',
-                categoria: 'estrategico',
-                subassuntos: [
-                    'Regulamentação e Fiscalização',
-                    'Manipulação de resultados'
-                ]
-            },
-            {
-                id: 'corrupcao',
-                nome: 'Corrupção',
-                categoria: 'denuncia',
-                subassuntos: [
-                    'Contratos e Contratações Públicas',
-                    'Infraestrutura Esportiva',
-                    'Parcerias e Repasses',
-                    'Gestão de Recursos Públicos',
-                    'Conduta e Benefícios Indevidos'
-                ]
-            }
+            { id: 'assedio_moral', nome: 'Assédio moral', categoria: 'sensivel', subassuntos: ['Relação entre agentes públicos'] },
+            { id: 'assedio_sexual', nome: 'Assédio sexual', categoria: 'sensivel', subassuntos: ['Relação entre agentes públicos'] },
+            { id: 'atendimento_publico', nome: 'Atendimento ao público', categoria: 'cidadao', subassuntos: ['Disque Esporte', 'Ouvidoria', 'Fala.BR'] },
+            { id: 'esporte', nome: 'Esporte', categoria: 'finalistico', subassuntos: ['Bolsa Atleta', 'Entidades Desportivas', 'Competições e Eventos Esportivos', 'Olimpíadas e Ciclo Olímpico', 'Paralimpíadas e Ciclo Paralímpico', 'Futebol Feminino', 'Paradesporto', 'Esporte Comunitário', 'Lei de Incentivo ao Esporte', 'Projetos Esportivos', 'Editais e Chamamentos', 'Infraestrutura Esportiva', 'Rede de Desenvolvimento do Esporte *', 'Tecnologia da Informação e Sistemas'] },
+            { id: 'esporte_seguro', nome: 'Esporte Seguro', categoria: 'seguro', subassuntos: ['Assédio moral no ambiente esportivo', 'Assédio sexual no ambiente esportivo'] },
+            { id: 'ti_sistemas', nome: 'Tecnologia da Informação e Sistemas', categoria: 'ti', subassuntos: ['Protocolo Digital', 'Portal do Ministério do Esporte'] },
+            { id: 'premios_apostas', nome: 'Prêmios e Apostas', categoria: 'estrategico', subassuntos: ['Regulamentação e Fiscalização', 'Manipulação de resultados'] },
+            { id: 'corrupcao', nome: 'Corrupção', categoria: 'denuncia', subassuntos: ['Contratos e Contratações Públicas', 'Infraestrutura Esportiva', 'Parcerias e Repasses', 'Gestão de Recursos Públicos', 'Conduta e Benefícios Indevidos'] }
         ];
 
         // Tags Consolidadas Oficiais Organizadas pelas 12 Categorias
@@ -1363,17 +1434,18 @@
             'esporte_Lei de Incentivo ao Esporte': ['Projeto', 'Proponente', 'Proposta', 'Documentação', 'Orientação', 'Captação', 'DPPIE - Incentivo ao Esporte'],
             'esporte_Projetos Esportivos': ['Projeto', 'Proponente', 'Prestação de contas', 'Termo de Fomento'],
             'esporte_Editais e Chamamentos': ['Edital', 'Chamamento', 'Prazo', 'Inscrição', 'Resultado', 'Recurso'],
-            'esporte_Infraestrutura Esportiva': ['Centro Olímpico', 'Ginásio', 'Quadra Esportiva', 'Reforma', 'Acessibilidade', 'Manutenção', 'DIE - Infraestrutura do Esporte'],
+            'esporte_Infraestrutura Esportiva': ['Centro Olímpico', 'Ginásio', 'Quadra Esportiva', 'Reforma', 'Manutenção', 'Construção', 'Infraestrutura', 'DIE - Infraestrutura do Esporte'],
             'esporte_Rede de Desenvolvimento do Esporte *': ['Inclusão', 'Orientação', 'Capacitação'],
             'esporte_Rede de Desenvolvimento do Esporte': ['Inclusão', 'Orientação', 'Capacitação'],
             'esporte_Tecnologia da Informação e Sistemas': ['Sistema Bolsa Atleta', 'Sistema da Lei de Incentivo ao Esporte (SLIE)', 'Acesso', 'Falha', 'Inconsistência'],
 
-            // Esporte Seguro (Novo Assunto Estratégico - 2 Subassuntos)
+            // Esporte Seguro
             'esporte_seguro_Assédio moral no ambiente esportivo': ['Assédio Moral', 'Atletas', 'Clube', 'Suposta Conduta Inadequada', 'Ofensas'],
             'esporte_seguro_Assédio sexual no ambiente esportivo': ['Assédio Sexual', 'Atletas', 'Clube', 'Suposta Conduta Inadequada', 'Violência', 'Abuso'],
 
             // Corrupção
             'corrupcao_Contratos e Contratações Públicas': ['Contratação', 'Fiscalização', 'Suposta Irregularidade', 'Pagamento', 'Coger - Corregedoria'],
+            'corrupcao_Infraestrutura Esportiva': ['Suposta Irregularidade', 'Fiscalização', 'Contratação', 'Coger - Corregedoria', 'Infraestrutura', 'Reforma', 'Pagamento'],
             'corrupcao_Parcerias e Repasses': ['Repasse', 'Prestação de contas', 'Proponente', 'Suposta Irregularidade', 'Termo de Fomento', 'Coger - Corregedoria'],
             'corrupcao_Parcerias, Convênios e Repasses': ['Repasse', 'Prestação de contas', 'Proponente', 'Suposta Irregularidade', 'Termo de Fomento', 'Coger - Corregedoria'],
             'corrupcao_Gestão de Recursos Públicos': ['Prestação de contas', 'Recebimento Indevido', 'Suposta Irregularidade', 'Coger - Corregedoria'],
@@ -1401,102 +1473,18 @@
         // Os 12 Casos Práticos de Demonstração Rápida
         // -------------------------------------------------------------
         const practicalCasePresets = [
-            {
-                id: 1,
-                titulo: '1. Atraso Bolsa Atleta',
-                texto: 'Manifestação: "Sou atleta e meu pagamento da Bolsa Atleta está atrasado há dois meses."',
-                assuntoId: 'esporte',
-                subassunto: 'Bolsa Atleta',
-                tags: ['Atletas', 'Bolsa Atleta', 'Pagamento', 'Atraso', 'SNE - Excelência Esportiva']
-            },
-            {
-                id: 2,
-                titulo: '2. Suspeita Envolvendo CBF',
-                texto: 'Manifestação: "Há suspeita de irregularidade envolvendo a Confederação Brasileira de Futebol."',
-                assuntoId: 'esporte',
-                subassunto: 'Entidades Desportivas',
-                tags: ['Confederação', 'Confederação Brasileira de Futebol (CBF)', 'Futebol', 'Suposta Irregularidade']
-            },
-            {
-                id: 3,
-                titulo: '3. Assédio no Esporte Seguro',
-                texto: 'Manifestação: "Atletas relatam suposto assédio sexual praticado por integrante de um clube."',
-                assuntoId: 'esporte_seguro',
-                subassunto: 'Assédio sexual no ambiente esportivo',
-                tags: ['Assédio Sexual', 'Atletas', 'Clube', 'Suposta Conduta Inadequada']
-            },
-            {
-                id: 4,
-                titulo: '4. Erro Sistema Bolsa Atleta',
-                texto: 'Manifestação: "O sistema da Bolsa Atleta apresenta erro quando tento enviar minha documentação."',
-                assuntoId: 'ti_sistemas',
-                subassunto: 'Portal do Ministério do Esporte',
-                tags: ['Sistema Bolsa Atleta', 'Erro', 'Falha', 'Documentação', 'Acesso']
-            },
-            {
-                id: 5,
-                titulo: '5. Projeto Lei de Incentivo',
-                texto: 'Manifestação: "Quero saber quais documentos preciso para apresentar um projeto pela Lei de Incentivo ao Esporte."',
-                assuntoId: 'esporte',
-                subassunto: 'Lei de Incentivo ao Esporte',
-                tags: ['Projeto', 'Proponente', 'Proposta', 'Documentação', 'Orientação']
-            },
-            {
-                id: 6,
-                titulo: '6. Reforma Centro Olímpico',
-                texto: 'Manifestação: "O Centro Olímpico precisa de reforma e não possui acessibilidade adequada."',
-                assuntoId: 'esporte',
-                subassunto: 'Infraestrutura Esportiva',
-                tags: ['Centro Olímpico', 'Reforma', 'Acessibilidade', 'Manutenção']
-            },
-            {
-                id: 7,
-                titulo: '7. Irregularidade em Contrato',
-                texto: 'Manifestação: "O contrato estaria sendo executado em desacordo com o que foi contratado."',
-                assuntoId: 'corrupcao',
-                subassunto: 'Contratos e Contratações Públicas',
-                tags: ['Contratação', 'Fiscalização', 'Suposta Irregularidade', 'Pagamento']
-            },
-            {
-                id: 8,
-                titulo: '8. Irregularidade em Repasse',
-                texto: 'Manifestação: "Há suspeita de irregularidade na aplicação dos recursos repassados para determinada entidade."',
-                assuntoId: 'corrupcao',
-                subassunto: 'Parcerias e Repasses',
-                tags: ['Repasse', 'Prestação de contas', 'Proponente', 'Suposta Irregularidade']
-            },
-            {
-                id: 9,
-                titulo: '9. Possível Nepotismo',
-                texto: 'Manifestação: "Há suspeita de favorecimento de familiar na administração."',
-                assuntoId: 'corrupcao',
-                subassunto: 'Conduta e Benefícios Indevidos',
-                tags: ['Suposto Nepotismo', 'Servidor', 'Suposta Conduta Inadequada', 'CE - Comissão de Ética']
-            },
-            {
-                id: 10,
-                titulo: '10. Aposta Esportiva Irregular',
-                texto: 'Manifestação: "Quero denunciar uma possível irregularidade relacionada a apostas esportivas."',
-                assuntoId: 'premios_apostas',
-                subassunto: 'Regulamentação e Fiscalização',
-                tags: ['Apostas Esportivas', 'Fiscalização', 'Suposta Irregularidade', 'SNAEDE - Apostas Esportivas']
-            },
-            {
-                id: 11,
-                titulo: '11. Atendimento da Ouvidoria',
-                texto: 'Manifestação: "Tentei obter atendimento da Ouvidoria e não consegui orientação adequada."',
-                assuntoId: 'atendimento_publico',
-                subassunto: 'Ouvidoria',
-                tags: ['Ouvidoria - MESP', 'Acesso', 'Orientação', 'Falta de clareza']
-            },
-            {
-                id: 12,
-                titulo: '12. Dúvida sobre Fala.BR',
-                texto: 'Manifestação: "Como faço para registrar uma manifestação pelo Fala.BR?"',
-                assuntoId: 'atendimento_publico',
-                subassunto: 'Fala.BR',
-                tags: ['Fala.BR', 'Orientação', 'Acesso']
-            }
+            { id: 1, titulo: '1. Atraso Bolsa Atleta', texto: 'Manifestação: "Sou atleta e meu pagamento da Bolsa Atleta está atrasado há dois meses."', assuntoId: 'esporte', subassunto: 'Bolsa Atleta', tags: ['Atletas', 'Bolsa Atleta', 'Pagamento', 'Atraso', 'SNE - Excelência Esportiva'] },
+            { id: 2, titulo: '2. Suspeita Envolvendo CBF', texto: 'Manifestação: "Há suspeita de irregularidade envolvendo a Confederação Brasileira de Futebol."', assuntoId: 'esporte', subassunto: 'Entidades Desportivas', tags: ['Confederação', 'Confederação Brasileira de Futebol (CBF)', 'Futebol', 'Suposta Irregularidade'] },
+            { id: 3, titulo: '3. Assédio no Esporte Seguro', texto: 'Manifestação: "Atletas relatam suposto assédio sexual praticado por integrante de um clube."', assuntoId: 'esporte_seguro', subassunto: 'Assédio sexual no ambiente esportivo', tags: ['Assédio Sexual', 'Atletas', 'Clube', 'Suposta Conduta Inadequada'] },
+            { id: 4, titulo: '4. Erro Sistema Bolsa Atleta', texto: 'Manifestação: "O sistema da Bolsa Atleta apresenta erro quando tento enviar minha documentação."', assuntoId: 'ti_sistemas', subassunto: 'Portal do Ministério do Esporte', tags: ['Sistema Bolsa Atleta', 'Erro', 'Falha', 'Documentação', 'Acesso'] },
+            { id: 5, titulo: '5. Projeto Lei de Incentivo', texto: 'Manifestação: "Quero saber quais documentos preciso para apresentar um projeto pela Lei de Incentivo ao Esporte."', assuntoId: 'esporte', subassunto: 'Lei de Incentivo ao Esporte', tags: ['Projeto', 'Proponente', 'Proposta', 'Documentação', 'Orientação'] },
+            { id: 6, titulo: '6. Reforma Centro Olímpico', texto: 'Manifestação: "O Centro Olímpico precisa de reforma e não possui acessibilidade adequada."', assuntoId: 'esporte', subassunto: 'Infraestrutura Esportiva', tags: ['Centro Olímpico', 'Reforma', 'Acessibilidade', 'Manutenção'] },
+            { id: 7, titulo: '7. Irregularidade em Contrato', texto: 'Manifestação: "O contrato estaria sendo executado em desacordo com o que foi contratado."', assuntoId: 'corrupcao', subassunto: 'Contratos e Contratações Públicas', tags: ['Contratação', 'Fiscalização', 'Suposta Irregularidade', 'Pagamento'] },
+            { id: 8, titulo: '8. Irregularidade em Repasse', texto: 'Manifestação: "Há suspeita de irregularidade na aplicação dos recursos repassados para determinada entidade."', assuntoId: 'corrupcao', subassunto: 'Parcerias e Repasses', tags: ['Repasse', 'Prestação de contas', 'Proponente', 'Suposta Irregularidade'] },
+            { id: 9, titulo: '9. Possível Nepotismo', texto: 'Manifestação: "Há suspeita de favorecimento de familiar na administração."', assuntoId: 'corrupcao', subassunto: 'Conduta e Benefícios Indevidos', tags: ['Suposto Nepotismo', 'Servidor', 'Suposta Conduta Inadequada', 'CE - Comissão de Ética'] },
+            { id: 10, titulo: '10. Aposta Esportiva Irregular', texto: 'Manifestação: "Quero denunciar uma possível irregularidade relacionada a apostas esportivas."', assuntoId: 'premios_apostas', subassunto: 'Regulamentação e Fiscalização', tags: ['Apostas Esportivas', 'Fiscalização', 'Suposta Irregularidade', 'SNAEDE - Apostas Esportivas'] },
+            { id: 11, titulo: '11. Atendimento da Ouvidoria', texto: 'Manifestação: "Tentei obter atendimento da Ouvidoria e não consegui orientação adequada."', assuntoId: 'atendimento_publico', subassunto: 'Ouvidoria', tags: ['Ouvidoria - MESP', 'Acesso', 'Orientação', 'Falta de clareza'] },
+            { id: 12, titulo: '12. Dúvida sobre Fala.BR', texto: 'Manifestação: "Como faço para registrar uma manifestação pelo Fala.BR?"', assuntoId: 'atendimento_publico', subassunto: 'Fala.BR', tags: ['Fala.BR', 'Orientação', 'Acesso'] }
         ];
 
         // -------------------------------------------------------------
@@ -1507,68 +1495,170 @@
         let selectedTags = new Set();
         let currentTagFilter = 'todas';
         let currentTagSearch = '';
-        let tagViewMode = 'list'; // 'list' (organizada por categoria) ou 'cloud' (nuvem densa)
+        let tagViewMode = 'list';
         let activePresetId = null;
-
-        // Sugestor: estado exclusivamente em memória. Não usa localStorage, sessionStorage,
-        // cookies, IndexedDB, APIs ou modelos externos.
         let suggestedClassification = null;
 
         // -------------------------------------------------------------
-        // Regras locais do Sugestor
-        // Hierarquia de evidências:
-        //  - strong (fato principal, peso 10): só termos explícitos do fato denunciado.
-        //  - context (peso 3): termos de contexto. Sozinhos NÃO classificam.
-        //  - weak (peso 1,5): termos amplos. Sozinhos NÃO classificam.
-        //  Uma regra só é candidata se tiver ao menos um termo strong.
-        // O teor nunca sai do navegador e não é persistido.
+        // Dicionário de Entidades Esportivas para o Sugestor
+        // -------------------------------------------------------------
+        const entityDictionary = {
+            'cbf': 'Confederação Brasileira de Futebol (CBF)',
+            'cbv': 'Confederação Brasileira de Vôlei',
+            'cbat': 'Confederação Brasileira de Atletismo (CBAt)',
+            'cbb': 'Confederação Brasileira de Basketball',
+            'cbj': 'Confederação Brasileira de Judô',
+            'cbt': 'Confederação Brasileira de Tênis',
+            'cbtm': 'Confederação Brasileira de Tênis de Mesa (CBTM)',
+            'cob': 'Comitê Olímpico do Brasil',
+            'cpb': 'Comitê Paralímpico Brasileiro',
+            'fifa': 'FIFA',
+            'coi': 'Comitê Olímpico Internacional',
+            'ipc': 'Comitê Paralímpico Internacional',
+            'conmebol': 'CONMEBOL',
+            'cbd': 'Confederação Brasileira de Desportos',
+            'cbda': 'Confederação Brasileira de Desportos Aquáticos',
+            'cbc': 'Confederação Brasileira de Ciclismo',
+            'cbg': 'Confederação Brasileira de Ginástica',
+            'cbh': 'Confederação Brasileira de Handebol',
+            'cbsb': 'Confederação Brasileira de Skateboarding',
+            'cbtkd': 'Confederação Brasileira de Taekwondo',
+            'cbw': 'Confederação Brasileira de Wrestling'
+        };
+
+        // -------------------------------------------------------------
+        // Regras locais do Sugestor (Ampliadas)
         // -------------------------------------------------------------
         const classificationSuggestionRules = [
             // Atendimento
-            { a: 'atendimento_publico', s: 'Disque Esporte', strong: ['disque esporte', 'telefone do esporte'], context: ['ligacao', 'telefone'], weak: ['atendimento'] },
-            { a: 'atendimento_publico', s: 'Ouvidoria', strong: ['ouvidoria', 'atendimento da ouvidoria'], context: ['ouvidoria'], weak: ['atendimento'] },
-            { a: 'atendimento_publico', s: 'Fala.BR', strong: ['fala br', 'falabr', 'registrar uma manifestacao', 'registrar manifestacao'], context: ['manifestacao', 'protocolo'], weak: [] },
+            { a: 'atendimento_publico', s: 'Disque Esporte', strong: ['disque esporte', 'telefone do esporte', 'ligar para ouvidoria'], context: ['ligacao', 'telefone', 'contato'], weak: ['atendimento'] },
+            { a: 'atendimento_publico', s: 'Ouvidoria', strong: ['ouvidoria', 'atendimento da ouvidoria', 'falar com a ouvidoria'], context: ['ouvidoria'], weak: ['atendimento'] },
+            { a: 'atendimento_publico', s: 'Fala.BR', strong: ['fala br', 'falabr', 'registrar uma manifestacao', 'registrar manifestacao', 'plataforma fala'], context: ['manifestacao', 'protocolo', 'registro'], weak: [] },
 
-            // Assédio envolvendo agentes públicos: exige contexto funcional para não competir com Esporte Seguro.
-            { a: 'assedio_moral', s: 'Relação entre agentes públicos', strong: ['assedio moral', 'humilhacao no trabalho', 'perseguicao no trabalho'], context: ['servidor', 'chefe', 'superior', 'chefia', 'ambiente de trabalho', 'orgao publico', 'servico publico'], weak: ['assedio'] },
-            { a: 'assedio_sexual', s: 'Relação entre agentes públicos', strong: ['assedio sexual', 'abuso sexual', 'importunacao sexual'], context: ['servidor', 'chefe', 'superior', 'chefia', 'ambiente de trabalho', 'orgao publico', 'servico publico'], weak: ['assedio'] },
+            // Assédio moral (agentes públicos) 
+            { a: 'assedio_moral', s: 'Relação entre agentes públicos',
+              strong: ['assedio moral', 'assedio institucional', 'assedio moral no trabalho', 'assedio moral no servico publico',
+                       'humilha', 'humilhacao', 'humilhado', 'humilhada', 'humilhante', 'humilhacoes',
+                       'persegue', 'perseguicao', 'perseguido', 'perseguida',
+                       'constrangimento', 'constrangido', 'constrangida'],
+              context: ['servidor', 'servidora', 'servidores', 'chefe', 'chefia', 'superior', 'superiores',
+                        'gerente', 'coordenador', 'coordenadora', 'trabalho', 'ambiente de trabalho',
+                        'servico publico', 'orgao publico', 'ministerio', 'reparticao',
+                        'colegas', 'estagiario', 'estagiaria', 'supervisor', 'supervisora',
+                        'funcionario', 'funcionaria', 'funcionarios'],
+              weak: ['assedio'] },
+
+            // Assédio sexual (agentes públicos)
+            { a: 'assedio_sexual', s: 'Relação entre agentes públicos',
+              strong: ['assedio sexual', 'assedio sexual no trabalho', 'abuso sexual', 'importunacao sexual',
+                       'assediado sexualmente', 'assediada sexualmente', 'assediando sexualmente',
+                       'tocou sem consentimento', 'toque sem consentimento', 'me tocou',
+                       'comentarios sexuais', 'comentario sexual', 'cantada indesejada', 'cantadas indesejadas',
+                       'proposta indecente', 'chantagem sexual'],
+              context: ['servidor', 'servidora', 'servidores', 'chefe', 'chefia', 'superior', 'superiores',
+                        'gerente', 'coordenador', 'coordenadora', 'trabalho', 'ambiente de trabalho',
+                        'servico publico', 'orgao publico', 'ministerio', 'reparticao',
+                        'colegas', 'estagiario', 'estagiaria', 'supervisor', 'supervisora',
+                        'funcionario', 'funcionaria', 'funcionarios'],
+              weak: ['assedio', 'sexual'] },
 
             // Esporte
-            { a: 'esporte', s: 'Bolsa Atleta', strong: ['bolsa atleta', 'bolsa-atleta', 'pagamento da bolsa atleta', 'beneficio bolsa atleta'], context: ['atleta', 'pagamento', 'atraso', 'receber', 'recebimento', 'beneficio'], weak: ['bolsa'] },
-            { a: 'esporte', s: 'Entidades Desportivas', strong: ['entidade desportiva', 'entidade esportiva', 'confederacao brasileira de futebol', 'cbf', 'federacao', 'federacao esportiva', 'clube esportivo'], context: ['confederacao', 'federacao', 'clube', 'liga', 'associacao'], weak: [] },
-            { a: 'esporte', s: 'Competições e Eventos Esportivos', strong: ['competicao esportiva', 'evento esportivo', 'campeonato esportivo', 'torneio esportivo', 'alterou a data', 'mudou a data', 'alteracao de data', 'alterar a data', 'adiou a competicao', 'cancelou a competicao'], context: ['competicao', 'campeonato', 'torneio', 'evento', 'data'], weak: ['competicao', 'campeonato', 'torneio', 'evento'] },
-            { a: 'esporte', s: 'Olimpíadas e Ciclo Olímpico', strong: ['olimpiada', 'jogos olimpicos', 'ciclo olimpico'], context: ['olimpico', 'olimpiada'], weak: [] },
-            { a: 'esporte', s: 'Paralimpíadas e Ciclo Paralímpico', strong: ['paralimpiada', 'jogos paralimpicos', 'ciclo paralimpico'], context: ['paralimpico', 'paralimpiada'], weak: [] },
-            { a: 'esporte', s: 'Futebol Feminino', strong: ['futebol feminino', 'futebol das mulheres'], context: ['futebol', 'mulheres'], weak: [] },
-            { a: 'esporte', s: 'Paradesporto', strong: ['paradesporto', 'esporte para pessoas com deficiencia', 'esporte para pessoa com deficiencia'], context: ['paradesporto', 'acessibilidade', 'inclusao'], weak: [] },
-            { a: 'esporte', s: 'Esporte Comunitário', strong: ['esporte comunitario', 'projeto comunitario', 'esporte para a comunidade'], context: ['comunidade', 'quadra', 'materiais'], weak: [] },
-            { a: 'esporte', s: 'Lei de Incentivo ao Esporte', strong: ['lei de incentivo ao esporte', 'lei de incentivo', 'incentivo ao esporte', 'projeto incentivado', 'captacao de recursos'], context: ['proponente', 'proposta', 'documentacao', 'captacao'], weak: ['incentivo'] },
-            { a: 'esporte', s: 'Projetos Esportivos', strong: ['projeto esportivo', 'projetos esportivos'], context: ['projeto', 'proponente', 'prestacao de contas', 'termo de fomento'], weak: [] },
-            { a: 'esporte', s: 'Editais e Chamamentos', strong: ['edital', 'chamamento publico', 'chamamento'], context: ['edital', 'chamamento', 'inscricao', 'prazo', 'resultado', 'recurso'], weak: [] },
-            { a: 'esporte', s: 'Infraestrutura Esportiva', strong: ['infraestrutura esportiva', 'centro olimpico', 'ginasio esportivo', 'quadra esportiva'], context: ['ginasio', 'quadra', 'reforma', 'manutencao', 'acessibilidade'], weak: [] },
-            { a: 'esporte', s: 'Rede de Desenvolvimento do Esporte *', strong: ['rede de desenvolvimento do esporte'], context: ['capacitacao', 'orientacao'], weak: [] },
-            { a: 'esporte', s: 'Tecnologia da Informação e Sistemas', strong: ['sistema bolsa atleta', 'sistema da lei de incentivo', 'slie', 'sistema slie'], context: ['sistema', 'erro', 'falha', 'acesso', 'portal', 'site'], weak: [] },
+            { a: 'esporte', s: 'Bolsa Atleta',
+              strong: ['bolsa atleta', 'bolsa-atleta', 'programa bolsa atleta', 'pagamento da bolsa atleta',
+                       'pagamento do bolsa atleta', 'beneficio bolsa atleta', 'auxilio bolsa atleta',
+                       'parcela da bolsa atleta', 'parcela do bolsa atleta', 'bolsa podio'],
+              context: ['atleta', 'atletas', 'pagamento', 'atraso', 'atrasada', 'atrasado', 'atrasados', 'atrasadas',
+                        'receber', 'recebimento', 'recebi', 'beneficio', 'deposito', 'depositado',
+                        'sistema bolsa atleta', 'parcela', 'mes', 'meses', 'pagar', 'pagam'],
+              weak: ['bolsa'] },
 
-            // Esporte Seguro: termos explícitos do tipo de assédio. Contexto esportivo não basta.
-            { a: 'esporte_seguro', s: 'Assédio moral no ambiente esportivo', strong: ['assedio moral', 'assedio moral no ambiente esportivo', 'assedio moral no esporte', 'humilha', 'humilhar', 'humilhacao', 'humilhado', 'humilhada', 'perseguicao', 'perseguir', 'chama de incapaz', 'incapaz'], context: ['ambiente esportivo', 'esporte', 'atleta', 'clube', 'treinador', 'treinamento', 'comissao tecnica', 'equipe', 'campeonato', 'competicao', 'torneio', 'vestiario', 'time'], weak: ['assedio'] },
-            { a: 'esporte_seguro', s: 'Assédio sexual no ambiente esportivo', strong: ['assedio sexual', 'assedio sexual no ambiente esportivo', 'assedio sexual no esporte', 'abuso sexual', 'importunacao sexual', 'comentarios sexuais', 'comentario sexual', 'tocou sem consentimento', 'toque sem consentimento', 'me tocou', 'sem consentimento'], context: ['ambiente esportivo', 'esporte', 'atleta', 'clube', 'treinador', 'treinamento', 'comissao tecnica', 'equipe', 'campeonato', 'competicao', 'torneio', 'vestiario', 'time'], weak: ['assedio'] },
+            { a: 'esporte', s: 'Entidades Desportivas', 
+              strong: [
+                  'entidade desportiva', 'entidade esportiva', 'confederacao', 'federacao', 'clube esportivo', 'liga esportiva', 'associacao esportiva',
+                  'cbf', 'cbv', 'cbat', 'cbb', 'cbj', 'cbt', 'cbtm', 'cob', 'cpb', 'fifa', 'coi', 'ipc', 'conmebol', 'cbd', 'cbda', 'cbc', 'cbg', 'cbh', 'cbsb', 'cbtkd', 'cbw',
+                  'confederacao brasileira de futebol', 'confederacao brasileira de volei', 'confederacao brasileira de atletismo', 'comite olimpico do brasil', 'comite paralimpico brasileiro'
+              ], 
+              context: ['confederacao', 'federacao', 'clube', 'liga', 'associacao', 'entidade', 'time', 'equipe'], 
+              weak: [] 
+            },
+            
+            { a: 'esporte', s: 'Competições e Eventos Esportivos', strong: ['competicao esportiva', 'evento esportivo', 'campeonato esportivo', 'torneio esportivo', 'alterou a data', 'mudou a data', 'alteracao de data', 'alterar a data', 'adiou a competicao', 'cancelou a competicao'], context: ['competicao', 'campeonato', 'torneio', 'evento', 'data'], weak: ['competicao', 'campeonato', 'torneio', 'evento'] },
+            { a: 'esporte', s: 'Olimpíadas e Ciclo Olímpico', strong: ['olimpiada', 'jogos olimpicos', 'ciclo olimpico', 'jogos olimpicos de paris', 'jogos olimpicos de los angeles'], context: ['olimpico', 'olimpiada', 'cob'], weak: [] },
+            { a: 'esporte', s: 'Paralimpíadas e Ciclo Paralímpico', strong: ['paralimpiada', 'jogos paralimpicos', 'ciclo paralimpico', 'jogos paralimpicos de paris'], context: ['paralimpico', 'paralimpiada', 'cpb'], weak: [] },
+            { a: 'esporte', s: 'Futebol Feminino', strong: ['futebol feminino', 'futebol das mulheres', 'brasileirao feminino'], context: ['futebol', 'mulheres'], weak: [] },
+            { a: 'esporte', s: 'Paradesporto', strong: ['paradesporto', 'esporte para pessoas com deficiencia', 'esporte para pessoa com deficiencia', 'esporte adaptado'], context: ['paradesporto', 'acessibilidade', 'inclusao'], weak: [] },
+            { a: 'esporte', s: 'Esporte Comunitário', strong: ['esporte comunitario', 'projeto comunitario', 'esporte para a comunidade', 'esporte na comunidade'], context: ['comunidade', 'quadra', 'materiais'], weak: [] },
+            { a: 'esporte', s: 'Lei de Incentivo ao Esporte', strong: ['lei de incentivo ao esporte', 'lei de incentivo', 'incentivo ao esporte', 'projeto incentivado', 'captacao de recursos', 'lic'], context: ['proponente', 'proposta', 'documentacao', 'captacao', 'patrocinio'], weak: ['incentivo'] },
+            { a: 'esporte', s: 'Projetos Esportivos', strong: ['projeto esportivo', 'projetos esportivos', 'aprovacao de projeto'], context: ['projeto', 'proponente', 'prestacao de contas', 'termo de fomento'], weak: [] },
+            { a: 'esporte', s: 'Editais e Chamamentos', strong: ['edital', 'chamamento publico', 'chamamento', 'edital de credenciamento'], context: ['edital', 'chamamento', 'inscricao', 'prazo', 'resultado', 'recurso'], weak: [] },
+            
+            // INFRAESTRUTURA ESPORTIVA (ESPORTE)
+            { a: 'esporte', s: 'Infraestrutura Esportiva',
+              strong: ['infraestrutura esportiva', 'centro olimpico', 'ginasio esportivo', 'quadra esportiva',
+                       'construcao de quadra', 'reforma de ginasio', 'obra parada', 'obra inacabada', 'obra abandonada',
+                       'obra nao terminada', 'construcao parada', 'reforma parada', 'obra nao iniciada', 'obra atrasada',
+                       'obra interditada', 'obra embargada'],
+              context: ['ginasio', 'quadra', 'reforma', 'manutencao', 'acessibilidade', 'obra', 'construcao', 'prefeitura', 'municipio', 'estado'],
+              weak: [] },
+            
+            // INFRAESTRUTURA ESPORTIVA (CORRUPÇÃO)
+            { a: 'corrupcao', s: 'Infraestrutura Esportiva',
+              strong: ['obra superfaturada', 'superfaturamento de obra', 'desvio de verba em obra', 'obra fantasma',
+                       'licitacao de obra', 'empreiteira', 'propina em obra', 'obra irregular', 'recursos desviados obra',
+                       'desvio de recursos na construcao', 'fraude em licitacao de obra'],
+              context: ['obra', 'reforma', 'construcao', 'licitacao', 'contrato', 'verba', 'recurso', 'desvio', 'superfaturado', 'propina', 'corrupcao', 'irregularidade'],
+              weak: [] },
+
+            { a: 'esporte', s: 'Rede de Desenvolvimento do Esporte *', strong: ['rede de desenvolvimento do esporte'], context: ['capacitacao', 'orientacao'], weak: [] },
+            { a: 'esporte', s: 'Tecnologia da Informação e Sistemas', strong: ['sistema bolsa atleta', 'sistema da lei de incentivo', 'slie', 'sistema slie', 'sistema de protocolo'], context: ['sistema', 'erro', 'falha', 'acesso', 'portal', 'site'], weak: [] },
+
+            // Esporte Seguro – Assédio moral
+            { a: 'esporte_seguro', s: 'Assédio moral no ambiente esportivo',
+              strong: ['assedio moral', 'assedio moral no ambiente esportivo', 'assedio moral no esporte',
+                       'humilha', 'humilhacao', 'humilhado', 'humilhada', 'humilhante', 'humilhacoes',
+                       'persegue', 'perseguicao', 'perseguido', 'perseguida',
+                       'chama de incapaz', 'incapaz', 'constrangimento'],
+              context: ['ambiente esportivo', 'esporte', 'esportivo', 'atleta', 'atletas', 'clube',
+                        'treinador', 'treinadora', 'treinamento', 'comissao tecnica', 'equipe',
+                        'campeonato', 'competicao', 'competicoes', 'torneio', 'vestiario', 'time',
+                        'jogador', 'jogadora', 'jogadores', 'tecnico', 'tecnica', 'professor de educacao fisica'],
+              weak: ['assedio'] },
+
+            // Esporte Seguro – Assédio sexual
+            { a: 'esporte_seguro', s: 'Assédio sexual no ambiente esportivo',
+              strong: ['assedio sexual', 'assedio sexual no ambiente esportivo', 'assedio sexual no esporte',
+                       'abuso sexual', 'importunacao sexual', 'comentarios sexuais', 'comentario sexual',
+                       'tocou sem consentimento', 'toque sem consentimento', 'me tocou', 'sem consentimento',
+                       'assediado sexualmente', 'assediada sexualmente', 'assediando sexualmente'],
+              context: ['ambiente esportivo', 'esporte', 'esportivo', 'atleta', 'atletas', 'clube',
+                        'treinador', 'treinadora', 'treinamento', 'comissao tecnica', 'equipe',
+                        'campeonato', 'competicao', 'competicoes', 'torneio', 'vestiario', 'time',
+                        'jogador', 'jogadora', 'jogadores', 'tecnico', 'tecnica', 'professor de educacao fisica'],
+              weak: ['assedio', 'sexual'] },
 
             // TI
             { a: 'ti_sistemas', s: 'Protocolo Digital', strong: ['protocolo digital', 'sistema de protocolo'], context: ['protocolo', 'documento', 'erro', 'falha', 'acesso'], weak: [] },
             { a: 'ti_sistemas', s: 'Portal do Ministério do Esporte', strong: ['portal do ministerio do esporte', 'site do ministerio do esporte', 'portal do mesp', 'site do mesp'], context: ['portal', 'site', 'acesso', 'erro', 'falha'], weak: [] },
 
             // Apostas e manipulação de resultados
-            { a: 'premios_apostas', s: 'Manipulação de resultados', strong: ['manipulacao de resultados', 'manipulacao de resultado', 'manipular resultado', 'manipular o resultado', 'resultado combinado', 'resultado previamente combinado', 'combinar o resultado', 'combinar resultado', 'pagar jogadores', 'pagamento a jogadores', 'pagar atletas', 'favorecer uma equipe', 'favorecer equipe', 'alterar deliberadamente o resultado', 'alterar o resultado', 'fraude em uma partida', 'fraude em partida', 'fraude em competicao', 'fraude em uma competicao', 'jogo comprado', 'partida combinada', 'resultado manipulado'], context: ['manipulacao', 'resultado', 'aposta', 'apostas', 'bets', 'partida', 'jogadores', 'pagamento', 'competicao', 'campeonato', 'equipe', 'favorecer', 'fraude'], weak: [] },
-            { a: 'premios_apostas', s: 'Regulamentação e Fiscalização', strong: ['apostas esportivas', 'aposta esportiva', 'casa de aposta', 'casas de apostas', 'regulamentacao de apostas', 'fiscalizacao de apostas'], context: ['aposta', 'apostas', 'bets', 'fiscalizacao', 'regulamentacao'], weak: [] },
+            { a: 'premios_apostas', s: 'Manipulação de resultados', 
+              strong: ['manipulacao de resultados', 'manipulacao de resultado', 'manipular resultado', 'manipular o resultado', 'resultado combinado', 'resultado previamente combinado', 'combinar o resultado', 'combinar resultado', 'pagar jogadores', 'pagamento a jogadores', 'pagar atletas', 'favorecer uma equipe', 'favorecer equipe', 'alterar deliberadamente o resultado', 'alterar o resultado', 'fraude em uma partida', 'fraude em partida', 'fraude em competicao', 'fraude em uma competicao', 'jogo comprado', 'partida combinada', 'resultado manipulado'], 
+              context: ['manipulacao', 'resultado', 'aposta', 'apostas', 'bets', 'partida', 'jogadores', 'pagamento', 'competicao', 'campeonato', 'equipe', 'favorecer', 'fraude'], 
+              weak: [] 
+            },
+            { a: 'premios_apostas', s: 'Regulamentação e Fiscalização', 
+              strong: ['apostas esportivas', 'aposta esportiva', 'casa de aposta', 'casas de apostas', 'regulamentacao de apostas', 'fiscalizacao de apostas', 'bets', 'betano', 'sportingbet', 'blaze'], 
+              context: ['aposta', 'apostas', 'bets', 'fiscalizacao', 'regulamentacao'], 
+              weak: [] 
+            },
 
             // Corrupção
-            { a: 'corrupcao', s: 'Contratos e Contratações Públicas', strong: ['contrato publico', 'contratos publicos', 'contratacao publica', 'licitacao', 'pregao', 'empresa contratada'], context: ['contrato', 'contratacao', 'licitacao', 'pregao', 'pagamento'], weak: [] },
-            { a: 'corrupcao', s: 'Parcerias e Repasses', strong: ['repasse de recursos', 'repasse de recurso', 'convenio', 'parceria', 'termo de fomento'], context: ['repasse', 'repasses', 'convenio', 'parceria', 'proponente'], weak: [] },
-            { a: 'corrupcao', s: 'Gestão de Recursos Públicos', strong: ['recursos publicos', 'recurso publico', 'dinheiro publico', 'verba publica', 'desvio de recursos', 'gestao de recursos publicos'], context: ['recursos', 'verba', 'dinheiro', 'desvio', 'prestacao de contas'], weak: [] },
-            { a: 'corrupcao', s: 'Conduta e Benefícios Indevidos', strong: ['nepotismo', 'favorecimento de familiar', 'beneficio indevido', 'vantagem indevida', 'favorecimento indevido'], context: ['nepotismo', 'familiar', 'favorecimento', 'vantagem', 'servidor'], weak: [] }
+            { a: 'corrupcao', s: 'Contratos e Contratações Públicas', strong: ['contrato publico', 'contratos publicos', 'contratacao publica', 'licitacao', 'pregao', 'empresa contratada', 'dispensa de licitacao'], context: ['contrato', 'contratacao', 'licitacao', 'pregao', 'pagamento', 'obra'], weak: [] },
+            { a: 'corrupcao', s: 'Parcerias e Repasses', strong: ['repasse de recursos', 'repasse de recurso', 'convenio', 'parceria', 'termo de fomento', 'termo de colaboracao'], context: ['repasse', 'repasses', 'convenio', 'parceria', 'proponente'], weak: [] },
+            { a: 'corrupcao', s: 'Gestão de Recursos Públicos', strong: ['recursos publicos', 'recurso publico', 'dinheiro publico', 'verba publica', 'desvio de recursos', 'gestao de recursos publicos', 'desvio de verba'], context: ['recursos', 'verba', 'dinheiro', 'desvio', 'prestacao de contas'], weak: [] },
+            { a: 'corrupcao', s: 'Conduta e Benefícios Indevidos', strong: ['nepotismo', 'favorecimento de familiar', 'beneficio indevido', 'vantagem indevida', 'favorecimento indevido', 'propina', 'suborno'], context: ['nepotismo', 'familiar', 'favorecimento', 'vantagem', 'servidor'], weak: [] }
         ];
 
-        // Termos genéricos: nunca aceitam comparação aproximada (evita que "equipe" vire "equipa", etc.)
         const CLASSIFICATION_NO_FUZZY = new Set([
             'assedio', 'campeonato', 'competicao', 'competicoes', 'torneio', 'evento', 'equipe', 'atleta', 'atletas',
             'esporte', 'esportivo', 'clube', 'resultado', 'resultados', 'pagamento', 'partida', 'federacao', 'confederacao',
@@ -1597,7 +1687,6 @@
             return 1 - (prev[b.length] / Math.max(a.length, b.length));
         }
 
-        // Limiar de tolerância: palavras curtas exigem similaridade maior e nunca são aproximadas se forem genéricas.
         function fuzzyAllowed(word, token) {
             if (word.length < 5 || token.length < 5) return false;
             if (CLASSIFICATION_NO_FUZZY.has(word) || CLASSIFICATION_NO_FUZZY.has(token)) return false;
@@ -1612,14 +1701,32 @@
             return (' ' + normalizedText + ' ').includes(' ' + phraseTokens.join(' ') + ' ');
         }
 
+        function areMorphVariants(word1, word2) {
+            if (word1 === word2) return true;
+            if (word1.length < 5 || word2.length < 5) return false;
+            const minLen = Math.min(word1.length, word2.length);
+            let common = 0;
+            for (let i = 0; i < minLen; i++) {
+                if (word1[i] === word2[i]) common++;
+                else break;
+            }
+            if (common < 5) return false;
+            if (common < minLen - 2) return false;
+            return true;
+        }
+
         function classificationPhraseMatch(text, phrase, tokens) {
             const p = normalizeClassificationText(phrase).split(' ').filter(Boolean);
             if (!p.length) return { matched: false, approx: false, score: 0 };
             const normalized = normalizeClassificationText(text);
             if (hasPhrase(normalized, p)) return { matched: true, approx: false, score: 1 };
 
-            // Expressão de uma palavra: aproximação só para termos não genéricos e com tamanho suficiente
             if (p.length === 1) {
+                for (const t of tokens) {
+                    if (t !== p[0] && areMorphVariants(t, p[0])) {
+                        return { matched: true, approx: true, score: 0.95 };
+                    }
+                }
                 if (!fuzzyAllowed(p[0], p[0])) return { matched: false, approx: false, score: 0 };
                 let best = 0;
                 tokens.forEach(t => {
@@ -1630,12 +1737,12 @@
                 return best > 0 ? { matched: true, approx: true, score: best } : { matched: false, approx: false, score: 0 };
             }
 
-            // Expressão de várias palavras: cada palavra precisa coincidir exatamente ou por aproximação permitida
             for (let i = 0; i <= tokens.length - p.length; i++) {
                 let total = 0, ok = true;
                 for (let j = 0; j < p.length; j++) {
                     const t = tokens[i + j];
                     if (t === p[j]) { total += 1; continue; }
+                    if (areMorphVariants(t, p[j])) { total += 0.95; continue; }
                     if (!fuzzyAllowed(p[j], t)) { ok = false; break; }
                     const sim = classificationSimilarity(t, p[j]);
                     if (sim < fuzzyThreshold(p[j])) { ok = false; break; }
@@ -1646,7 +1753,6 @@
             return { matched: false, approx: false, score: 0 };
         }
 
-        // Pontua uma regra. Sem termo forte, a regra não é candidata (contexto não classifica sozinho).
         function scoreClassificationRule(rule, text, tokens) {
             let score = 0, strongHits = 0, matched = [];
             const add = (items, weight, isStrong) => items.forEach(item => {
@@ -1663,7 +1769,6 @@
 
             if (strongHits === 0) return { score: 0, strongHits: 0, matched: [] };
 
-            // Eventos amplos não vencem uma denúncia clara de assédio ou abuso.
             if (rule.s === 'Competições e Eventos Esportivos' && /\b(assedio|abuso|humilh\w*|perseguic\w*|constrangimento|comentarios? sexuais?)\b/.test(text)) score *= 0.25;
 
             const seen = new Set();
@@ -1672,7 +1777,6 @@
         }
 
         function getSuggestedTags(assuntoId, subassunto) {
-            // Somente as recomendações já existentes para a classificação escolhida. Nenhuma tag nova.
             return [...new Set(recommendedTagsMap[`${assuntoId}_${subassunto}`] || [])].slice(0, 8);
         }
 
@@ -1682,6 +1786,7 @@
             if (input) { input.value = ''; input.setAttribute('autocomplete', 'off'); }
             if (result) { result.innerHTML = ''; result.classList.add('hidden'); }
             suggestedClassification = null;
+            window.suggesterTagsState = {};
         }
 
         function openClassificationSuggesterModal() {
@@ -1705,6 +1810,26 @@
             const strongEvidence = candidate.matched.filter(m => m.kind === 'forte').slice(0, 6);
             const contextEvidence = candidate.matched.filter(m => m.kind === 'contexto').slice(0, 4);
             const evidenceChip = (m) => `<span class="inline-block mr-1 mb-1 px-1.5 py-0.5 rounded ${m.kind === 'forte' ? 'bg-slate-800 text-slate-200' : 'bg-slate-900 text-slate-500'}">${m.term}${m.approx ? ' (aproximação)' : ''}</span>`;
+            
+            if (!candidate.selectedTags) {
+                candidate.selectedTags = new Set(tags);
+            }
+            window.suggesterTagsState = window.suggesterTagsState || {};
+            window.suggesterTagsState[index] = candidate.selectedTags;
+
+            const allSuggestedTags = new Set(tags);
+            if (candidate.detectedEntities && candidate.detectedEntities.length > 0) {
+                candidate.detectedEntities.forEach(t => allSuggestedTags.add(t));
+            }
+
+            const tagsHtml = allSuggestedTags.size > 0 ? Array.from(allSuggestedTags).map(t => {
+                const isSel = candidate.selectedTags.has(t);
+                return `<button type="button" onclick="toggleSuggesterTag(${index}, '${t.replace(/'/g, "\\'")}')" class="px-2 py-1 rounded-md border transition text-[10px] flex items-center gap-1 ${isSel ? 'bg-amber-500 text-slate-950 font-bold border-amber-300 shadow-sm' : 'bg-slate-800 text-slate-400 border-slate-700 hover:bg-slate-700'}">
+                    <span>${isSel ? '✓' : '+'}</span>
+                    <span>${t}</span>
+                </button>`;
+            }).join('') : '<span class="text-[10px] text-slate-500">Nenhuma recomendação cadastrada para esta combinação.</span>';
+
             return `
         <div class="rounded-2xl border ${isBest ? 'border-emerald-700/60 bg-emerald-950/20' : 'border-slate-700 bg-slate-950/50'} overflow-hidden">
           <div class="px-4 py-3 border-b border-slate-800 flex flex-wrap items-center justify-between gap-2">
@@ -1716,8 +1841,8 @@
           </div>
           <div class="p-4 space-y-3">
             <div><div class="text-[10px] uppercase tracking-wider text-slate-500 font-bold">Subassunto</div><div class="text-sm text-slate-100 font-bold mt-1">${candidate.s}</div></div>
-            <div><div class="text-[10px] uppercase tracking-wider text-slate-500 font-bold mb-2">Tags recomendadas</div>
-              <div class="flex flex-wrap gap-1.5">${tags.length ? tags.map(t => `<span class="px-2 py-1 rounded-md bg-slate-800 border border-slate-700 text-[10px] text-slate-300">${t}</span>`).join('') : '<span class="text-[10px] text-slate-500">Nenhuma recomendação cadastrada para esta combinação.</span>'}</div>
+            <div><div class="text-[10px] uppercase tracking-wider text-slate-500 font-bold mb-2">Tags recomendadas (clique para marcar/desmarcar)</div>
+              <div class="flex flex-wrap gap-1.5">${tagsHtml}</div>
             </div>
             <div><div class="text-[10px] uppercase tracking-wider text-slate-500 font-bold">Evidências do fato principal</div>
               <p class="text-xs text-slate-400 mt-1">${strongEvidence.length ? strongEvidence.map(evidenceChip).join('') : 'Nenhuma evidência forte.'}</p>
@@ -1729,6 +1854,55 @@
             </div>
           </div>
         </div>`;
+        }
+
+        function toggleSuggesterTag(index, tagName) {
+            const state = window.suggesterTagsState?.[index];
+            if (!state) return;
+            if (state.has(tagName)) state.delete(tagName);
+            else state.add(tagName);
+            
+            if (suggestedClassification && suggestedClassification.candidates[index]) {
+                suggestedClassification.candidates[index].selectedTags = state;
+            }
+            
+            const result = document.getElementById('classificationSuggestionResult');
+            if (result && suggestedClassification) {
+                result.innerHTML = `
+                <div class="space-y-3">
+                  <div class="rounded-xl border border-slate-800 bg-slate-950/60 p-3">
+                    <div class="text-xs font-bold text-white">Foram encontradas ${suggestedClassification.candidates.length} possibilidade${suggestedClassification.candidates.length > 1 ? 's' : ''} de classificação.</div>
+                    <p class="text-[11px] text-slate-500 mt-1">A sugestão considera primeiro os termos que descrevem o fato principal. Termos de contexto, como “campeonato”, “equipe” ou “atleta”, não classificam sozinhos.</p>
+                    ${suggestedClassification.lowConfidence ? '<p class="text-[11px] text-amber-300 mt-1">Evidência insuficiente para uma sugestão segura. Recomenda-se revisão manual.</p>' : ''}
+                  </div>
+                  ${suggestedClassification.candidates.map((candidate, i) => renderSuggestionCard(candidate, i, i === 0)).join('')}
+                  <div class="flex justify-end gap-2 pt-1">
+                    <button type="button" onclick="clearClassificationSuggester()" class="px-3 py-1.5 rounded-lg bg-slate-800 hover:bg-slate-700 text-slate-300 text-xs border border-slate-700">Limpar teor</button>
+                  </div>
+                </div>`;
+            }
+        }
+
+        function applySuggestedClassification(index = 0) {
+            const candidate = suggestedClassification?.candidates?.[index];
+            if (!candidate) return;
+            const assunto = classificationTree.find(a => a.id === candidate.a);
+            if (!assunto || !assunto.subassuntos.includes(candidate.s)) return;
+            
+            const tagsToApply = candidate.selectedTags ? Array.from(candidate.selectedTags) : getSuggestedTags(candidate.a, candidate.s);
+            
+            selectAssunto(candidate.a); 
+            selectSubassunto(candidate.s);
+            selectedTags = new Set(tagsToApply.filter(t => globalTags.some(g => g.nome === t)));
+            
+            renderRecommendedTags(); 
+            renderTagsCloud(); 
+            renderWideTagsGrid(); 
+            updateWideModalSelectedBadges(); 
+            updateSimulationPreview();
+            
+            window.suggesterTagsState = {};
+            closeClassificationSuggesterModal();
         }
 
         function classifyManifestation() {
@@ -1744,19 +1918,52 @@
 
             const text = normalizeClassificationText(raw);
             const tokens = text.split(' ').filter(Boolean);
+
+            let detectedEntities = [];
+            for (const [key, entityName] of Object.entries(entityDictionary)) {
+                if (new RegExp(`\\b${key}\\b`, 'i').test(text) || classificationPhraseMatch(text, entityName, tokens).matched) {
+                    detectedEntities.push(entityName);
+                }
+            }
+
             let scored = classificationSuggestionRules
                 .map(rule => ({ a: rule.a, s: rule.s, ...scoreClassificationRule(rule, text, tokens) }))
                 .filter(x => x.score > 0);
 
-            // Assédio genérico em contexto esportivo, sem tipo especificado: apresenta as duas alternativas.
-            const hasTypedHarassment = scored.some(x => x.a === 'esporte_seguro');
-            const genericAssedio = classificationPhraseMatch(text, 'assedio', tokens).matched && !hasTypedHarassment;
-            const sportsContext = ['treinador', 'atleta', 'clube', 'equipe', 'campeonato', 'competicao', 'torneio', 'esporte', 'vestiario', 'comissao tecnica', 'treinamento']
-                .some(t => classificationPhraseMatch(text, t, tokens).matched);
-            if (genericAssedio && sportsContext) {
-                scored = scored.filter(x => x.a !== 'esporte_seguro');
-                scored.push({ a: 'esporte_seguro', s: 'Assédio moral no ambiente esportivo', score: 8, strongHits: 0, generic: true, matched: [{ term: 'assédio (tipo não especificado)', approx: false, kind: 'forte' }] });
-                scored.push({ a: 'esporte_seguro', s: 'Assédio sexual no ambiente esportivo', score: 8, strongHits: 0, generic: true, matched: [{ term: 'assédio (tipo não especificado)', approx: false, kind: 'forte' }] });
+            const hasAnyTypedHarassment = scored.some(x =>
+                ['esporte_seguro', 'assedio_moral', 'assedio_sexual'].includes(x.a)
+            );
+            const genericAssedio = classificationPhraseMatch(text, 'assedio', tokens).matched && !hasAnyTypedHarassment;
+
+            if (genericAssedio) {
+                const sportsTerms = ['treinador', 'treinadora', 'atleta', 'atletas', 'clube', 'equipe', 'campeonato', 'competicao', 'torneio', 'esporte', 'esportivo', 'vestiario', 'comissao tecnica', 'treinamento', 'jogador', 'jogadora'];
+                const workTerms = ['servidor', 'servidora', 'servidores', 'chefe', 'chefia', 'superior', 'gerente', 'coordenador', 'coordenadora', 'trabalho', 'ambiente de trabalho', 'colegas', 'reparticao', 'ministerio', 'orgao publico', 'servico publico', 'funcionario', 'funcionaria'];
+                const hasSportsCtx = sportsTerms.some(t => classificationPhraseMatch(text, t, tokens).matched);
+                const hasWorkCtx = workTerms.some(t => classificationPhraseMatch(text, t, tokens).matched);
+
+                scored = scored.filter(x =>
+                    !['esporte_seguro', 'assedio_moral', 'assedio_sexual'].includes(x.a) || x.strongHits > 0
+                );
+
+                const genericMsg = 'assédio (tipo não especificado)';
+                const addGeneric = (a, s) => {
+                    if (!scored.some(x => x.a === a && x.s === s)) {
+                        scored.push({ a, s, score: 8, strongHits: 0, generic: true, matched: [{ term: genericMsg, approx: false, kind: 'forte' }] });
+                    }
+                };
+
+                if (hasSportsCtx) {
+                    addGeneric('esporte_seguro', 'Assédio moral no ambiente esportivo');
+                    addGeneric('esporte_seguro', 'Assédio sexual no ambiente esportivo');
+                }
+                if (hasWorkCtx || !hasSportsCtx) {
+                    addGeneric('assedio_moral', 'Relação entre agentes públicos');
+                    addGeneric('assedio_sexual', 'Relação entre agentes públicos');
+                }
+            }
+
+            if (detectedEntities.length > 0 && !scored.some(x => x.s === 'Entidades Desportivas')) {
+                scored.push({ a: 'esporte', s: 'Entidades Desportivas', score: 12, strongHits: 1, matched: [{ term: 'Entidade Esportiva Mencionada', approx: false, kind: 'forte' }] });
             }
 
             scored.sort((a, b) => b.score - a.score);
@@ -1769,25 +1976,31 @@
             }
 
             const best = scored[0];
-            // Alternativas: outras opções com evidência forte e pontuação próxima
             let candidates = scored.filter((x, i) => i === 0 || (x.score >= Math.max(5, best.score * 0.58) && (x.strongHits > 0 || x.generic)));
-            // Fatos separados: se outro assunto tem evidência forte própria, mantém como alternativa
+            
             scored.forEach(x => {
-                if (candidates.length >= 3) return;
+                if (candidates.length >= 4) return;
                 if (x.strongHits >= 1 && x.score >= 10 && !candidates.some(c => c.a === x.a)) candidates.push(x);
             });
-            candidates = candidates.slice(0, 3);
+            candidates = candidates.slice(0, 4);
 
-            // Nível de evidência (não é probabilidade de acerto)
             candidates.forEach((c, i) => {
                 if (c.generic) c.level = 'baixa (tipo não especificado)';
                 else if (candidates.length > 1 && i === 0) c.level = 'média (há alternativas)';
                 else if (c.strongHits >= 1 && c.score >= 12) c.level = 'alta';
                 else c.level = 'baixa';
+                
+                c.detectedEntities = detectedEntities;
             });
             const lowConfidence = candidates.every(c => c.level.startsWith('baixa'));
 
-            suggestedClassification = { candidates };
+            suggestedClassification = { candidates, lowConfidence };
+            window.suggesterTagsState = {}; 
+
+            candidates.forEach(c => { 
+                c.selectedTags = new Set(getSuggestedTags(c.a, c.s));
+                if (c.detectedEntities) c.detectedEntities.forEach(t => c.selectedTags.add(t));
+            });
 
             result.classList.remove('hidden');
             result.innerHTML = `
@@ -1795,6 +2008,7 @@
           <div class="rounded-xl border border-slate-800 bg-slate-950/60 p-3">
             <div class="text-xs font-bold text-white">Foram encontradas ${candidates.length} possibilidade${candidates.length > 1 ? 's' : ''} de classificação.</div>
             <p class="text-[11px] text-slate-500 mt-1">A sugestão considera primeiro os termos que descrevem o fato principal. Termos de contexto, como “campeonato”, “equipe” ou “atleta”, não classificam sozinhos.</p>
+            ${detectedEntities.length ? `<p class="text-[11px] text-emerald-400 mt-1 font-bold">Entidades detectadas no texto: ${detectedEntities.join(', ')}</p>` : ''}
             ${lowConfidence ? '<p class="text-[11px] text-amber-300 mt-1">Evidência insuficiente para uma sugestão segura. Recomenda-se revisão manual.</p>' : ''}
           </div>
           ${candidates.map((candidate, index) => renderSuggestionCard(candidate, index, index === 0)).join('')}
@@ -1804,28 +2018,14 @@
         </div>`;
         }
 
-        function applySuggestedClassification(index = 0) {
-            const candidate = suggestedClassification?.candidates?.[index];
-            if (!candidate) return;
-            const assunto = classificationTree.find(a => a.id === candidate.a);
-            if (!assunto || !assunto.subassuntos.includes(candidate.s)) return;
-            const tags = getSuggestedTags(candidate.a, candidate.s);
-            selectAssunto(candidate.a); selectSubassunto(candidate.s);
-            selectedTags = new Set(tags.filter(t => globalTags.some(g => g.nome === t)));
-            renderRecommendedTags(); renderTagsCloud(); renderWideTagsGrid(); updateWideModalSelectedBadges(); updateSimulationPreview();
-            closeClassificationSuggesterModal();
-        }
-
         function resetClassificationSuggesterOnPageLoad() {
-            // Segurança: nunca recuperar o teor nem o resultado de uma sessão anterior.
             clearClassificationSuggester();
         }
 
-
         // -------------------------------------------------------------
-        // Usabilidade da Barra de Simulações Rápidas (Scroll, Drag, Grid)
+        // Usabilidade da Barra de Simulações Rápidas
         // -------------------------------------------------------------
-        let casePresetsLayoutMode = 'line'; // 'line' | 'grid'
+        let casePresetsLayoutMode = 'line';
 
         function scrollCasePresets(offset) {
             const container = document.getElementById('casePresetsContainer');
@@ -1850,7 +2050,6 @@
                 rightBtn.classList.remove('hidden');
             }
 
-            // Check scroll boundaries
             const maxScroll = container.scrollWidth - container.clientWidth;
             leftBtn.disabled = container.scrollLeft <= 4;
             rightBtn.disabled = container.scrollLeft >= maxScroll - 4;
@@ -1885,7 +2084,6 @@
             const container = document.getElementById('casePresetsContainer');
             if (!container) return;
 
-            // Mouse wheel horizontal scroll over presets
             container.addEventListener('wheel', (e) => {
                 if (e.deltaY !== 0 && casePresetsLayoutMode === 'line') {
                     e.preventDefault();
@@ -1894,7 +2092,6 @@
                 }
             }, { passive: false });
 
-            // Click and drag to scroll
             let isDown = false;
             let startX;
             let scrollLeft;
@@ -1907,9 +2104,7 @@
             });
 
             window.addEventListener('mouseup', () => {
-                if (isDown) {
-                    isDown = false;
-                }
+                if (isDown) isDown = false;
             });
 
             container.addEventListener('mousemove', (e) => {
@@ -1963,7 +2158,6 @@
 
             activePresetId = id;
 
-            // Suavemente rolar botão ativo para visualização se estiver em modo linha
             setTimeout(() => {
                 const container = document.getElementById('casePresetsContainer');
                 if (container && casePresetsLayoutMode === 'line') {
@@ -1978,7 +2172,6 @@
             selectedSubassunto = preset.subassunto;
             selectedTags = new Set(preset.tags);
 
-            // Atualiza citação do caso
             const quoteBox = document.getElementById('previewTextoManifestacao');
             if (quoteBox) {
                 quoteBox.innerText = preset.texto;
@@ -2062,7 +2255,7 @@
         function selectAssunto(id) {
             if (selectedAssuntoId === id && selectedSubassunto !== null) return;
             selectedAssuntoId = id;
-            selectedSubassunto = null; // reset subassunto when subject changes
+            selectedSubassunto = null; 
             activePresetId = null;
 
             const quoteBox = document.getElementById('previewTextoManifestacao');
@@ -2204,7 +2397,6 @@
                     clearBtn.classList.add('hidden');
                 }
             }
-            // Sync wide search if wide modal is open
             const wideInput = document.getElementById('wideTagSearchInput');
             if (wideInput && wideInput.value !== currentTagSearch) {
                 wideInput.value = currentTagSearch;
@@ -2239,7 +2431,6 @@
                 if (currentTagSearch.trim().length > 0) clearBtn.classList.remove('hidden');
                 else clearBtn.classList.add('hidden');
             }
-            // Sync column input
             const colInput = document.getElementById('tagSearchInput');
             if (colInput) {
                 colInput.value = currentTagSearch;
@@ -2257,7 +2448,6 @@
             clearTagSearch();
         }
 
-        // Modal de Visualização Ampla
         function openTagsWideModal() {
             const modal = document.getElementById('tagsWideModal');
             if (!modal) return;
@@ -2323,7 +2513,6 @@
 
             const searchNormalized = currentTagSearch.trim().toLowerCase();
 
-            // Categorias a exibir
             const categoriesToShow = currentTagFilter === 'todas'
                 ? tagCategories.filter(c => c.id !== 'todas')
                 : tagCategories.filter(c => c.id === currentTagFilter);
@@ -2331,17 +2520,14 @@
             let totalMatches = 0;
 
             categoriesToShow.forEach(cat => {
-                // Filtrar tags desta categoria que batem com a busca
                 const catTags = globalTags.filter(t => t.tipo === cat.id);
                 const matchingTags = catTags.filter(t => !searchNormalized || t.nome.toLowerCase().includes(searchNormalized));
 
                 if (matchingTags.length === 0) return;
                 totalMatches += matchingTags.length;
 
-                // Contagem de selecionadas nesta categoria
                 const selectedInCat = matchingTags.filter(t => selectedTags.has(t.nome)).length;
 
-                // Card da Categoria
                 const card = document.createElement('div');
                 let colorBorder = selectedInCat > 0
                     ? 'border-amber-500/50 bg-gradient-to-b from-amber-950/20 to-slate-900 shadow-md shadow-amber-950/20'
@@ -2433,7 +2619,6 @@
             }
         }
 
-        // Renderização no Simulador (Coluna 3)
         function renderTagsCloud() {
             const container = document.getElementById('tagsCloudContainer');
             if (!container) return;
@@ -2467,7 +2652,6 @@
                 return;
             }
 
-            // MODO 1: LISTA ORGANIZADA POR CATEGORIAS (Default)
             if (tagViewMode === 'list') {
                 const categoriesToShow = currentTagFilter === 'todas'
                     ? tagCategories.filter(c => c.id !== 'todas')
@@ -2517,7 +2701,6 @@
                 });
 
             } else {
-                // MODO 2: NUVEM COMPACTA (Chips densos)
                 const chipsContainer = document.createElement('div');
                 chipsContainer.className = 'flex flex-wrap gap-1.5 w-full';
 
@@ -2601,13 +2784,34 @@
             updateSimulationPreview();
         }
 
+        // -------------------------------------------------------------
+        // Lógica do Tema (Claro / Escuro)
+        // -------------------------------------------------------------
+        function applyTheme(theme) {
+            const isDark = theme === 'dark';
+            document.body.classList.toggle('theme-dark', isDark);
+            
+            const icon = document.getElementById('themeIcon');
+            if (icon) icon.innerText = isDark ? '☀️' : '🌙';
+            
+            try { localStorage.setItem('mesp_theme', theme); } catch (e) {}
+        }
+
+        function toggleTheme() {
+            const isDark = document.body.classList.contains('theme-dark');
+            applyTheme(isDark ? 'light' : 'dark');
+        }
+
         // Inicialização ao carregar página
         document.addEventListener('DOMContentLoaded', () => {
             resetClassificationSuggesterOnPageLoad();
             initSimulator();
+            
+            let savedTheme = 'light';
+            try { savedTheme = localStorage.getItem('mesp_theme') || 'light'; } catch (e) {}
+            applyTheme(savedTheme);
         });
 
-        // Evita que o navegador restaure automaticamente o teor após recarregar/voltar.
         window.addEventListener('pageshow', () => resetClassificationSuggesterOnPageLoad());
 
         document.addEventListener('keydown', (event) => {
