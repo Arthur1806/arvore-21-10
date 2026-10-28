@@ -3,7 +3,6 @@
 
 <head>
     <meta charset="UTF-8">
-    <!-- MOBILE: viewport-fit=cover para notch; maximum-scale para evitar zoom acidental em inputs -->
     <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
     <meta name="theme-color" content="#0f172a">
     <meta name="apple-mobile-web-app-capable" content="yes">
@@ -34,20 +33,9 @@
         ::-webkit-scrollbar-thumb:hover { background:#475569; }
         .no-scrollbar::-webkit-scrollbar { display:none; }
         .no-scrollbar { -ms-overflow-style:none; scrollbar-width:none; }
-
-        /* MOBILE: melhora toque em botões (remove delay 300ms) e evita zoom duplo */
         button, a, [role="button"] { touch-action: manipulation; -webkit-tap-highlight-color: transparent; }
-
-        /* MOBILE: evita zoom automático do iOS ao focar em input (fonte >= 16px) */
-        @media (max-width: 640px) {
-            input, textarea, select { font-size: 16px !important; }
-        }
-
-        @media print {
-            body { background:white; color:black; }
-            .no-print { display:none !important; }
-        }
-
+        @media (max-width: 640px) { input, textarea, select { font-size: 16px !important; } }
+        @media print { body { background:white; color:black; } .no-print { display:none !important; } }
         .presets-scrollbar { scrollbar-width:thin; scrollbar-color:#334155 #0f172a; }
         .presets-scrollbar::-webkit-scrollbar { height:5px; }
         .presets-scrollbar::-webkit-scrollbar-track { background:#0f172a; border-radius:9999px; }
@@ -55,14 +43,9 @@
         .presets-scrollbar::-webkit-scrollbar-thumb:hover { background:#f59e0b; }
     </style>
 
-    <!-- ============================================================
-         TEMA CLARO — mantido igual ao original
-         ============================================================ -->
     <style id="light-theme-overrides">
         html, body { background:#f1f5f9 !important; color:#334155 !important; }
-        [class~="bg-slate-950"],[class~="bg-slate-950/95"],[class~="bg-slate-950/90"],[class~="bg-slate-950/85"],[class~="bg-slate-950/80"],[class~="bg-slate-950/60"],[class~="bg-slate-900"],[class~="bg-slate-900/95"],[class~="bg-slate-900/90"],[class~="bg-slate-900/80"],[class~="bg-slate-900/60"],[class~="bg-slate-800"],[class~="bg-slate-800/60"],[class~="bg-slate-700"],[class~="bg-slate-600"] {
-            background-color:#ffffff !important; border-color:#e2e8f0 !important;
-        }
+        [class~="bg-slate-950"],[class~="bg-slate-950/95"],[class~="bg-slate-950/90"],[class~="bg-slate-950/85"],[class~="bg-slate-950/80"],[class~="bg-slate-950/60"],[class~="bg-slate-900"],[class~="bg-slate-900/95"],[class~="bg-slate-900/90"],[class~="bg-slate-900/80"],[class~="bg-slate-900/60"],[class~="bg-slate-800"],[class~="bg-slate-800/60"],[class~="bg-slate-700"],[class~="bg-slate-600"] { background-color:#ffffff !important; border-color:#e2e8f0 !important; }
         header, footer { background-color:#ffffff !important; border-color:#e2e8f0 !important; }
         [class~="text-white"] { color:#0f172a !important; }
         [class~="text-slate-100"],[class~="text-slate-200"] { color:#1e293b !important; }
@@ -178,14 +161,45 @@
         body.theme-dark ::-webkit-scrollbar-track { background:#0f172a !important; }
         body.theme-dark ::-webkit-scrollbar-thumb { background:#475569 !important; }
         body.theme-dark ::-webkit-scrollbar-thumb:hover { background:#64748b !important; }
+
+        /* =========================================================
+           CONTRASTE REFORÇADO — CARD MOBILE (Ficha Fala.BR)
+           ========================================================= */
+        #mobileFicha { background-color:#1e293b !important; border-top-color:#3b82f6 !important; color:#e2e8f0 !important; }
+        #mobileFicha #previewAssunto { color:#ffffff !important; }
+        #mobileFicha #previewSubassunto { color:#6ee7b7 !important; }
+        #mobileFicha #mobileFichaTagCount { background-color:#f59e0b !important; color:#0f172a !important; }
+        #mobileFicha #previewTagsList > span {
+            background-color:#78350f !important; color:#fde68a !important; border:1px solid #f59e0b !important;
+            padding:1px 6px; border-radius:4px; font-family:ui-monospace,monospace; font-size:10px; font-weight:600;
+        }
+        #mobileFicha #previewTagsList > span.text-slate-400,
+        #mobileFicha #previewTagsList > span.text-slate-500 {
+            background-color:transparent !important; color:#94a3b8 !important; border:none !important;
+            font-style:italic; font-weight:400;
+        }
+        #mobileFicha #previewTextoManifestacao { background-color:#0f172a !important; color:#e2e8f0 !important; border-color:#475569 !important; }
+        #mobileFicha #mobileFichaNoText { color:#94a3b8 !important; }
+        #mobileFicha #mobileFichaDetailBtn { background-color:#1d4ed8 !important; color:#ffffff !important; border-color:#60a5fa !important; }
+
+        /* =========================================================
+           CONTRASTE REFORÇADO — FICHA DESKTOP
+           ========================================================= */
+        #previewAssuntoDesktop { color:#ffffff !important; }
+        #previewSubassuntoDesktop { color:#6ee7b7 !important; }
+        #previewTagsListDesktop > span {
+            background-color:#78350f !important; color:#fde68a !important; border:1px solid #f59e0b !important;
+            padding:1px 6px; border-radius:4px; font-family:ui-monospace,monospace; font-size:10px; font-weight:600;
+        }
+        #previewTagsListDesktop > span.text-slate-500 {
+            background-color:transparent !important; color:#94a3b8 !important; border:none !important;
+            font-style:italic; font-weight:400;
+        }
     </style>
 </head>
 
 <body class="bg-slate-950 text-slate-100 font-sans min-h-screen flex flex-col justify-between overflow-x-hidden selection:bg-govblue-500 selection:text-white">
 
-    <!-- ============================================================
-         HEADER — MOBILE: compacto, texto dos botões esconde, título quebra
-         ============================================================ -->
     <header class="no-print bg-slate-900/90 backdrop-blur border-b border-slate-800 px-3 sm:px-6 py-2 sm:py-3 flex items-center justify-between z-30 sticky top-0 shadow-sm gap-2">
         <div class="flex items-center space-x-2 sm:space-x-4 min-w-0 flex-1">
             <div class="hidden sm:flex items-center space-x-2 shrink-0">
@@ -203,7 +217,6 @@
             </div>
         </div>
 
-        <!-- MOBILE: botões só com ícone em telas pequenas -->
         <div class="flex items-center space-x-1 sm:space-x-2.5 text-xs shrink-0">
             <button onclick="resetSimulation()"
                 class="px-2 sm:px-2.5 py-2 sm:py-1.5 rounded-md bg-slate-800 hover:bg-slate-700 text-slate-300 hover:text-white transition flex items-center gap-1.5 border border-slate-700"
@@ -213,20 +226,16 @@
                 </svg>
                 <span class="hidden md:inline">Limpar</span>
             </button>
-
             <button onclick="openTagsWideModal()"
                 class="px-2 sm:px-2.5 py-2 sm:py-1.5 rounded-md bg-slate-800 hover:bg-slate-700 text-amber-300 hover:text-amber-200 transition flex items-center gap-1.5 border border-slate-700"
                 title="Ver catálogo completo de tags" aria-label="Catálogo de TAGS">
-                <span>📋</span>
-                <span class="hidden md:inline">Catálogo de TAGS</span>
+                <span>📋</span><span class="hidden md:inline">Catálogo de TAGS</span>
             </button>
-
             <button id="themeToggleBtn" onclick="toggleTheme()"
                 class="px-2 sm:px-2.5 py-2 sm:py-1.5 rounded-md bg-slate-800 hover:bg-slate-700 text-slate-300 hover:text-white transition flex items-center justify-center border border-slate-700 min-w-[36px]"
                 title="Alternar Tema (Claro / Escuro)" aria-label="Alternar tema">
                 <span id="themeIcon">🌙</span>
             </button>
-
             <button onclick="toggleFullScreen()"
                 class="hidden sm:flex px-2.5 py-1.5 rounded-md bg-slate-800 hover:bg-slate-700 text-slate-300 hover:text-white transition items-center gap-1.5 border border-slate-700"
                 title="Tela Cheia (Atalho: F)">
@@ -238,10 +247,7 @@
         </div>
     </header>
 
-    <!-- ============================================================
-         MAIN — MOBILE: padding menor, pb extra para caber a ficha fixa
-         ============================================================ -->
-    <main class="flex-1 flex items-stretch justify-center p-3 sm:p-4 md:p-8 pb-32 lg:pb-8 max-w-7xl mx-auto w-full relative">
+    <main class="flex-1 flex items-stretch justify-center p-3 sm:p-4 md:p-8 pb-44 lg:pb-8 max-w-7xl mx-auto w-full relative">
 
         <section class="flex-col justify-start w-full min-h-[80vh]" data-title="Simulador Interativo Fala.BR">
             <div class="border-b border-slate-800 pb-3 mb-4 flex flex-col sm:flex-row sm:items-center sm:justify-between gap-2">
@@ -259,13 +265,11 @@
                 </button>
             </div>
 
-            <!-- Presets — MOBILE: setas escondidas, botão grade padrão -->
             <div class="mb-3.5 bg-slate-900/95 border border-slate-800 rounded-xl p-2.5 flex flex-col gap-2">
                 <div class="flex flex-col sm:flex-row sm:items-center justify-between text-[11px] gap-1.5">
                     <div class="flex items-center gap-2 flex-wrap">
                         <span class="text-amber-300 font-bold flex items-center gap-1.5 text-[10px] sm:text-[11px]">
-                            <span>⚡</span>
-                            <span>Simulações Rápidas:</span>
+                            <span>⚡</span><span>Simulações Rápidas:</span>
                         </span>
                         <span class="text-[9px] bg-slate-800 text-slate-400 border border-slate-700/80 px-1.5 py-0.5 rounded font-mono">12 Casos</span>
                     </div>
@@ -273,8 +277,7 @@
                         <span class="text-[10px] text-slate-500 hidden md:inline">Use as setas, o scroll do mouse ou arraste:</span>
                         <button id="togglePresetsLayoutBtn" type="button" onclick="toggleCasePresetsLayout()"
                             class="px-2 py-1 rounded bg-slate-800 hover:bg-slate-700 text-amber-300 hover:text-amber-200 border border-slate-700 transition flex items-center gap-1 text-[10px] font-semibold">
-                            <span>⊞</span>
-                            <span>Ver Todos (Grade)</span>
+                            <span>⊞</span><span>Ver Todos (Grade)</span>
                         </button>
                     </div>
                 </div>
@@ -283,21 +286,17 @@
                     <button id="casePresetsScrollLeft" type="button" onclick="scrollCasePresets(-260)"
                         class="hidden sm:flex shrink-0 w-7 h-7 rounded-lg bg-slate-800 hover:bg-slate-700 active:bg-slate-600 text-slate-300 hover:text-white border border-slate-700 items-center justify-center text-sm font-bold transition shadow disabled:opacity-30 disabled:cursor-not-allowed"
                         title="Rolar casos anteriores">‹</button>
-
                     <div id="casePresetsContainer"
                         class="flex items-center gap-1.5 overflow-x-auto py-1 text-[10px] presets-scrollbar select-none cursor-grab active:cursor-grabbing flex-1">
                     </div>
-
                     <button id="casePresetsScrollRight" type="button" onclick="scrollCasePresets(260)"
                         class="hidden sm:flex shrink-0 w-7 h-7 rounded-lg bg-slate-800 hover:bg-slate-700 active:bg-slate-600 text-slate-300 hover:text-white border border-slate-700 items-center justify-center text-sm font-bold transition shadow disabled:opacity-30 disabled:cursor-not-allowed"
                         title="Rolar próximos casos">›</button>
                 </div>
             </div>
 
-            <!-- GRID — MOBILE: 3 colunas empilham e altura automática -->
             <div class="grid grid-cols-1 lg:grid-cols-12 gap-4 sm:gap-5 flex-1 items-start">
 
-                <!-- Coluna 1 -->
                 <div class="lg:col-span-4 bg-slate-900/90 border border-slate-800 rounded-xl p-4 flex flex-col h-auto lg:h-[530px]">
                     <div class="flex items-center justify-between pb-2 mb-3 border-b border-slate-800">
                         <h3 class="text-xs font-bold text-white uppercase tracking-wider flex items-center gap-2">
@@ -309,7 +308,6 @@
                     <div class="space-y-1.5 overflow-y-auto pr-1 flex-1 max-h-[60vh] lg:max-h-none" id="assuntosListContainer"></div>
                 </div>
 
-                <!-- Coluna 2 -->
                 <div class="lg:col-span-4 bg-slate-900/90 border border-slate-800 rounded-xl p-4 flex flex-col h-auto lg:h-[530px]">
                     <div class="flex items-center justify-between pb-2 mb-3 border-b border-slate-800">
                         <h3 class="text-xs font-bold text-white uppercase tracking-wider flex items-center gap-2">
@@ -329,7 +327,6 @@
                     </div>
                 </div>
 
-                <!-- Coluna 3 -->
                 <div class="lg:col-span-4 flex flex-col gap-3 h-auto lg:h-[530px]">
                     <div class="bg-slate-900/90 border border-slate-800 rounded-xl p-3.5 flex-1 flex flex-col overflow-hidden min-h-[420px] lg:min-h-0">
                         <div class="flex items-center justify-between pb-1.5 mb-2 border-b border-slate-800 gap-2 flex-wrap">
@@ -349,8 +346,7 @@
                                 <button type="button" onclick="openTagsWideModal()"
                                     title="Abrir catálogo amplo em tela cheia com todas as categorias"
                                     class="px-2 py-1 rounded-lg bg-gradient-to-r from-govblue-600 to-blue-600 hover:from-govblue-500 hover:to-blue-500 text-white font-semibold text-[10px] flex items-center gap-1 shadow-sm transition">
-                                    <span>⛶</span>
-                                    <span class="hidden sm:inline">Visão Ampla</span>
+                                    <span>⛶</span><span class="hidden sm:inline">Visão Ampla</span>
                                 </button>
                             </div>
                         </div>
@@ -358,8 +354,7 @@
                         <div id="recommendedTagsSection" class="mb-2 p-2 rounded-xl bg-gradient-to-r from-amber-950/40 to-slate-900 border border-amber-500/30 transition">
                             <div class="flex items-center justify-between mb-1.5">
                                 <span class="text-[10px] font-bold text-amber-300 flex items-center gap-1">
-                                    <span>⭐</span>
-                                    <span>Tags Recomendadas:</span>
+                                    <span>⭐</span><span>Tags Recomendadas:</span>
                                 </span>
                                 <button onclick="applyAllRecommendedTags()" id="applyAllRecBtn"
                                     class="text-[9px] bg-amber-500/20 hover:bg-amber-500/30 text-amber-200 px-1.5 py-0.5 rounded border border-amber-500/40 font-mono transition disabled:opacity-40">
@@ -390,7 +385,6 @@
                         <div id="tagsCloudContainer" class="flex flex-wrap gap-1.5 overflow-y-auto pr-1 flex-1 content-start max-h-[40vh] lg:max-h-none"></div>
                     </div>
 
-                    <!-- FICHA — MOBILE: esconde (pois aparece fixa no rodapé); desktop normal -->
                     <div class="hidden lg:block bg-gradient-to-br from-slate-900 to-govblue-950/80 border-2 border-blue-500/40 rounded-xl p-3 shadow-md">
                         <div class="flex items-center justify-between text-[10px] uppercase font-mono text-blue-300 font-bold mb-1">
                             <span>Ficha Montada Fala.BR</span>
@@ -420,27 +414,59 @@
     </main>
 
     <!-- ============================================================
-         FICHA FIXA MOBILE — aparece só em < lg, sempre visível no rodapé
+         FICHA FIXA MOBILE — sempre visível com Assunto + Subassunto + TAGS
          ============================================================ -->
-    <div id="mobileFicha" class="lg:hidden fixed bottom-0 left-0 right-0 z-40 bg-slate-900/98 backdrop-blur border-t-2 border-blue-500/60 px-3 py-2 shadow-2xl">
-        <div class="flex items-center justify-between mb-1">
-            <span class="text-[10px] uppercase font-mono text-blue-300 font-bold">Ficha Fala.BR</span>
-            <button onclick="document.getElementById('mobileFichaDetail').classList.toggle('hidden')" class="text-[10px] text-slate-400 hover:text-white px-2 py-0.5 rounded bg-slate-800 border border-slate-700">▼ Detalhes</button>
-        </div>
-        <div class="text-[11px] space-y-0.5">
-            <div class="truncate"><span class="text-slate-400">Assunto:</span> <span class="text-white font-bold" id="previewAssunto">—</span></div>
-            <div class="truncate"><span class="text-slate-400">Subassunto:</span> <span class="text-emerald-300 font-bold" id="previewSubassunto">—</span></div>
-        </div>
-        <div id="mobileFichaDetail" class="hidden mt-1.5 pt-1.5 border-t border-slate-800">
-            <div id="previewTextoManifestacao" class="hidden text-[10px] text-slate-300 italic bg-slate-950/80 p-1.5 rounded border border-slate-800 mb-1.5 leading-snug"></div>
-            <span class="text-slate-400 text-[9px]">TAGS:</span>
-            <div id="previewTagsList" class="flex flex-wrap gap-1 mt-0.5 max-h-20 overflow-y-auto">
-                <span class="text-slate-500 italic text-[10px]">Nenhuma tag marcada</span>
+    <div id="mobileFicha"
+         class="lg:hidden fixed bottom-0 left-0 right-0 z-40 bg-slate-900 backdrop-blur border-t-2 border-blue-500/70 px-3 py-2.5 shadow-[0_-8px_24px_rgba(0,0,0,0.55)]"
+         role="status" aria-live="polite" aria-label="Ficha Fala.BR em tempo real">
+
+        <div class="flex items-center justify-between mb-1.5 gap-2">
+            <div class="flex items-center gap-1.5 min-w-0">
+                <span class="w-1.5 h-1.5 rounded-full bg-emerald-400 shrink-0"></span>
+                <span class="text-[10px] uppercase font-mono text-blue-200 font-bold tracking-wider truncate">Ficha Fala.BR</span>
             </div>
+            <div class="flex items-center gap-1.5 shrink-0">
+                <span id="mobileFichaTagCount"
+                      class="text-[10px] bg-amber-500 text-slate-950 font-bold px-1.5 py-0.5 rounded font-mono">0 tags</span>
+                <button type="button"
+                        onclick="toggleMobileFichaDetail()"
+                        id="mobileFichaDetailBtn"
+                        class="text-[10px] text-blue-100 hover:text-white px-2 py-1 rounded-md bg-blue-700/60 hover:bg-blue-600 border border-blue-500/60 font-semibold transition"
+                        aria-expanded="false" aria-controls="mobileFichaDetail">
+                    ▼ Detalhes
+                </button>
+            </div>
+        </div>
+
+        <div class="text-[11px] mb-1 flex items-start gap-1.5 min-w-0">
+            <span class="text-slate-300 font-semibold shrink-0">Assunto:</span>
+            <span id="previewAssunto" class="text-white font-bold truncate">—</span>
+        </div>
+
+        <div class="text-[11px] mb-1.5 flex items-start gap-1.5 min-w-0">
+            <span class="text-slate-300 font-semibold shrink-0">Subassunto:</span>
+            <span id="previewSubassunto" class="text-emerald-300 font-bold truncate">—</span>
+        </div>
+
+        <div class="border-t border-slate-700/80 pt-1.5">
+            <div class="flex items-center justify-between mb-1">
+                <span class="text-[10px] uppercase font-mono text-amber-300 font-bold tracking-wider">TAGS Marcadas</span>
+            </div>
+            <div id="previewTagsList"
+                 class="flex flex-wrap gap-1 max-h-16 overflow-y-auto pr-0.5">
+                <span class="text-slate-400 italic text-[10px]">Nenhuma tag marcada</span>
+            </div>
+        </div>
+
+        <div id="mobileFichaDetail" class="hidden mt-2 pt-2 border-t border-slate-700/80">
+            <span class="text-[10px] uppercase font-mono text-slate-300 font-bold tracking-wider block mb-1">Texto da Manifestação</span>
+            <div id="previewTextoManifestacao"
+                 class="hidden text-[10px] text-slate-200 italic bg-slate-950 p-2 rounded border border-slate-700 leading-snug">
+            </div>
+            <p id="mobileFichaNoText" class="text-[10px] text-slate-400 italic">Nenhuma simulação carregada. Clique em um caso rápido ou selecione manualmente.</p>
         </div>
     </div>
 
-    <!-- FOOTER — MOBILE: esconder atalhos de teclado -->
     <footer class="no-print bg-slate-900/90 backdrop-blur border-t border-slate-800 px-3 sm:px-6 py-2.5 flex flex-col sm:flex-row items-center justify-between text-xs text-slate-400 gap-2 hidden lg:flex">
         <div class="flex items-center gap-2 flex-wrap justify-center">
             <span class="inline-block w-2 h-2 rounded-full bg-emerald-400 shadow-sm shadow-emerald-400/50"></span>
@@ -455,7 +481,6 @@
         </div>
     </footer>
 
-    <!-- Modal Catálogo — MOBILE: header compacto, grid 1 col -->
     <div id="tagsWideModal" class="no-print fixed inset-0 bg-slate-950/85 backdrop-blur-md z-50 hidden flex items-center justify-center p-2 sm:p-3 md:p-6">
         <div class="bg-slate-900 border border-slate-700/80 rounded-2xl max-w-7xl w-full max-h-[95vh] sm:max-h-[92vh] flex flex-col shadow-2xl overflow-hidden">
             <div class="px-3 sm:px-6 py-3 sm:py-4 border-b border-slate-800 flex items-center justify-between bg-slate-950/60 gap-2">
@@ -480,7 +505,6 @@
                     </button>
                 </div>
             </div>
-
             <div class="px-3 sm:px-6 py-2 sm:py-3 border-b border-slate-800 bg-slate-900 flex flex-col md:flex-row items-stretch md:items-center justify-between gap-2">
                 <div class="relative w-full md:w-80">
                     <input type="text" id="wideTagSearchInput" placeholder="🔍 Pesquisar em todas as tags... (ex: bolsa, futebol)"
@@ -497,9 +521,7 @@
                     </button>
                 </div>
             </div>
-
             <div id="wideTagsGridContainer" class="flex-1 overflow-y-auto p-3 sm:p-5 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-3 sm:gap-4 bg-slate-950/40"></div>
-
             <div class="px-3 sm:px-6 py-2 sm:py-3 border-t border-slate-800 bg-slate-950/90 flex flex-col sm:flex-row items-stretch sm:items-center justify-between gap-2 text-xs">
                 <div class="flex items-center gap-2 overflow-x-auto max-w-full sm:max-w-2xl py-1 no-scrollbar">
                     <span class="text-slate-400 shrink-0 font-medium text-[10px] sm:text-xs">Marcadas:</span>
@@ -515,7 +537,6 @@
         </div>
     </div>
 
-    <!-- Sugestor — MOBILE: padding menor, textarea menor -->
     <div id="classificationSuggesterModal" class="fixed inset-0 z-[80] hidden items-center justify-center p-2 sm:p-4 bg-slate-950/80 backdrop-blur-sm" role="dialog" aria-modal="true">
         <div class="w-full max-w-4xl max-h-[95vh] sm:max-h-[92vh] overflow-y-auto bg-slate-900 border border-slate-700 rounded-2xl shadow-2xl">
             <div class="sticky top-0 z-10 flex items-center justify-between gap-3 px-3 sm:px-5 py-3 sm:py-4 bg-slate-900/95 backdrop-blur border-b border-slate-800">
@@ -546,7 +567,7 @@
 
     <script>
         // ============================================================
-        // DADOS (idênticos ao original — omitidos por brevidade no comentário)
+        // DADOS
         // ============================================================
         const classificationTree = [
             { id: 'assedio_moral', nome: 'Assédio moral', categoria: 'sensivel', subassuntos: ['Relação entre agentes públicos'] },
@@ -648,7 +669,6 @@
         let currentTagFilter = 'todas', currentTagSearch = '';
         let tagViewMode = 'list', activePresetId = null;
         let suggestedClassification = null;
-        // MOBILE: detecta largura para layout de presets
         const isMobileViewport = () => window.matchMedia('(max-width: 1023px)').matches;
         let casePresetsLayoutMode = isMobileViewport() ? 'grid' : 'line';
 
@@ -665,21 +685,16 @@
         function toggleTheme() { applyTheme(document.body.classList.contains('theme-dark') ? 'light' : 'dark'); }
 
         // ============================================================
-        // FULLSCREEN (desktop)
+        // FULLSCREEN + ATALHOS
         // ============================================================
         function toggleFullScreen() {
-            if (!document.fullscreenElement) {
-                document.documentElement.requestFullscreen?.().catch(()=>{});
-            } else document.exitFullscreen?.();
+            if (!document.fullscreenElement) document.documentElement.requestFullscreen?.().catch(()=>{});
+            else document.exitFullscreen?.();
         }
-
-        // Atalhos — só desktop (no mobile teclado físico é raro, mas mantém guarda)
         window.addEventListener('keydown', (e) => {
             if (e.target.tagName === 'INPUT' || e.target.tagName === 'TEXTAREA') return;
             if (e.key.toLowerCase() === 'f') { e.preventDefault(); toggleFullScreen(); }
-            else if (e.key.toLowerCase() === 'escape') {
-                closeTagsWideModal(); closeClassificationSuggesterModal();
-            }
+            else if (e.key.toLowerCase() === 'escape') { closeTagsWideModal(); closeClassificationSuggesterModal(); }
         });
 
         // ============================================================
@@ -699,13 +714,10 @@
             const container = document.getElementById('casePresetsContainer');
             if (!container) return;
             container.innerHTML = '';
-            // MOBILE: aplica classe grid/flex-wrap conforme modo
             if (casePresetsLayoutMode === 'grid') {
-                container.classList.remove('overflow-x-auto');
-                container.classList.add('flex-wrap');
+                container.classList.remove('overflow-x-auto'); container.classList.add('flex-wrap');
             } else {
-                container.classList.add('overflow-x-auto');
-                container.classList.remove('flex-wrap');
+                container.classList.add('overflow-x-auto'); container.classList.remove('flex-wrap');
             }
             practicalCasePresets.forEach(preset => {
                 const isSelected = activePresetId === preset.id;
@@ -738,9 +750,7 @@
             if (!container) return;
             container.addEventListener('wheel', (e) => {
                 if (e.deltaY !== 0 && casePresetsLayoutMode === 'line') {
-                    e.preventDefault();
-                    container.scrollLeft += e.deltaY * 0.9;
-                    updateCasePresetsArrows();
+                    e.preventDefault(); container.scrollLeft += e.deltaY * 0.9; updateCasePresetsArrows();
                 }
             }, { passive: false });
             let isDown=false, startX, scrollLeft;
@@ -757,7 +767,7 @@
                 updateCasePresetsArrows();
             });
             container.addEventListener('scroll', updateCasePresetsArrows);
-            window.addEventListener('resize', () => { updateCasePresetsArrows(); });
+            window.addEventListener('resize', () => updateCasePresetsArrows());
             setTimeout(updateCasePresetsArrows, 300);
         }
 
@@ -871,6 +881,12 @@
         function selectSubassunto(nome) {
             selectedSubassunto = nome;
             renderSubassuntosList(); renderRecommendedTags(); updateSimulationPreview();
+            // Pulse visual no card mobile
+            const ficha = document.getElementById('mobileFicha');
+            if (ficha && isMobileViewport()) {
+                ficha.classList.add('ring-2', 'ring-emerald-400');
+                setTimeout(() => ficha.classList.remove('ring-2', 'ring-emerald-400'), 600);
+            }
         }
 
         function renderRecommendedTags() {
@@ -991,9 +1007,7 @@
             const c = document.getElementById('wideTagsGridContainer'); if (!c) return;
             c.innerHTML = '';
             const q = currentTagSearch.trim().toLowerCase();
-            const cats = currentTagFilter === 'todas'
-                ? tagCategories.filter(x => x.id !== 'todas')
-                : tagCategories.filter(x => x.id === currentTagFilter);
+            const cats = currentTagFilter === 'todas' ? tagCategories.filter(x => x.id !== 'todas') : tagCategories.filter(x => x.id === currentTagFilter);
             let total = 0;
             cats.forEach(cat => {
                 const matching = globalTags.filter(t => t.tipo === cat.id && (!q || t.nome.toLowerCase().includes(q)));
@@ -1055,8 +1069,7 @@
                     h.className = 'flex items-center justify-between py-1 px-2 bg-slate-950/80 rounded-md border border-slate-800/80 mb-1 sticky top-0 backdrop-blur z-10';
                     h.innerHTML = `<span class="text-[10px] font-bold text-amber-300 flex items-center gap-1.5"><span>${cat.icon||'🏷️'}</span><span>${cat.label}</span></span><span class="text-[9px] text-slate-400 font-mono">${catTags.length}</span>`;
                     g.appendChild(h);
-                    const grid = document.createElement('div');
-                    grid.className = 'grid grid-cols-2 gap-1 px-0.5';
+                    const grid = document.createElement('div'); grid.className = 'grid grid-cols-2 gap-1 px-0.5';
                     catTags.forEach(tag => {
                         const isSel = selectedTags.has(tag.nome);
                         const b = document.createElement('button');
@@ -1087,27 +1100,67 @@
             updateWideModalSelectedBadges(); updateSimulationPreview();
         }
 
-        // MOBILE: atualiza as DUAS fichas (mobile + desktop)
+        // Atualiza as DUAS fichas (mobile + desktop) e o contador do card mobile
         function updateSimulationPreview() {
             const assunto = classificationTree.find(a => a.id === selectedAssuntoId);
             const assuntoTxt = assunto ? assunto.nome : '— (Nenhum selecionado)';
             const subTxt = selectedSubassunto ? selectedSubassunto : '— (Aguardando seleção)';
-            ['previewAssunto','previewAssuntoDesktop'].forEach(id => {
+
+            ['previewAssunto', 'previewAssuntoDesktop'].forEach(id => {
                 const el = document.getElementById(id); if (el) el.innerText = assuntoTxt;
             });
-            ['previewSubassunto','previewSubassuntoDesktop'].forEach(id => {
+            ['previewSubassunto', 'previewSubassuntoDesktop'].forEach(id => {
                 const el = document.getElementById(id); if (el) el.innerText = subTxt;
             });
-            ['previewTagsList','previewTagsListDesktop'].forEach(id => {
+
+            const tagCount = document.getElementById('mobileFichaTagCount');
+            if (tagCount) {
+                tagCount.innerText = `${selectedTags.size} ${selectedTags.size === 1 ? 'tag' : 'tags'}`;
+                if (selectedTags.size > 0) {
+                    tagCount.classList.remove('bg-slate-700', 'text-slate-300');
+                    tagCount.classList.add('bg-amber-500', 'text-slate-950');
+                } else {
+                    tagCount.classList.remove('bg-amber-500', 'text-slate-950');
+                    tagCount.classList.add('bg-slate-700', 'text-slate-300');
+                }
+            }
+
+            ['previewTagsList', 'previewTagsListDesktop'].forEach(id => {
                 const el = document.getElementById(id); if (!el) return;
-                if (!selectedTags.size) { el.innerHTML = '<span class="text-slate-500 italic text-[10px]">Nenhuma tag marcada (opcional)</span>'; return; }
+                if (!selectedTags.size) {
+                    el.innerHTML = '<span class="text-slate-500 italic text-[10px]">Nenhuma tag marcada (opcional)</span>';
+                    return;
+                }
                 el.innerHTML = '';
                 selectedTags.forEach(tag => {
                     const b = document.createElement('span');
-                    b.className = 'bg-amber-950/80 text-amber-300 border border-amber-700/60 px-1.5 py-0.5 rounded text-[10px] font-mono';
-                    b.innerText = `#${tag}`; el.appendChild(b);
+                    b.textContent = `#${tag}`;
+                    el.appendChild(b);
                 });
             });
+
+            const noText = document.getElementById('mobileFichaNoText');
+            const quoteBox = document.getElementById('previewTextoManifestacao');
+            if (noText) {
+                const hasText = quoteBox && !quoteBox.classList.contains('hidden') && quoteBox.innerText.trim() !== '';
+                noText.classList.toggle('hidden', hasText);
+            }
+        }
+
+        function toggleMobileFichaDetail() {
+            const detail = document.getElementById('mobileFichaDetail');
+            const btn = document.getElementById('mobileFichaDetailBtn');
+            if (!detail || !btn) return;
+            const isHidden = detail.classList.contains('hidden');
+            if (isHidden) {
+                detail.classList.remove('hidden');
+                btn.setAttribute('aria-expanded', 'true');
+                btn.innerHTML = '▲ Fechar';
+            } else {
+                detail.classList.add('hidden');
+                btn.setAttribute('aria-expanded', 'false');
+                btn.innerHTML = '▼ Detalhes';
+            }
         }
 
         function resetSimulation() {
@@ -1123,49 +1176,384 @@
         }
 
         // ============================================================
-        // SUGESTOR
+        // SUGESTOR — classificador completo
         // ============================================================
         const entityDictionary = {
-            'cbf':'Confederação Brasileira de Futebol (CBF)','cbv':'Confederação Brasileira de Vôlei','cbat':'Confederação Brasileira de Atletismo (CBAt)','cbb':'Confederação Brasileira de Basketball','cbj':'Confederação Brasileira de Judô','cbt':'Confederação Brasileira de Tênis','cbtm':'Confederação Brasileira de Tênis de Mesa (CBTM)','cob':'Comitê Olímpico do Brasil','cpb':'Comitê Paralímpico Brasileiro'
+            'cbf':'Confederação Brasileira de Futebol (CBF)','cbv':'Confederação Brasileira de Vôlei','cbat':'Confederação Brasileira de Atletismo (CBAt)','cbb':'Confederação Brasileira de Basketball','cbj':'Confederação Brasileira de Judô','cbt':'Confederação Brasileira de Tênis','cbtm':'Confederação Brasileira de Tênis de Mesa (CBTM)','cob':'Comitê Olímpico do Brasil','cpb':'Comitê Paralímpico Brasileiro','fifa':'FIFA','coi':'Comitê Olímpico Internacional','ipc':'Comitê Paralímpico Internacional','conmebol':'CONMEBOL','cbd':'Confederação Brasileira de Desportos','cbda':'Confederação Brasileira de Desportos Aquáticos','cbc':'Confederação Brasileira de Ciclismo','cbg':'Confederação Brasileira de Ginástica','cbh':'Confederação Brasileira de Handebol','cbsb':'Confederação Brasileira de Skateboarding','cbtkd':'Confederação Brasileira de Taekwondo','cbw':'Confederação Brasileira de Wrestling'
         };
 
-        function normalizeClassificationText(v) {
-            return String(v||'').toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g,'')
-                .replace(/f\s*a\s*l\s*a\s*\.\s*b\s*r/g,'fala br')
-                .replace(/[^a-z0-9\s]/g,' ').replace(/\s+/g,' ').trim();
+        const classificationSuggestionRules = [
+            { a: 'atendimento_publico', s: 'Disque Esporte', strong: ['disque esporte', 'telefone do esporte', 'ligar para ouvidoria'], context: ['ligacao', 'telefone', 'contato'], weak: ['atendimento'] },
+            { a: 'atendimento_publico', s: 'Ouvidoria', strong: ['ouvidoria', 'atendimento da ouvidoria', 'falar com a ouvidoria'], context: ['ouvidoria'], weak: ['atendimento'] },
+            { a: 'atendimento_publico', s: 'Fala.BR', strong: ['fala br', 'falabr', 'registrar uma manifestacao', 'registrar manifestacao', 'plataforma fala'], context: ['manifestacao', 'protocolo', 'registro'], weak: [] },
+            { a: 'assedio_moral', s: 'Relação entre agentes públicos',
+              strong: ['assedio moral', 'assedio institucional', 'assedio moral no trabalho', 'assedio moral no servico publico', 'humilha', 'humilhacao', 'humilhado', 'humilhada', 'humilhante', 'humilhacoes', 'persegue', 'perseguicao', 'perseguido', 'perseguida', 'constrangimento', 'constrangido', 'constrangida'],
+              context: ['servidor', 'servidora', 'servidores', 'chefe', 'chefia', 'superior', 'superiores', 'gerente', 'coordenador', 'coordenadora', 'trabalho', 'ambiente de trabalho', 'servico publico', 'orgao publico', 'ministerio', 'reparticao', 'colegas', 'estagiario', 'estagiaria', 'supervisor', 'supervisora', 'funcionario', 'funcionaria', 'funcionarios'],
+              weak: ['assedio'] },
+            { a: 'assedio_sexual', s: 'Relação entre agentes públicos',
+              strong: ['assedio sexual', 'assedio sexual no trabalho', 'abuso sexual', 'importunacao sexual', 'assediado sexualmente', 'assediada sexualmente', 'assediando sexualmente', 'tocou sem consentimento', 'toque sem consentimento', 'me tocou', 'comentarios sexuais', 'comentario sexual', 'cantada indesejada', 'cantadas indesejadas', 'proposta indecente', 'chantagem sexual'],
+              context: ['servidor', 'servidora', 'servidores', 'chefe', 'chefia', 'superior', 'superiores', 'gerente', 'coordenador', 'coordenadora', 'trabalho', 'ambiente de trabalho', 'servico publico', 'orgao publico', 'ministerio', 'reparticao', 'colegas', 'estagiario', 'estagiaria', 'supervisor', 'supervisora', 'funcionario', 'funcionaria', 'funcionarios'],
+              weak: ['assedio', 'sexual'] },
+            { a: 'esporte', s: 'Bolsa Atleta',
+              strong: ['bolsa atleta', 'bolsa-atleta', 'programa bolsa atleta', 'pagamento da bolsa atleta', 'pagamento do bolsa atleta', 'beneficio bolsa atleta', 'auxilio bolsa atleta', 'parcela da bolsa atleta', 'parcela do bolsa atleta', 'bolsa podio'],
+              context: ['atleta', 'atletas', 'pagamento', 'atraso', 'atrasada', 'atrasado', 'atrasados', 'atrasadas', 'receber', 'recebimento', 'recebi', 'beneficio', 'deposito', 'depositado', 'sistema bolsa atleta', 'parcela', 'mes', 'meses', 'pagar', 'pagam'],
+              weak: ['bolsa'] },
+            { a: 'esporte', s: 'Entidades Desportivas', strong: ['entidade desportiva', 'entidade esportiva', 'confederacao', 'federacao', 'clube esportivo', 'liga esportiva', 'associacao esportiva', 'cbf', 'cbv', 'cbat', 'cbb', 'cbj', 'cbt', 'cbtm', 'cob', 'cpb', 'fifa', 'coi', 'ipc', 'conmebol', 'cbd', 'cbda', 'cbc', 'cbg', 'cbh', 'cbsb', 'cbtkd', 'cbw', 'confederacao brasileira de futebol', 'confederacao brasileira de volei', 'confederacao brasileira de atletismo', 'comite olimpico do brasil', 'comite paralimpico brasileiro'], context: ['confederacao', 'federacao', 'clube', 'liga', 'associacao', 'entidade', 'time', 'equipe'], weak: [] },
+            { a: 'esporte', s: 'Competições e Eventos Esportivos', strong: ['competicao esportiva', 'evento esportivo', 'campeonato esportivo', 'torneio esportivo', 'alterou a data', 'mudou a data', 'alteracao de data', 'alterar a data', 'adiou a competicao', 'cancelou a competicao'], context: ['competicao', 'campeonato', 'torneio', 'evento', 'data'], weak: ['competicao', 'campeonato', 'torneio', 'evento'] },
+            { a: 'esporte', s: 'Olimpíadas e Ciclo Olímpico', strong: ['olimpiada', 'jogos olimpicos', 'ciclo olimpico', 'jogos olimpicos de paris', 'jogos olimpicos de los angeles'], context: ['olimpico', 'olimpiada', 'cob'], weak: [] },
+            { a: 'esporte', s: 'Paralimpíadas e Ciclo Paralímpico', strong: ['paralimpiada', 'jogos paralimpicos', 'ciclo paralimpico', 'jogos paralimpicos de paris'], context: ['paralimpico', 'paralimpiada', 'cpb'], weak: [] },
+            { a: 'esporte', s: 'Futebol Feminino', strong: ['futebol feminino', 'futebol das mulheres', 'brasileirao feminino'], context: ['futebol', 'mulheres'], weak: [] },
+            { a: 'esporte', s: 'Paradesporto', strong: ['paradesporto', 'esporte para pessoas com deficiencia', 'esporte para pessoa com deficiencia', 'esporte adaptado'], context: ['paradesporto', 'acessibilidade', 'inclusao'], weak: [] },
+            { a: 'esporte', s: 'Esporte Comunitário', strong: ['esporte comunitario', 'projeto comunitario', 'esporte para a comunidade', 'esporte na comunidade'], context: ['comunidade', 'quadra', 'materiais'], weak: [] },
+            { a: 'esporte', s: 'Lei de Incentivo ao Esporte', strong: ['lei de incentivo ao esporte', 'lei de incentivo', 'incentivo ao esporte', 'projeto incentivado', 'captacao de recursos', 'lic'], context: ['proponente', 'proposta', 'documentacao', 'captacao', 'patrocinio'], weak: ['incentivo'] },
+            { a: 'esporte', s: 'Projetos Esportivos', strong: ['projeto esportivo', 'projetos esportivos', 'aprovacao de projeto'], context: ['projeto', 'proponente', 'prestacao de contas', 'termo de fomento'], weak: [] },
+            { a: 'esporte', s: 'Editais e Chamamentos', strong: ['edital', 'chamamento publico', 'chamamento', 'edital de credenciamento'], context: ['edital', 'chamamento', 'inscricao', 'prazo', 'resultado', 'recurso'], weak: [] },
+            { a: 'esporte', s: 'Infraestrutura Esportiva', strong: ['infraestrutura esportiva', 'centro olimpico', 'ginasio esportivo', 'quadra esportiva', 'construcao de quadra', 'reforma de ginasio', 'obra parada', 'obra inacabada', 'obra abandonada', 'obra nao terminada', 'construcao parada', 'reforma parada', 'obra nao iniciada', 'obra atrasada', 'obra interditada', 'obra embargada'], context: ['ginasio', 'quadra', 'reforma', 'manutencao', 'acessibilidade', 'obra', 'construcao', 'prefeitura', 'municipio', 'estado'], weak: [] },
+            { a: 'corrupcao', s: 'Infraestrutura Esportiva', strong: ['obra superfaturada', 'superfaturamento de obra', 'desvio de verba em obra', 'obra fantasma', 'licitacao de obra', 'empreiteira', 'propina em obra', 'obra irregular', 'recursos desviados obra', 'desvio de recursos na construcao', 'fraude em licitacao de obra'], context: ['obra', 'reforma', 'construcao', 'licitacao', 'contrato', 'verba', 'recurso', 'desvio', 'superfaturado', 'propina', 'corrupcao', 'irregularidade'], weak: [] },
+            { a: 'esporte', s: 'Rede de Desenvolvimento do Esporte *', strong: ['rede de desenvolvimento do esporte'], context: ['capacitacao', 'orientacao'], weak: [] },
+            { a: 'esporte', s: 'Tecnologia da Informação e Sistemas', strong: ['sistema bolsa atleta', 'sistema da lei de incentivo', 'slie', 'sistema slie', 'sistema de protocolo'], context: ['sistema', 'erro', 'falha', 'acesso', 'portal', 'site'], weak: [] },
+            { a: 'esporte_seguro', s: 'Assédio moral no ambiente esportivo', strong: ['assedio moral', 'assedio moral no ambiente esportivo', 'assedio moral no esporte', 'humilha', 'humilhacao', 'humilhado', 'humilhada', 'humilhante', 'humilhacoes', 'persegue', 'perseguicao', 'perseguido', 'perseguida', 'chama de incapaz', 'incapaz', 'constrangimento'], context: ['ambiente esportivo', 'esporte', 'esportivo', 'atleta', 'atletas', 'clube', 'treinador', 'treinadora', 'treinamento', 'comissao tecnica', 'equipe', 'campeonato', 'competicao', 'competicoes', 'torneio', 'vestiario', 'time', 'jogador', 'jogadora', 'jogadores', 'tecnico', 'tecnica', 'professor de educacao fisica'], weak: ['assedio'] },
+            { a: 'esporte_seguro', s: 'Assédio sexual no ambiente esportivo', strong: ['assedio sexual', 'assedio sexual no ambiente esportivo', 'assedio sexual no esporte', 'abuso sexual', 'importunacao sexual', 'comentarios sexuais', 'comentario sexual', 'tocou sem consentimento', 'toque sem consentimento', 'me tocou', 'sem consentimento', 'assediado sexualmente', 'assediada sexualmente', 'assediando sexualmente'], context: ['ambiente esportivo', 'esporte', 'esportivo', 'atleta', 'atletas', 'clube', 'treinador', 'treinadora', 'treinamento', 'comissao tecnica', 'equipe', 'campeonato', 'competicao', 'competicoes', 'torneio', 'vestiario', 'time', 'jogador', 'jogadora', 'jogadores', 'tecnico', 'tecnica', 'professor de educacao fisica'], weak: ['assedio', 'sexual'] },
+            { a: 'ti_sistemas', s: 'Protocolo Digital', strong: ['protocolo digital', 'sistema de protocolo'], context: ['protocolo', 'documento', 'erro', 'falha', 'acesso'], weak: [] },
+            { a: 'ti_sistemas', s: 'Portal do Ministério do Esporte', strong: ['portal do ministerio do esporte', 'site do ministerio do esporte', 'portal do mesp', 'site do mesp'], context: ['portal', 'site', 'acesso', 'erro', 'falha'], weak: [] },
+            { a: 'premios_apostas', s: 'Manipulação de resultados', strong: ['manipulacao de resultados', 'manipulacao de resultado', 'manipular resultado', 'manipular o resultado', 'resultado combinado', 'resultado previamente combinado', 'combinar o resultado', 'combinar resultado', 'pagar jogadores', 'pagamento a jogadores', 'pagar atletas', 'favorecer uma equipe', 'favorecer equipe', 'alterar deliberadamente o resultado', 'alterar o resultado', 'fraude em uma partida', 'fraude em partida', 'fraude em competicao', 'fraude em uma competicao', 'jogo comprado', 'partida combinada', 'resultado manipulado'], context: ['manipulacao', 'resultado', 'aposta', 'apostas', 'bets', 'partida', 'jogadores', 'pagamento', 'competicao', 'campeonato', 'equipe', 'favorecer', 'fraude'], weak: [] },
+            { a: 'premios_apostas', s: 'Regulamentação e Fiscalização', strong: ['apostas esportivas', 'aposta esportiva', 'casa de aposta', 'casas de apostas', 'regulamentacao de apostas', 'fiscalizacao de apostas', 'bets', 'betano', 'sportingbet', 'blaze'], context: ['aposta', 'apostas', 'bets', 'fiscalizacao', 'regulamentacao'], weak: [] },
+            { a: 'corrupcao', s: 'Contratos e Contratações Públicas', strong: ['contrato publico', 'contratos publicos', 'contratacao publica', 'licitacao', 'pregao', 'empresa contratada', 'dispensa de licitacao'], context: ['contrato', 'contratacao', 'licitacao', 'pregao', 'pagamento', 'obra'], weak: [] },
+            { a: 'corrupcao', s: 'Parcerias e Repasses', strong: ['repasse de recursos', 'repasse de recurso', 'convenio', 'parceria', 'termo de fomento', 'termo de colaboracao'], context: ['repasse', 'repasses', 'convenio', 'parceria', 'proponente'], weak: [] },
+            { a: 'corrupcao', s: 'Gestão de Recursos Públicos', strong: ['recursos publicos', 'recurso publico', 'dinheiro publico', 'verba publica', 'desvio de recursos', 'gestao de recursos publicos', 'desvio de verba'], context: ['recursos', 'verba', 'dinheiro', 'desvio', 'prestacao de contas'], weak: [] },
+            { a: 'corrupcao', s: 'Conduta e Benefícios Indevidos', strong: ['nepotismo', 'favorecimento de familiar', 'beneficio indevido', 'vantagem indevida', 'favorecimento indevido', 'propina', 'suborno'], context: ['nepotismo', 'familiar', 'favorecimento', 'vantagem', 'servidor'], weak: [] }
+        ];
+
+        const CLASSIFICATION_NO_FUZZY = new Set(['assedio', 'campeonato', 'competicao', 'competicoes', 'torneio', 'evento', 'equipe', 'atleta', 'atletas', 'esporte', 'esportivo', 'clube', 'resultado', 'resultados', 'pagamento', 'partida', 'federacao', 'confederacao', 'treinador', 'data', 'jogo', 'jogos', 'sistema', 'portal', 'site', 'acesso', 'erro', 'falha', 'projeto', 'edital', 'recurso', 'servidor', 'contrato', 'aposta', 'apostas', 'fraude', 'jogadores', 'sem', 'uma', 'para', 'com', 'que']);
+
+        function normalizeClassificationText(value) {
+            return String(value || '').toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g, '')
+                .replace(/f\s*a\s*l\s*a\s*\.\s*b\s*r/g, 'fala br')
+                .replace(/[^a-z0-9\s]/g, ' ').replace(/\s+/g, ' ').trim();
+        }
+
+        function classificationSimilarity(a, b) {
+            if (a === b) return 1;
+            if (!a || !b) return 0;
+            if (a.length < 4 || b.length < 4) return 0;
+            const prev = Array.from({ length: b.length + 1 }, (_, i) => i);
+            for (let i = 1; i <= a.length; i++) {
+                const cur = [i];
+                for (let j = 1; j <= b.length; j++) {
+                    cur[j] = Math.min(cur[j - 1] + 1, prev[j] + 1, prev[j - 1] + (a[i - 1] === b[j - 1] ? 0 : 1));
+                }
+                for (let j = 0; j < cur.length; j++) prev[j] = cur[j];
+            }
+            return 1 - (prev[b.length] / Math.max(a.length, b.length));
+        }
+
+        function fuzzyAllowed(word, token) {
+            if (word.length < 5 || token.length < 5) return false;
+            if (CLASSIFICATION_NO_FUZZY.has(word) || CLASSIFICATION_NO_FUZZY.has(token)) return false;
+            if (Math.abs(word.length - token.length) > 2) return false;
+            return true;
+        }
+        function fuzzyThreshold(word) { return word.length >= 6 ? 0.84 : 0.8; }
+
+        function hasPhrase(normalizedText, phraseTokens) {
+            return (' ' + normalizedText + ' ').includes(' ' + phraseTokens.join(' ') + ' ');
+        }
+
+        function areMorphVariants(word1, word2) {
+            if (word1 === word2) return true;
+            if (word1.length < 5 || word2.length < 5) return false;
+            const minLen = Math.min(word1.length, word2.length);
+            let common = 0;
+            for (let i = 0; i < minLen; i++) {
+                if (word1[i] === word2[i]) common++;
+                else break;
+            }
+            if (common < 5) return false;
+            if (common < minLen - 2) return false;
+            return true;
+        }
+
+        function classificationPhraseMatch(text, phrase, tokens) {
+            const p = normalizeClassificationText(phrase).split(' ').filter(Boolean);
+            if (!p.length) return { matched: false, approx: false, score: 0 };
+            const normalized = normalizeClassificationText(text);
+            if (hasPhrase(normalized, p)) return { matched: true, approx: false, score: 1 };
+
+            if (p.length === 1) {
+                for (const t of tokens) {
+                    if (t !== p[0] && areMorphVariants(t, p[0])) {
+                        return { matched: true, approx: true, score: 0.95 };
+                    }
+                }
+                if (!fuzzyAllowed(p[0], p[0])) return { matched: false, approx: false, score: 0 };
+                let best = 0;
+                tokens.forEach(t => {
+                    if (!fuzzyAllowed(p[0], t) || t === p[0]) return;
+                    const sim = classificationSimilarity(t, p[0]);
+                    if (sim >= fuzzyThreshold(p[0]) && sim > best) best = sim;
+                });
+                return best > 0 ? { matched: true, approx: true, score: best } : { matched: false, approx: false, score: 0 };
+            }
+
+            for (let i = 0; i <= tokens.length - p.length; i++) {
+                let total = 0, ok = true;
+                for (let j = 0; j < p.length; j++) {
+                    const t = tokens[i + j];
+                    if (t === p[j]) { total += 1; continue; }
+                    if (areMorphVariants(t, p[j])) { total += 0.95; continue; }
+                    if (!fuzzyAllowed(p[j], t)) { ok = false; break; }
+                    const sim = classificationSimilarity(t, p[j]);
+                    if (sim < fuzzyThreshold(p[j])) { ok = false; break; }
+                    total += sim;
+                }
+                if (ok) return { matched: true, approx: true, score: total / p.length };
+            }
+            return { matched: false, approx: false, score: 0 };
+        }
+
+        function scoreClassificationRule(rule, text, tokens) {
+            let score = 0, strongHits = 0, matched = [];
+            const add = (items, weight, isStrong) => items.forEach(item => {
+                const hit = classificationPhraseMatch(text, item, tokens);
+                if (hit.matched) {
+                    score += weight * (hit.approx ? Math.max(0.8, hit.score) : 1);
+                    if (isStrong) strongHits++;
+                    matched.push({ term: item, approx: hit.approx, kind: isStrong ? 'forte' : 'contexto' });
+                }
+            });
+            add(rule.strong, 10, true);
+            add(rule.context, 3, false);
+            add(rule.weak, 1.5, false);
+
+            if (strongHits === 0) return { score: 0, strongHits: 0, matched: [] };
+
+            if (rule.s === 'Competições e Eventos Esportivos' && /\b(assedio|abuso|humilh\w*|perseguic\w*|constrangimento|comentarios? sexuais?)\b/.test(text)) score *= 0.25;
+
+            const seen = new Set();
+            const unique = matched.filter(m => { if (seen.has(m.term)) return false; seen.add(m.term); return true; });
+            return { score: Math.round(score * 10) / 10, strongHits, matched: unique };
+        }
+
+        function getSuggestedTags(assuntoId, subassunto) {
+            return [...new Set(recommendedTagsMap[`${assuntoId}_${subassunto}`] || [])].slice(0, 8);
         }
 
         function clearClassificationSuggester() {
-            const i = document.getElementById('classificationSuggesterText'); if (i) i.value = '';
-            const r = document.getElementById('classificationSuggestionResult');
-            if (r) { r.innerHTML = ''; r.classList.add('hidden'); }
+            const input = document.getElementById('classificationSuggesterText');
+            const result = document.getElementById('classificationSuggestionResult');
+            if (input) { input.value = ''; }
+            if (result) { result.innerHTML = ''; result.classList.add('hidden'); }
             suggestedClassification = null;
+            window.suggesterTagsState = {};
         }
+
         function openClassificationSuggesterModal() {
-            const m = document.getElementById('classificationSuggesterModal'); if (!m) return;
+            const modal = document.getElementById('classificationSuggesterModal');
+            if (!modal) return;
             clearClassificationSuggester();
-            m.classList.remove('hidden'); m.classList.add('flex');
-            setTimeout(()=>document.getElementById('classificationSuggesterText')?.focus(), 50);
+            modal.classList.remove('hidden'); modal.classList.add('flex');
+            setTimeout(() => document.getElementById('classificationSuggesterText')?.focus(), 50);
         }
+
         function closeClassificationSuggesterModal() {
-            const m = document.getElementById('classificationSuggesterModal'); if (!m) return;
+            const modal = document.getElementById('classificationSuggesterModal');
+            if (!modal) return;
             clearClassificationSuggester();
-            m.classList.add('hidden'); m.classList.remove('flex');
+            modal.classList.add('hidden'); modal.classList.remove('flex');
+        }
+
+        function renderSuggestionCard(candidate, index, isBest) {
+            const assunto = classificationTree.find(a => a.id === candidate.a);
+            const tags = getSuggestedTags(candidate.a, candidate.s);
+            const strongEvidence = candidate.matched.filter(m => m.kind === 'forte').slice(0, 6);
+            const contextEvidence = candidate.matched.filter(m => m.kind === 'contexto').slice(0, 4);
+            const evidenceChip = (m) => `<span class="inline-block mr-1 mb-1 px-1.5 py-0.5 rounded ${m.kind === 'forte' ? 'bg-slate-800 text-slate-200' : 'bg-slate-900 text-slate-500'}">${m.term}${m.approx ? ' (aprox.)' : ''}</span>`;
+
+            if (!candidate.selectedTags) candidate.selectedTags = new Set(tags);
+            window.suggesterTagsState = window.suggesterTagsState || {};
+            window.suggesterTagsState[index] = candidate.selectedTags;
+
+            const allSuggestedTags = new Set(tags);
+            if (candidate.detectedEntities && candidate.detectedEntities.length > 0) {
+                candidate.detectedEntities.forEach(t => allSuggestedTags.add(t));
+            }
+
+            const tagsHtml = allSuggestedTags.size > 0 ? Array.from(allSuggestedTags).map(t => {
+                const isSel = candidate.selectedTags.has(t);
+                return `<button type="button" onclick="toggleSuggesterTag(${index}, '${t.replace(/'/g, "\\'")}')" class="px-2 py-1 rounded-md border transition text-[10px] flex items-center gap-1 ${isSel ? 'bg-amber-500 text-slate-950 font-bold border-amber-300 shadow-sm' : 'bg-slate-800 text-slate-400 border-slate-700 hover:bg-slate-700'}"><span>${isSel ? '✓' : '+'}</span><span>${t}</span></button>`;
+            }).join('') : '<span class="text-[10px] text-slate-500">Nenhuma recomendação cadastrada.</span>';
+
+            return `
+        <div class="rounded-2xl border ${isBest ? 'border-emerald-700/60 bg-emerald-950/20' : 'border-slate-700 bg-slate-950/50'} overflow-hidden">
+          <div class="px-4 py-3 border-b border-slate-800 flex flex-wrap items-center justify-between gap-2">
+            <div>
+              <div class="text-[10px] uppercase tracking-wider font-bold ${isBest ? 'text-emerald-400' : 'text-slate-500'}">${isBest ? 'Sugestão principal' : 'Outra possibilidade'}</div>
+              <div class="text-base font-extrabold text-white mt-0.5">${assunto?.nome || candidate.a}</div>
+            </div>
+            <span class="px-2.5 py-1 rounded-full bg-slate-800 border border-slate-700 text-slate-300 text-[10px] font-bold">Evidência: ${candidate.level}</span>
+          </div>
+          <div class="p-4 space-y-3">
+            <div><div class="text-[10px] uppercase tracking-wider text-slate-500 font-bold">Subassunto</div><div class="text-sm text-slate-100 font-bold mt-1">${candidate.s}</div></div>
+            <div><div class="text-[10px] uppercase tracking-wider text-slate-500 font-bold mb-2">Tags recomendadas</div>
+              <div class="flex flex-wrap gap-1.5">${tagsHtml}</div>
+            </div>
+            <div><div class="text-[10px] uppercase tracking-wider text-slate-500 font-bold">Evidências do fato principal</div>
+              <p class="text-xs text-slate-400 mt-1">${strongEvidence.length ? strongEvidence.map(evidenceChip).join('') : 'Nenhuma evidência forte.'}</p>
+            </div>
+            ${contextEvidence.length ? `<div><div class="text-[10px] uppercase tracking-wider text-slate-500 font-bold">Contexto secundário</div><p class="text-xs text-slate-500 mt-1">${contextEvidence.map(evidenceChip).join('')}</p></div>` : ''}
+            ${candidate.generic ? '<p class="text-[11px] text-amber-300">O teor menciona assédio sem especificar se foi moral ou sexual.</p>' : ''}
+            <div class="flex justify-end pt-1">
+              <button type="button" onclick="applySuggestedClassification(${index})" class="px-3 py-1.5 rounded-lg bg-govblue-600 hover:bg-govblue-500 text-white text-xs font-bold">Aplicar esta classificação</button>
+            </div>
+          </div>
+        </div>`;
+        }
+
+        function toggleSuggesterTag(index, tagName) {
+            const state = window.suggesterTagsState?.[index];
+            if (!state) return;
+            if (state.has(tagName)) state.delete(tagName); else state.add(tagName);
+            if (suggestedClassification && suggestedClassification.candidates[index]) {
+                suggestedClassification.candidates[index].selectedTags = state;
+            }
+            const result = document.getElementById('classificationSuggestionResult');
+            if (result && suggestedClassification) {
+                result.innerHTML = `
+                <div class="space-y-3">
+                  <div class="rounded-xl border border-slate-800 bg-slate-950/60 p-3">
+                    <div class="text-xs font-bold text-white">Foram encontradas ${suggestedClassification.candidates.length} possibilidade${suggestedClassification.candidates.length > 1 ? 's' : ''} de classificação.</div>
+                    <p class="text-[11px] text-slate-500 mt-1">A sugestão considera primeiro os termos que descrevem o fato principal.</p>
+                    ${suggestedClassification.lowConfidence ? '<p class="text-[11px] text-amber-300 mt-1">Evidência insuficiente. Recomenda-se revisão manual.</p>' : ''}
+                  </div>
+                  ${suggestedClassification.candidates.map((candidate, i) => renderSuggestionCard(candidate, i, i === 0)).join('')}
+                  <div class="flex justify-end gap-2 pt-1">
+                    <button type="button" onclick="clearClassificationSuggester()" class="px-3 py-1.5 rounded-lg bg-slate-800 hover:bg-slate-700 text-slate-300 text-xs border border-slate-700">Limpar teor</button>
+                  </div>
+                </div>`;
+            }
+        }
+
+        function applySuggestedClassification(index = 0) {
+            const candidate = suggestedClassification?.candidates?.[index];
+            if (!candidate) return;
+            const assunto = classificationTree.find(a => a.id === candidate.a);
+            if (!assunto || !assunto.subassuntos.includes(candidate.s)) return;
+            const tagsToApply = candidate.selectedTags ? Array.from(candidate.selectedTags) : getSuggestedTags(candidate.a, candidate.s);
+            selectAssunto(candidate.a);
+            selectSubassunto(candidate.s);
+            selectedTags = new Set(tagsToApply.filter(t => globalTags.some(g => g.nome === t)));
+            renderRecommendedTags(); renderTagsCloud(); renderWideTagsGrid();
+            updateWideModalSelectedBadges(); updateSimulationPreview();
+            window.suggesterTagsState = {};
+            closeClassificationSuggesterModal();
         }
 
         function classifyManifestation() {
             const input = document.getElementById('classificationSuggesterText');
             const result = document.getElementById('classificationSuggestionResult');
+            if (!input || !result) return;
             const raw = input.value.trim();
             if (!raw) {
                 result.classList.remove('hidden');
-                result.innerHTML = '<div class="rounded-xl border border-amber-700/50 bg-amber-950/20 p-4 text-sm text-amber-200">Informe o teor da manifestação.</div>';
+                result.innerHTML = '<div class="rounded-xl border border-amber-700/50 bg-amber-950/20 p-4 text-sm text-amber-200">Informe o teor da manifestação antes de clicar em <strong>Classificar</strong>.</div>';
                 suggestedClassification = null; return;
             }
-            // Versão simplificada (mesma lógica do original — omitida para brevidade).
-            // Em produção, cole aqui o classificador completo do arquivo original.
+
+            const text = normalizeClassificationText(raw);
+            const tokens = text.split(' ').filter(Boolean);
+
+            let detectedEntities = [];
+            for (const [key, entityName] of Object.entries(entityDictionary)) {
+                if (new RegExp(`\\b${key}\\b`, 'i').test(text) || classificationPhraseMatch(text, entityName, tokens).matched) {
+                    detectedEntities.push(entityName);
+                }
+            }
+
+            let scored = classificationSuggestionRules
+                .map(rule => ({ a: rule.a, s: rule.s, ...scoreClassificationRule(rule, text, tokens) }))
+                .filter(x => x.score > 0);
+
+            const hasAnyTypedHarassment = scored.some(x => ['esporte_seguro', 'assedio_moral', 'assedio_sexual'].includes(x.a));
+            const genericAssedio = classificationPhraseMatch(text, 'assedio', tokens).matched && !hasAnyTypedHarassment;
+
+            if (genericAssedio) {
+                const sportsTerms = ['treinador', 'treinadora', 'atleta', 'atletas', 'clube', 'equipe', 'campeonato', 'competicao', 'torneio', 'esporte', 'esportivo', 'vestiario', 'comissao tecnica', 'treinamento', 'jogador', 'jogadora'];
+                const workTerms = ['servidor', 'servidora', 'servidores', 'chefe', 'chefia', 'superior', 'gerente', 'coordenador', 'coordenadora', 'trabalho', 'ambiente de trabalho', 'colegas', 'reparticao', 'ministerio', 'orgao publico', 'servico publico', 'funcionario', 'funcionaria'];
+                const hasSportsCtx = sportsTerms.some(t => classificationPhraseMatch(text, t, tokens).matched);
+                const hasWorkCtx = workTerms.some(t => classificationPhraseMatch(text, t, tokens).matched);
+
+                scored = scored.filter(x => !['esporte_seguro', 'assedio_moral', 'assedio_sexual'].includes(x.a) || x.strongHits > 0);
+
+                const genericMsg = 'assédio (tipo não especificado)';
+                const addGeneric = (a, s) => {
+                    if (!scored.some(x => x.a === a && x.s === s)) {
+                        scored.push({ a, s, score: 8, strongHits: 0, generic: true, matched: [{ term: genericMsg, approx: false, kind: 'forte' }] });
+                    }
+                };
+
+                if (hasSportsCtx) {
+                    addGeneric('esporte_seguro', 'Assédio moral no ambiente esportivo');
+                    addGeneric('esporte_seguro', 'Assédio sexual no ambiente esportivo');
+                }
+                if (hasWorkCtx || !hasSportsCtx) {
+                    addGeneric('assedio_moral', 'Relação entre agentes públicos');
+                    addGeneric('assedio_sexual', 'Relação entre agentes públicos');
+                }
+            }
+
+            if (detectedEntities.length > 0 && !scored.some(x => x.s === 'Entidades Desportivas')) {
+                scored.push({ a: 'esporte', s: 'Entidades Desportivas', score: 12, strongHits: 1, matched: [{ term: 'Entidade Esportiva Mencionada', approx: false, kind: 'forte' }] });
+            }
+
+            scored.sort((a, b) => b.score - a.score);
+
+            if (!scored.length || scored[0].score < 5) {
+                suggestedClassification = null;
+                result.classList.remove('hidden');
+                result.innerHTML = '<div class="rounded-xl border border-slate-700 bg-slate-950/60 p-4"><strong class="text-white text-sm">⚠️ Não há evidência suficiente para sugerir uma classificação.</strong><p class="text-xs text-slate-400 mt-2">Classifique manualmente no simulador. O teor não é salvo.</p></div>';
+                return;
+            }
+
+            const best = scored[0];
+            let candidates = scored.filter((x, i) => i === 0 || (x.score >= Math.max(5, best.score * 0.58) && (x.strongHits > 0 || x.generic)));
+
+            scored.forEach(x => {
+                if (candidates.length >= 4) return;
+                if (x.strongHits >= 1 && x.score >= 10 && !candidates.some(c => c.a === x.a)) candidates.push(x);
+            });
+            candidates = candidates.slice(0, 4);
+
+            candidates.forEach((c, i) => {
+                if (c.generic) c.level = 'baixa (tipo não especificado)';
+                else if (candidates.length > 1 && i === 0) c.level = 'média (há alternativas)';
+                else if (c.strongHits >= 1 && c.score >= 12) c.level = 'alta';
+                else c.level = 'baixa';
+                c.detectedEntities = detectedEntities;
+            });
+            const lowConfidence = candidates.every(c => c.level.startsWith('baixa'));
+
+            suggestedClassification = { candidates, lowConfidence };
+            window.suggesterTagsState = {};
+
+            candidates.forEach(c => {
+                c.selectedTags = new Set(getSuggestedTags(c.a, c.s));
+                if (c.detectedEntities) c.detectedEntities.forEach(t => c.selectedTags.add(t));
+            });
+
             result.classList.remove('hidden');
-            result.innerHTML = '<div class="rounded-xl border border-slate-700 bg-slate-950/60 p-4 text-xs text-slate-400">Sugestor em modo simplificado nesta versão mobile. Use o simulador normalmente.</div>';
+            result.innerHTML = `
+        <div class="space-y-3">
+          <div class="rounded-xl border border-slate-800 bg-slate-950/60 p-3">
+            <div class="text-xs font-bold text-white">Foram encontradas ${candidates.length} possibilidade${candidates.length > 1 ? 's' : ''} de classificação.</div>
+            <p class="text-[11px] text-slate-500 mt-1">A sugestão considera primeiro os termos que descrevem o fato principal.</p>
+            ${detectedEntities.length ? `<p class="text-[11px] text-emerald-400 mt-1 font-bold">Entidades detectadas: ${detectedEntities.join(', ')}</p>` : ''}
+            ${lowConfidence ? '<p class="text-[11px] text-amber-300 mt-1">Evidência insuficiente. Revisão manual recomendada.</p>' : ''}
+          </div>
+          ${candidates.map((candidate, index) => renderSuggestionCard(candidate, index, index === 0)).join('')}
+          <div class="flex justify-end gap-2 pt-1">
+            <button type="button" onclick="clearClassificationSuggester()" class="px-3 py-1.5 rounded-lg bg-slate-800 hover:bg-slate-700 text-slate-300 text-xs border border-slate-700">Limpar teor</button>
+          </div>
+        </div>`;
         }
 
         // ============================================================
@@ -1174,7 +1562,6 @@
         document.addEventListener('DOMContentLoaded', () => {
             clearClassificationSuggester();
             initSimulator();
-            // MOBILE: ajusta layout dos presets ao redimensionar (troca desktop <-> mobile)
             window.addEventListener('resize', () => {
                 const mobile = isMobileViewport();
                 if (mobile && casePresetsLayoutMode === 'line') {
@@ -1190,4 +1577,5 @@
         });
     </script>
 </body>
+
 </html>
