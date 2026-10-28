@@ -41,36 +41,96 @@
         .presets-scrollbar::-webkit-scrollbar-track { background:#0f172a; border-radius:9999px; }
         .presets-scrollbar::-webkit-scrollbar-thumb { background:#334155; border-radius:9999px; }
         .presets-scrollbar::-webkit-scrollbar-thumb:hover { background:#f59e0b; }
+        #presetsToggleBtn[aria-expanded="true"] { background-color: rgba(15, 23, 42, 0.6); }
     </style>
 
+    <!-- =========================================================
+         TEMA CLARO (Ajustado para tom suave e confortável)
+         ========================================================= -->
     <style id="light-theme-overrides">
-        html, body { background:#f1f5f9 !important; color:#334155 !important; }
-        [class~="bg-slate-950"],[class~="bg-slate-950/95"],[class~="bg-slate-950/90"],[class~="bg-slate-950/85"],[class~="bg-slate-950/80"],[class~="bg-slate-950/60"],[class~="bg-slate-900"],[class~="bg-slate-900/95"],[class~="bg-slate-900/90"],[class~="bg-slate-900/80"],[class~="bg-slate-900/60"],[class~="bg-slate-800"],[class~="bg-slate-800/60"],[class~="bg-slate-700"],[class~="bg-slate-600"] { background-color:#ffffff !important; border-color:#e2e8f0 !important; }
-        header, footer { background-color:#ffffff !important; border-color:#e2e8f0 !important; }
+        html, body { background-color:#eef2f7 !important; color:#334155 !important; }
+        
+        /* Painéis e Blocos principais - Fundo levemente acinzentado/azulado */
+        [class~="bg-slate-950"],[class~="bg-slate-950/95"],[class~="bg-slate-950/90"],[class~="bg-slate-950/85"],[class~="bg-slate-950/80"],[class~="bg-slate-950/60"],[class~="bg-slate-900"],[class~="bg-slate-900/95"],[class~="bg-slate-900/90"],[class~="bg-slate-900/80"],[class~="bg-slate-900/60"],[class~="bg-slate-800"],[class~="bg-slate-800/60"],[class~="bg-slate-700"],[class~="bg-slate-600"] { 
+            background-color:#f8fafc !important; border-color:#e2e8f0 !important; 
+        }
+
+        /* Header e Footer */
+        header, footer { background-color:#f8fafc !important; border-color:#e2e8f0 !important; }
+
+        /* Textos base */
         [class~="text-white"] { color:#0f172a !important; }
         [class~="text-slate-100"],[class~="text-slate-200"] { color:#1e293b !important; }
         [class~="text-slate-300"] { color:#334155 !important; }
         [class~="text-slate-400"] { color:#475569 !important; }
         [class~="text-slate-500"],[class~="text-slate-600"] { color:#64748b !important; }
         [class~="text-slate-950"] { color:#0f172a !important; }
+
+        /* Bordas */
         [class~="border-slate-800"],[class~="border-slate-800/80"],[class~="border-slate-700"],[class~="border-slate-700/80"],[class~="border-slate-700/60"] { border-color:#e2e8f0 !important; }
+
+        /* Inputs */
         input, textarea, select { background-color:#ffffff !important; color:#1e293b !important; border-color:#cbd5e1 !important; }
         input::placeholder, textarea::placeholder { color:#94a3b8 !important; }
-        [class~="hover:bg-slate-700"]:hover,[class~="hover:bg-slate-800"]:hover,[class~="hover:bg-slate-600"]:hover { background-color:#f8fafc !important; color:#0f172a !important; }
+
+        /* Hover dos controles */
+        [class~="hover:bg-slate-700"]:hover,[class~="hover:bg-slate-800"]:hover,[class~="hover:bg-slate-600"]:hover { background-color:#f1f5f9 !important; color:#0f172a !important; }
         [class~="hover:text-white"]:hover { color:#0f172a !important; }
+
+        /* Correção do gradiente do Card Fala.BR no Tema Claro */
+        [class~="bg-gradient-to-br"] { background-image: none !important; background-color: #f8fafc !important; border-color: #cbd5e1 !important; }
         [class~="from-slate-900"] { --tw-gradient-from:#ffffff !important; }
-        [class~="to-slate-900"] { --tw-gradient-to:#f8fafc !important; }
-        #previewTextoManifestacao { background-color:#f8fafc !important; border-color:#cbd5e1 !important; color:#475569 !important; }
+        [class~="to-slate-900"] { --tw-gradient-to:#f1f5f9 !important; }
+
+        /* Área de preview de texto */
+        #previewTextoManifestacao { background-color:#ffffff !important; border-color:#cbd5e1 !important; color:#475569 !important; }
+
+        /* Modais */
         #tagsWideModal, #classificationSuggesterModal { background-color:rgba(15,23,42,.45) !important; }
-        #tagsWideModal>div, #classificationSuggesterModal>div { background-color:#ffffff !important; border-color:#e2e8f0 !important; }
-        #classificationSuggesterModal .sticky { background-color:#ffffff !important; border-color:#e2e8f0 !important; }
-        ::-webkit-scrollbar-track { background:#f1f5f9 !important; }
+        #tagsWideModal>div, #classificationSuggesterModal>div { background-color:#f8fafc !important; border-color:#e2e8f0 !important; }
+        #classificationSuggesterModal .sticky { background-color:#f8fafc !important; border-color:#e2e8f0 !important; }
+
+        /* Scrollbars */
+        ::-webkit-scrollbar-track { background:#eef2f7 !important; }
         ::-webkit-scrollbar-thumb { background:#cbd5e1 !important; }
         ::-webkit-scrollbar-thumb:hover { background:#94a3b8 !important; }
-        .presets-scrollbar { scrollbar-color:#cbd5e1 #f1f5f9 !important; }
-        .presets-scrollbar::-webkit-scrollbar-track { background:#f1f5f9 !important; }
+        .presets-scrollbar { scrollbar-color:#cbd5e1 #eef2f7 !important; }
+        .presets-scrollbar::-webkit-scrollbar-track { background:#eef2f7 !important; }
         .presets-scrollbar::-webkit-scrollbar-thumb { background:#cbd5e1 !important; }
+        
         ::selection { background:#1351b4 !important; color:#ffffff !important; }
+
+        /* =========================================================
+           CONTRASTE REFORÇADO — FICHA DESKTOP (Tema Claro)
+           ========================================================= */
+        #previewAssuntoDesktop { color:#0f172a !important; }
+        #previewSubassuntoDesktop { color:#047857 !important; } /* verde escuro para legibilidade */
+        #previewTagsListDesktop > span {
+            background-color:#fef3c7 !important; color:#92400e !important; border:1px solid #fcd34d !important;
+            padding:1px 6px; border-radius:4px; font-family:ui-monospace,monospace; font-size:10px; font-weight:600;
+        }
+        #previewTagsListDesktop > span.text-slate-500 {
+            background-color:transparent !important; color:#64748b !important; border:none !important;
+            font-style:italic; font-weight:400;
+        }
+
+        /* =========================================================
+           CONTRASTE REFORÇADO — CARD MOBILE (Tema Claro)
+           ========================================================= */
+        #mobileFicha { background-color:#f8fafc !important; border-top-color:#93c5fd !important; color:#334155 !important; }
+        #mobileFicha #previewAssunto { color:#0f172a !important; }
+        #mobileFicha #previewSubassunto { color:#047857 !important; }
+        #mobileFicha #previewTagsList > span {
+            background-color:#fef3c7 !important; color:#92400e !important; border:1px solid #fcd34d !important;
+            padding:1px 6px; border-radius:4px; font-family:ui-monospace,monospace; font-size:10px; font-weight:600;
+        }
+        #mobileFicha #previewTagsList > span.text-slate-400,
+        #mobileFicha #previewTagsList > span.text-slate-500 {
+            background-color:transparent !important; color:#64748b !important; border:none !important;
+            font-style:italic; font-weight:400;
+        }
+        #mobileFicha #mobileFichaDetailBtn { background-color:#dbeafe !important; color:#1e40af !important; border-color:#93c5fd !important; }
+        #mobileFicha #mobileFichaTagCount { background-color:#f59e0b !important; color:#0f172a !important; }
     </style>
 
     <style id="light-theme-contrast-fixes">
@@ -95,7 +155,7 @@
     <style id="light-theme-conflict-fixes">
         [class~="bg-govblue-600"],[class~="bg-govblue-500"],[class~="from-govblue-600"],[class~="to-blue-600"],[class~="hover:bg-govblue-500"]:hover,[class~="hover:from-govblue-500"]:hover,[class~="hover:to-blue-500"]:hover { color:#ffffff !important; }
         [class~="bg-govblue-600"] *,[class~="bg-gradient-to-r"] * { color:#ffffff !important; }
-        [class~="bg-govblue-600"],[class~="bg-gradient-to-r"] { background-color:#1351b4 !important; }
+        [class~="bg-govblue-600"],[class~="bg-gradient-to-r"] { background-color:#1351b4 !important; background-image: none !important; }
         [class~="bg-govblue-600/80"] { background-color:#dbeafe !important; color:#1e3a8a !important; }
         [class~="bg-govblue-950/80"],[class~="to-govblue-950/80"] { --tw-gradient-to:#eff6ff !important; }
         [class~="bg-emerald-800"],[class~="bg-emerald-900/60"] { background-color:#166534 !important; }
@@ -124,6 +184,9 @@
         #applyAllRecBtn:disabled { background-color:#f1f5f9 !important; color:#64748b !important; border-color:#cbd5e1 !important; cursor:not-allowed; }
     </style>
 
+    <!-- =========================================================
+         TEMA ESCURO (Regras devidamente isoladas com body.theme-dark)
+         ========================================================= -->
     <style id="dark-theme-overrides">
         body.theme-dark { background-color:#0f172a !important; color:#cbd5e1 !important; }
         body.theme-dark header, body.theme-dark footer { background-color:#1e293b !important; border-color:#334155 !important; }
@@ -163,35 +226,35 @@
         body.theme-dark ::-webkit-scrollbar-thumb:hover { background:#64748b !important; }
 
         /* =========================================================
-           CONTRASTE REFORÇADO — CARD MOBILE (Ficha Fala.BR)
+           CONTRASTE REFORÇADO — CARD MOBILE (Ficha Fala.BR) NO DARK
            ========================================================= */
-        #mobileFicha { background-color:#1e293b !important; border-top-color:#3b82f6 !important; color:#e2e8f0 !important; }
-        #mobileFicha #previewAssunto { color:#ffffff !important; }
-        #mobileFicha #previewSubassunto { color:#6ee7b7 !important; }
-        #mobileFicha #mobileFichaTagCount { background-color:#f59e0b !important; color:#0f172a !important; }
-        #mobileFicha #previewTagsList > span {
+        body.theme-dark #mobileFicha { background-color:#1e293b !important; border-top-color:#3b82f6 !important; color:#e2e8f0 !important; }
+        body.theme-dark #mobileFicha #previewAssunto { color:#ffffff !important; }
+        body.theme-dark #mobileFicha #previewSubassunto { color:#6ee7b7 !important; }
+        body.theme-dark #mobileFicha #mobileFichaTagCount { background-color:#f59e0b !important; color:#0f172a !important; }
+        body.theme-dark #mobileFicha #previewTagsList > span {
             background-color:#78350f !important; color:#fde68a !important; border:1px solid #f59e0b !important;
             padding:1px 6px; border-radius:4px; font-family:ui-monospace,monospace; font-size:10px; font-weight:600;
         }
-        #mobileFicha #previewTagsList > span.text-slate-400,
-        #mobileFicha #previewTagsList > span.text-slate-500 {
+        body.theme-dark #mobileFicha #previewTagsList > span.text-slate-400,
+        body.theme-dark #mobileFicha #previewTagsList > span.text-slate-500 {
             background-color:transparent !important; color:#94a3b8 !important; border:none !important;
             font-style:italic; font-weight:400;
         }
-        #mobileFicha #previewTextoManifestacao { background-color:#0f172a !important; color:#e2e8f0 !important; border-color:#475569 !important; }
-        #mobileFicha #mobileFichaNoText { color:#94a3b8 !important; }
-        #mobileFicha #mobileFichaDetailBtn { background-color:#1d4ed8 !important; color:#ffffff !important; border-color:#60a5fa !important; }
+        body.theme-dark #mobileFicha #previewTextoManifestacao { background-color:#0f172a !important; color:#e2e8f0 !important; border-color:#475569 !important; }
+        body.theme-dark #mobileFicha #mobileFichaNoText { color:#94a3b8 !important; }
+        body.theme-dark #mobileFicha #mobileFichaDetailBtn { background-color:#1d4ed8 !important; color:#ffffff !important; border-color:#60a5fa !important; }
 
         /* =========================================================
-           CONTRASTE REFORÇADO — FICHA DESKTOP
+           CONTRASTE REFORÇADO — FICHA DESKTOP NO DARK
            ========================================================= */
-        #previewAssuntoDesktop { color:#ffffff !important; }
-        #previewSubassuntoDesktop { color:#6ee7b7 !important; }
-        #previewTagsListDesktop > span {
+        body.theme-dark #previewAssuntoDesktop { color:#ffffff !important; }
+        body.theme-dark #previewSubassuntoDesktop { color:#6ee7b7 !important; }
+        body.theme-dark #previewTagsListDesktop > span {
             background-color:#78350f !important; color:#fde68a !important; border:1px solid #f59e0b !important;
             padding:1px 6px; border-radius:4px; font-family:ui-monospace,monospace; font-size:10px; font-weight:600;
         }
-        #previewTagsListDesktop > span.text-slate-500 {
+        body.theme-dark #previewTagsListDesktop > span.text-slate-500 {
             background-color:transparent !important; color:#94a3b8 !important; border:none !important;
             font-style:italic; font-weight:400;
         }
@@ -265,33 +328,52 @@
                 </button>
             </div>
 
-            <div class="mb-3.5 bg-slate-900/95 border border-slate-800 rounded-xl p-2.5 flex flex-col gap-2">
-                <div class="flex flex-col sm:flex-row sm:items-center justify-between text-[11px] gap-1.5">
-                    <div class="flex items-center gap-2 flex-wrap">
-                        <span class="text-amber-300 font-bold flex items-center gap-1.5 text-[10px] sm:text-[11px]">
-                            <span>⚡</span><span>Simulações Rápidas:</span>
+            <div class="mb-3.5 bg-slate-900/95 border border-slate-800 rounded-xl overflow-hidden">
+                <button type="button"
+                        id="presetsToggleBtn"
+                        onclick="togglePresetsSection()"
+                        aria-expanded="false"
+                        aria-controls="presetsBody"
+                        class="w-full flex items-center justify-between gap-2 px-3 py-2.5 text-left hover:bg-slate-800/50 transition">
+                    <div class="flex items-center gap-2 min-w-0">
+                        <span class="text-amber-300 font-bold flex items-center gap-1.5 text-[11px] shrink-0">
+                            <span>⚡</span>
+                            <span>Simulações Rápidas</span>
                         </span>
-                        <span class="text-[9px] bg-slate-800 text-slate-400 border border-slate-700/80 px-1.5 py-0.5 rounded font-mono">12 Casos</span>
+                        <span class="text-[9px] bg-slate-800 text-slate-400 border border-slate-700/80 px-1.5 py-0.5 rounded font-mono shrink-0">12 Casos</span>
+                        <span id="presetsActiveLabel" class="text-[10px] text-emerald-300 font-semibold truncate hidden"></span>
                     </div>
-                    <div class="flex items-center gap-2">
-                        <span class="text-[10px] text-slate-500 hidden md:inline">Use as setas, o scroll do mouse ou arraste:</span>
-                        <button id="togglePresetsLayoutBtn" type="button" onclick="toggleCasePresetsLayout()"
-                            class="px-2 py-1 rounded bg-slate-800 hover:bg-slate-700 text-amber-300 hover:text-amber-200 border border-slate-700 transition flex items-center gap-1 text-[10px] font-semibold">
-                            <span>⊞</span><span>Ver Todos (Grade)</span>
-                        </button>
+                    <div class="flex items-center gap-2 shrink-0">
+                        <span id="presetsToggleLabel" class="text-[10px] text-amber-300 font-semibold">Ver Simulações</span>
+                        <span id="presetsToggleIcon" class="text-amber-300 text-xs transition-transform duration-200">▼</span>
                     </div>
-                </div>
+                </button>
 
-                <div class="relative flex items-center gap-1.5">
-                    <button id="casePresetsScrollLeft" type="button" onclick="scrollCasePresets(-260)"
-                        class="hidden sm:flex shrink-0 w-7 h-7 rounded-lg bg-slate-800 hover:bg-slate-700 active:bg-slate-600 text-slate-300 hover:text-white border border-slate-700 items-center justify-center text-sm font-bold transition shadow disabled:opacity-30 disabled:cursor-not-allowed"
-                        title="Rolar casos anteriores">‹</button>
-                    <div id="casePresetsContainer"
-                        class="flex items-center gap-1.5 overflow-x-auto py-1 text-[10px] presets-scrollbar select-none cursor-grab active:cursor-grabbing flex-1">
+                <div id="presetsBody"
+                     class="px-2.5 pb-2.5 pt-0.5 flex flex-col gap-2 border-t border-slate-800/60">
+                    <div class="flex flex-col sm:flex-row sm:items-center justify-between text-[11px] gap-1.5 pt-2">
+                        <div class="flex items-center gap-2 flex-wrap">
+                            <span class="text-[10px] text-slate-500 hidden md:inline">Use as setas, o scroll do mouse ou arraste:</span>
+                        </div>
+                        <div class="flex items-center gap-2">
+                            <button id="togglePresetsLayoutBtn" type="button" onclick="toggleCasePresetsLayout()"
+                                class="px-2 py-1 rounded bg-slate-800 hover:bg-slate-700 text-amber-300 hover:text-amber-200 border border-slate-700 transition flex items-center gap-1 text-[10px] font-semibold">
+                                <span>⊞</span><span>Ver Todos (Grade)</span>
+                            </button>
+                        </div>
                     </div>
-                    <button id="casePresetsScrollRight" type="button" onclick="scrollCasePresets(260)"
-                        class="hidden sm:flex shrink-0 w-7 h-7 rounded-lg bg-slate-800 hover:bg-slate-700 active:bg-slate-600 text-slate-300 hover:text-white border border-slate-700 items-center justify-center text-sm font-bold transition shadow disabled:opacity-30 disabled:cursor-not-allowed"
-                        title="Rolar próximos casos">›</button>
+
+                    <div class="relative flex items-center gap-1.5">
+                        <button id="casePresetsScrollLeft" type="button" onclick="scrollCasePresets(-260)"
+                            class="hidden sm:flex shrink-0 w-7 h-7 rounded-lg bg-slate-800 hover:bg-slate-700 active:bg-slate-600 text-slate-300 hover:text-white border border-slate-700 items-center justify-center text-sm font-bold transition shadow disabled:opacity-30 disabled:cursor-not-allowed"
+                            title="Rolar casos anteriores">‹</button>
+                        <div id="casePresetsContainer"
+                            class="flex items-center gap-1.5 overflow-x-auto py-1 text-[10px] presets-scrollbar select-none cursor-grab active:cursor-grabbing flex-1">
+                        </div>
+                        <button id="casePresetsScrollRight" type="button" onclick="scrollCasePresets(260)"
+                            class="hidden sm:flex shrink-0 w-7 h-7 rounded-lg bg-slate-800 hover:bg-slate-700 active:bg-slate-600 text-slate-300 hover:text-white border border-slate-700 items-center justify-center text-sm font-bold transition shadow disabled:opacity-30 disabled:cursor-not-allowed"
+                            title="Rolar próximos casos">›</button>
+                    </div>
                 </div>
             </div>
 
@@ -413,9 +495,6 @@
         </section>
     </main>
 
-    <!-- ============================================================
-         FICHA FIXA MOBILE — sempre visível com Assunto + Subassunto + TAGS
-         ============================================================ -->
     <div id="mobileFicha"
          class="lg:hidden fixed bottom-0 left-0 right-0 z-40 bg-slate-900 backdrop-blur border-t-2 border-blue-500/70 px-3 py-2.5 shadow-[0_-8px_24px_rgba(0,0,0,0.55)]"
          role="status" aria-live="polite" aria-label="Ficha Fala.BR em tempo real">
@@ -566,9 +645,6 @@
     </div>
 
     <script>
-        // ============================================================
-        // DADOS
-        // ============================================================
         const classificationTree = [
             { id: 'assedio_moral', nome: 'Assédio moral', categoria: 'sensivel', subassuntos: ['Relação entre agentes públicos'] },
             { id: 'assedio_sexual', nome: 'Assédio sexual', categoria: 'sensivel', subassuntos: ['Relação entre agentes públicos'] },
@@ -661,9 +737,6 @@
             { id:12, titulo:'12. Dúvida Fala.BR', texto:'Manifestação: "Como faço para registrar uma manifestação pelo Fala.BR?"', assuntoId:'atendimento_publico', subassunto:'Fala.BR', tags:['Fala.BR','Orientação'] }
         ];
 
-        // ============================================================
-        // ESTADO
-        // ============================================================
         let selectedAssuntoId = null, selectedSubassunto = null;
         let selectedTags = new Set();
         let currentTagFilter = 'todas', currentTagSearch = '';
@@ -671,10 +744,51 @@
         let suggestedClassification = null;
         const isMobileViewport = () => window.matchMedia('(max-width: 1023px)').matches;
         let casePresetsLayoutMode = isMobileViewport() ? 'grid' : 'line';
+        let presetsSectionOpen = false;
 
-        // ============================================================
-        // TEMA
-        // ============================================================
+        function initPresetsSectionState() {
+            presetsSectionOpen = !isMobileViewport();
+            applyPresetsSectionState();
+        }
+
+        function togglePresetsSection() {
+            presetsSectionOpen = !presetsSectionOpen;
+            applyPresetsSectionState();
+            try { sessionStorage.setItem('mesp_presets_open', presetsSectionOpen ? '1' : '0'); } catch(e){}
+        }
+
+        function applyPresetsSectionState() {
+            const body = document.getElementById('presetsBody');
+            const btn = document.getElementById('presetsToggleBtn');
+            const label = document.getElementById('presetsToggleLabel');
+            const icon = document.getElementById('presetsToggleIcon');
+            if (!body || !btn || !label || !icon) return;
+            if (presetsSectionOpen) {
+                body.classList.remove('hidden');
+                btn.setAttribute('aria-expanded', 'true');
+                label.textContent = 'Recolher';
+                icon.style.transform = 'rotate(180deg)';
+            } else {
+                body.classList.add('hidden');
+                btn.setAttribute('aria-expanded', 'false');
+                label.textContent = 'Ver Simulações';
+                icon.style.transform = 'rotate(0deg)';
+            }
+        }
+
+        function updatePresetsActiveLabel() {
+            const el = document.getElementById('presetsActiveLabel');
+            if (!el) return;
+            const preset = practicalCasePresets.find(p => p.id === activePresetId);
+            if (preset) {
+                el.textContent = `• ${preset.titulo}`;
+                el.classList.remove('hidden');
+            } else {
+                el.textContent = '';
+                el.classList.add('hidden');
+            }
+        }
+
         function applyTheme(theme) {
             const isDark = theme === 'dark';
             document.body.classList.toggle('theme-dark', isDark);
@@ -684,9 +798,6 @@
         }
         function toggleTheme() { applyTheme(document.body.classList.contains('theme-dark') ? 'light' : 'dark'); }
 
-        // ============================================================
-        // FULLSCREEN + ATALHOS
-        // ============================================================
         function toggleFullScreen() {
             if (!document.fullscreenElement) document.documentElement.requestFullscreen?.().catch(()=>{});
             else document.exitFullscreen?.();
@@ -697,9 +808,6 @@
             else if (e.key.toLowerCase() === 'escape') { closeTagsWideModal(); closeClassificationSuggesterModal(); }
         });
 
-        // ============================================================
-        // SIMULADOR
-        // ============================================================
         function initSimulator() {
             renderCasePresets();
             initCasePresetsInteractions();
@@ -708,6 +816,7 @@
             renderTagsCloud();
             renderRecommendedTags();
             updateSimulationPreview();
+            updatePresetsActiveLabel();
         }
 
         function renderCasePresets() {
@@ -743,6 +852,12 @@
             renderCasePresets(); renderAssuntosList(); renderSubassuntosList();
             renderRecommendedTags(); renderTagsCloud(); renderWideTagsGrid();
             updateWideModalSelectedBadges(); updateSimulationPreview();
+            updatePresetsActiveLabel();
+            const ficha = document.getElementById('mobileFicha');
+            if (ficha && isMobileViewport()) {
+                ficha.classList.add('ring-2', 'ring-amber-400');
+                setTimeout(() => ficha.classList.remove('ring-2', 'ring-amber-400'), 600);
+            }
         }
 
         function initCasePresetsInteractions() {
@@ -852,7 +967,7 @@
             const quoteBox = document.getElementById('previewTextoManifestacao');
             if (quoteBox) quoteBox.classList.add('hidden');
             renderCasePresets(); renderAssuntosList(); renderSubassuntosList();
-            renderRecommendedTags(); updateSimulationPreview();
+            renderRecommendedTags(); updateSimulationPreview(); updatePresetsActiveLabel();
         }
 
         function renderSubassuntosList() {
@@ -881,7 +996,6 @@
         function selectSubassunto(nome) {
             selectedSubassunto = nome;
             renderSubassuntosList(); renderRecommendedTags(); updateSimulationPreview();
-            // Pulse visual no card mobile
             const ficha = document.getElementById('mobileFicha');
             if (ficha && isMobileViewport()) {
                 ficha.classList.add('ring-2', 'ring-emerald-400');
@@ -1100,7 +1214,6 @@
             updateWideModalSelectedBadges(); updateSimulationPreview();
         }
 
-        // Atualiza as DUAS fichas (mobile + desktop) e o contador do card mobile
         function updateSimulationPreview() {
             const assunto = classificationTree.find(a => a.id === selectedAssuntoId);
             const assuntoTxt = assunto ? assunto.nome : '— (Nenhum selecionado)';
@@ -1172,12 +1285,9 @@
             const q = document.getElementById('previewTextoManifestacao'); if (q) q.classList.add('hidden');
             renderCasePresets(); renderAssuntosList(); renderSubassuntosList();
             renderRecommendedTags(); renderTagsCloud(); renderWideTagsGrid();
-            updateWideModalSelectedBadges(); updateSimulationPreview();
+            updateWideModalSelectedBadges(); updateSimulationPreview(); updatePresetsActiveLabel();
         }
 
-        // ============================================================
-        // SUGESTOR — classificador completo
-        // ============================================================
         const entityDictionary = {
             'cbf':'Confederação Brasileira de Futebol (CBF)','cbv':'Confederação Brasileira de Vôlei','cbat':'Confederação Brasileira de Atletismo (CBAt)','cbb':'Confederação Brasileira de Basketball','cbj':'Confederação Brasileira de Judô','cbt':'Confederação Brasileira de Tênis','cbtm':'Confederação Brasileira de Tênis de Mesa (CBTM)','cob':'Comitê Olímpico do Brasil','cpb':'Comitê Paralímpico Brasileiro','fifa':'FIFA','coi':'Comitê Olímpico Internacional','ipc':'Comitê Paralímpico Internacional','conmebol':'CONMEBOL','cbd':'Confederação Brasileira de Desportos','cbda':'Confederação Brasileira de Desportos Aquáticos','cbc':'Confederação Brasileira de Ciclismo','cbg':'Confederação Brasileira de Ginástica','cbh':'Confederação Brasileira de Handebol','cbsb':'Confederação Brasileira de Skateboarding','cbtkd':'Confederação Brasileira de Taekwondo','cbw':'Confederação Brasileira de Wrestling'
         };
@@ -1556,18 +1666,34 @@
         </div>`;
         }
 
-        // ============================================================
-        // INICIALIZAÇÃO
-        // ============================================================
         document.addEventListener('DOMContentLoaded', () => {
             clearClassificationSuggester();
             initSimulator();
+
+            let presetsRestored = false;
+            try {
+                const saved = sessionStorage.getItem('mesp_presets_open');
+                if (saved === '1') { presetsSectionOpen = true; presetsRestored = true; }
+                else if (saved === '0') { presetsSectionOpen = false; presetsRestored = true; }
+            } catch(e){}
+            if (!presetsRestored) initPresetsSectionState();
+            else applyPresetsSectionState();
+
             window.addEventListener('resize', () => {
                 const mobile = isMobileViewport();
                 if (mobile && casePresetsLayoutMode === 'line') {
                     casePresetsLayoutMode = 'grid'; renderCasePresets();
                 } else if (!mobile && casePresetsLayoutMode === 'grid') {
                     casePresetsLayoutMode = 'line'; renderCasePresets();
+                }
+                let savedPref = null;
+                try { savedPref = sessionStorage.getItem('mesp_presets_open'); } catch(e){}
+                if (window.innerWidth >= 1024 && !presetsSectionOpen && savedPref === null) {
+                    presetsSectionOpen = true;
+                    applyPresetsSectionState();
+                } else if (window.innerWidth < 1024 && presetsSectionOpen && savedPref === null) {
+                    presetsSectionOpen = false;
+                    applyPresetsSectionState();
                 }
                 updateCasePresetsArrows();
             });
