@@ -36,7 +36,7 @@ curtas e assuntos de outros órgãos.
 
 | Conjunto | Casos | Para que serve |
 |---|---|---|
-| `dev` | 112 | Usado para escrever as regras (inclui os 12 casos práticos do simulador) |
+| `dev` | 112 | Usado para escrever as regras (inclui os 12 casos das antigas Simulações Rápidas) |
 | `val` | 49 | Escrito antes do motor novo; também acabou orientando ajustes |
 | `cego` | 50 | Escrito com o motor congelado, para medir o acerto em texto nunca visto |
 | `cego2` | 55 | Segundo lote inédito, escrito depois de ajustar o léxico com base no `cego` |
