@@ -259,6 +259,68 @@
             font-style:italic; font-weight:400;
         }
     </style>
+
+    <!-- =========================================================
+         SUGESTOR DE CLASSIFICAÇÃO (resultado: leitura, confiança, evidências)
+         ========================================================= -->
+    <style id="sugestor-styles">
+        .sg-chip { display:inline-flex; align-items:center; gap:6px; padding:3px 9px; border-radius:9999px; font-size:11px; font-weight:600; background:#ffffff; color:#1e293b; border:1px solid #cbd5e1; }
+        .sg-chip-k { font-weight:500; color:#64748b; }
+        .sg-chip-alerta { background:#fef2f2; color:#b91c1c; border-color:#fca5a5; }
+        .sg-texto { font-size:12px; line-height:1.6; color:#334155; background:#ffffff; border:1px solid #e2e8f0; border-radius:8px; padding:8px 10px; max-height:9.5rem; overflow-y:auto; white-space:pre-wrap; overflow-wrap:anywhere; }
+        .sg-mark { background:#fde68a; color:#422006; border-radius:3px; padding:0 2px; }
+        .sg-conf { display:inline-flex; align-items:center; gap:8px; padding:4px 10px; border-radius:9999px; font-size:11px; font-weight:700; border:1px solid; white-space:nowrap; }
+        .sg-medidor { display:inline-flex; gap:2px; }
+        .sg-seg { width:10px; height:6px; border-radius:2px; background:currentColor; opacity:.25; }
+        .sg-seg.on { opacity:1; }
+        .sg-conf-alta { background:#dcfce7; color:#166534; border-color:#86efac; }
+        .sg-conf-media { background:#fef3c7; color:#92400e; border-color:#fcd34d; }
+        .sg-conf-baixa { background:#f1f5f9; color:#475569; border-color:#cbd5e1; }
+        .sg-motivo { display:flex; gap:8px; font-size:12px; line-height:1.5; color:#334155; }
+        .sg-check { color:#15803d; font-weight:800; flex:none; width:.9em; }
+        .sg-warn { color:#b45309; font-weight:800; flex:none; width:.9em; text-align:center; }
+        .sg-q { quotes:"“" "”"; background:#fef9c3; color:#422006; border-radius:3px; padding:0 3px; }
+        .sg-pergunta { font-size:12px; line-height:1.5; border-radius:12px; padding:10px 12px; background:#eff6ff; color:#1e3a8a; border:1px solid #bfdbfe; }
+        .sg-card { border:1px solid #cbd5e1; background:#f8fafc; border-radius:16px; overflow:hidden; }
+        .sg-card-principal { border-color:#6ee7b7; background:#ecfdf5; }
+        .sg-card-head { padding:12px 16px; border-bottom:1px solid #e2e8f0; display:flex; flex-wrap:wrap; align-items:flex-start; justify-content:space-between; gap:8px; }
+        .sg-card-principal .sg-card-head { border-bottom-color:#a7f3d0; }
+        .sg-rotulo { font-size:10px; text-transform:uppercase; letter-spacing:.05em; font-weight:700; color:#64748b; }
+        .sg-card-principal .sg-card-head .sg-rotulo { color:#166534; }
+        .sg-titulo { font-size:16px; line-height:1.35; font-weight:800; color:#0f172a; margin-top:2px; }
+        .sg-sep { color:#94a3b8; font-weight:400; }
+        .sg-sub { font-size:11px; line-height:1.5; color:#64748b; }
+        .sg-nota { font-size:11px; line-height:1.5; color:#92400e; }
+        .sg-aviso { border:1px solid #d6a243; background:#fffbeb; border-radius:12px; padding:16px; }
+        .sg-aviso strong { font-size:14px; color:#0f172a; }
+        .sg-caixa { border:1px solid #e2e8f0; background:#f8fafc; border-radius:12px; padding:12px; }
+        body.theme-dark .sg-card { border-color:#334155; background:#0f172a; }
+        body.theme-dark .sg-card-principal { border-color:#15803d; background:#06281a; }
+        body.theme-dark .sg-card-head { border-bottom-color:#334155; }
+        body.theme-dark .sg-card-principal .sg-card-head { border-bottom-color:#14532d; }
+        body.theme-dark .sg-rotulo { color:#94a3b8; }
+        body.theme-dark .sg-card-principal .sg-card-head .sg-rotulo { color:#86efac; }
+        body.theme-dark .sg-titulo { color:#f8fafc; }
+        body.theme-dark .sg-sep { color:#64748b; }
+        body.theme-dark .sg-sub { color:#94a3b8; }
+        body.theme-dark .sg-nota { color:#fcd34d; }
+        body.theme-dark .sg-aviso { border-color:#92400e; background:#2a1a05; }
+        body.theme-dark .sg-aviso strong { color:#f8fafc; }
+        body.theme-dark .sg-caixa { border-color:#334155; background:#0f172a; }
+        body.theme-dark .sg-chip { background:#0f172a; color:#e2e8f0; border-color:#334155; }
+        body.theme-dark .sg-chip-k { color:#94a3b8; }
+        body.theme-dark .sg-chip-alerta { background:#450a0a; color:#fecaca; border-color:#991b1b; }
+        body.theme-dark .sg-texto { background:#0f172a; color:#cbd5e1; border-color:#334155; }
+        body.theme-dark .sg-mark { background:#854d0e; color:#fef9c3; }
+        body.theme-dark .sg-conf-alta { background:#052e16; color:#86efac; border-color:#166534; }
+        body.theme-dark .sg-conf-media { background:#451a03; color:#fcd34d; border-color:#92400e; }
+        body.theme-dark .sg-conf-baixa { background:#0f172a; color:#cbd5e1; border-color:#475569; }
+        body.theme-dark .sg-motivo { color:#cbd5e1; }
+        body.theme-dark .sg-check { color:#4ade80; }
+        body.theme-dark .sg-warn { color:#fbbf24; }
+        body.theme-dark .sg-q { background:#713f12; color:#fef9c3; }
+        body.theme-dark .sg-pergunta { background:#172554; color:#bfdbfe; border-color:#1e40af; }
+    </style>
 </head>
 
 <body class="bg-slate-950 text-slate-100 font-sans min-h-screen flex flex-col justify-between overflow-x-hidden selection:bg-govblue-500 selection:text-white">
@@ -621,7 +683,7 @@
             <div class="sticky top-0 z-10 flex items-center justify-between gap-3 px-3 sm:px-5 py-3 sm:py-4 bg-slate-900/95 backdrop-blur border-b border-slate-800">
                 <div class="min-w-0">
                     <h3 class="text-base sm:text-lg font-extrabold text-white">🔎 Sugestor de Classificação</h3>
-                    <p class="text-[10px] sm:text-[11px] text-slate-400 mt-0.5">Análise local por regras. Nenhum teor é salvo ou enviado.</p>
+                    <p class="text-[10px] sm:text-[11px] text-slate-400 mt-0.5">Análise local por regras, com evidências e nível de confiança. Nenhum teor é salvo ou enviado.</p>
                 </div>
                 <button type="button" onclick="closeClassificationSuggesterModal()"
                     class="w-9 h-9 sm:w-8 sm:h-8 rounded-lg bg-slate-800 hover:bg-slate-700 text-slate-300 shrink-0"
@@ -631,10 +693,11 @@
                 <div>
                     <label for="classificationSuggesterText" class="block text-xs font-bold text-slate-200 mb-2">Teor da manifestação</label>
                     <textarea id="classificationSuggesterText" rows="6" autocomplete="off" spellcheck="true"
+                        onkeydown="if ((event.ctrlKey || event.metaKey) && event.key === 'Enter') { event.preventDefault(); classifyManifestation(); }"
                         class="w-full rounded-xl bg-slate-950 border border-slate-700 focus:border-emerald-500 focus:ring-1 focus:ring-emerald-500 text-sm text-slate-200 placeholder-slate-600 p-3 sm:p-3.5 outline-none resize-y"
                         placeholder="Cole aqui o teor da manifestação para receber uma sugestão de classificação..."></textarea>
                     <div class="flex flex-col sm:flex-row items-stretch sm:items-center justify-between gap-2 mt-2">
-                        <span class="text-[10px] text-slate-500">O conteúdo existe somente enquanto esta página estiver aberta.</span>
+                        <span class="text-[10px] text-slate-500">O conteúdo existe somente enquanto esta página estiver aberta. Atalho: Ctrl+Enter.</span>
                         <button type="button" onclick="classifyManifestation()"
                             class="px-4 py-2.5 sm:py-2 rounded-lg bg-emerald-600 hover:bg-emerald-500 text-white font-bold text-xs transition">Classificar</button>
                     </div>
@@ -1288,173 +1351,798 @@
             updateWideModalSelectedBadges(); updateSimulationPreview(); updatePresetsActiveLabel();
         }
 
-        const entityDictionary = {
-            'cbf':'Confederação Brasileira de Futebol (CBF)','cbv':'Confederação Brasileira de Vôlei','cbat':'Confederação Brasileira de Atletismo (CBAt)','cbb':'Confederação Brasileira de Basketball','cbj':'Confederação Brasileira de Judô','cbt':'Confederação Brasileira de Tênis','cbtm':'Confederação Brasileira de Tênis de Mesa (CBTM)','cob':'Comitê Olímpico do Brasil','cpb':'Comitê Paralímpico Brasileiro','fifa':'FIFA','coi':'Comitê Olímpico Internacional','ipc':'Comitê Paralímpico Internacional','conmebol':'CONMEBOL','cbd':'Confederação Brasileira de Desportos','cbda':'Confederação Brasileira de Desportos Aquáticos','cbc':'Confederação Brasileira de Ciclismo','cbg':'Confederação Brasileira de Ginástica','cbh':'Confederação Brasileira de Handebol','cbsb':'Confederação Brasileira de Skateboarding','cbtkd':'Confederação Brasileira de Taekwondo','cbw':'Confederação Brasileira de Wrestling'
+        /* =====================================================================
+           SUGESTOR DE CLASSIFICAÇÃO — motor local por regras (nada sai do navegador)
+
+           Como funciona, em 4 etapas:
+             1. LEITURA    o teor é separado em palavras e comparado com o LÉXICO
+                           (SG_CONCEITOS): cada conceito é uma ideia que o texto pode
+                           conter — "falha técnica", "indício de desvio", "bolsa atleta".
+             2. REGRAS     cada subassunto da árvore tem evidências (SG_REGRAS) escritas
+                           como combinação de conceitos. Ex.: Corrupção só pontua quando
+                           há indício de irregularidade E um objeto público (contrato,
+                           repasse, obra, recurso). Citar "convênio" sozinho não basta.
+             3. CONFIANÇA  a força da evidência (0 a 1) e a distância para a segunda
+                           opção definem alta / média / baixa. Sem evidência, não sugere.
+             4. TAGS       saem do próprio texto (modalidade, entidade, natureza) mais
+                           as tags fixas do subassunto.
+
+           Sintaxe dos padrões do léxico (sempre sem acento e em minúsculas):
+             palavra      casa a palavra e o plural; tolera 1 erro de digitação (7+ letras)
+             prefixo*     casa qualquer palavra que comece assim (humilh* = humilha, humilhou…)
+             =palavra     casa só a palavra exata
+             a|b          alternativas na mesma posição
+             ~N           permite até N palavras no meio ("nomeou ~3 esposa")
+             ^frase       frase exata, sem pular preposições ("^em troca de")
+           Artigos e preposições do texto são ignorados entre as palavras do padrão:
+           "bolsa atleta" casa "bolsa do atleta" e "bolsas para atletas".
+
+           Para ajustar: acrescente termos ao conceito certo em SG_CONCEITOS e rode
+           `node tests/rodar.js` para conferir que nenhum caso de teste regrediu.
+           ===================================================================== */
+
+        const SG_STOP = new Set('a o as os um uma uns umas de da do das dos em no na nos nas ao aos pelo pela pelos pelas por para pra pro e meu minha meus minhas seu sua seus suas nosso nossa nossos nossas este esta esse essa isso deste desta desse dessa neste nesta nesse nessa'.split(' '));
+
+        // Palavras reais parecidas com termos do léxico: nunca são tratadas como erro de digitação.
+        const SG_PALAVRAS_COMUNS = new Set('federal federais estagio estagios quadro quadros portao portas postal contato contatos contrario parcela parcelas editar chamada chamadas conveniente pregar proposito projetar partido digital oficial social sociais especial estadual municipal nacional regional politico politica publico publica pratica pratico tecnico tecnica sistema programa problema processo processos resposta respostas proposta propostas servico servicos pessoal pessoais material materiais atletica atletico contrata contrate manifesto certidao certidoes certeza interesse interessa cadastro cadastra informar informou reforca conforme deposito recurso recursos percurso concurso concursos discurso consulta consultar presente presentes parente gerente docente paciente incentiva patrocina assessor assessoria corrida corrido torcido sentido pedido medido perdido pagando parando passado passando pensando contando contanto entrando entrada entradas estrada estrutura estatuto estatura instituto destinado destinada resultado executivo execucao secretaria secretario comissao comissoes condicao condicoes posicao direcao selecao relacao redacao reducao reuniao regiao religiao licenca ausencia agencia urgencia ciencia vivencia violento violenta ginastica campanha companhia treinado treinada portaria parceiro parceiros andamento atendimento entendimento pagamento lancamento movimento documento momento aumento'.split(' '));
+
+        // ───────────────────────────── 1. LÉXICO ─────────────────────────────
+        // id: [ 'rótulo mostrado ao analista', padrão, padrão, ... ]
+        const SG_CONCEITOS = {
+            // Natureza da manifestação
+            n_denuncia:    ['denúncia', 'denunci*|denuci*', 'apuracao', 'apurar', 'investig*'],
+            n_reclamacao:  ['reclamação', 'reclam*', 'insatisf*', 'absurdo', 'descaso', 'indignad*', 'demora|demorando|demorou', 'aguardando', 'ninguem resolve|responde|atende|retorna', 'falta de respeito'],
+            n_solicitacao: ['solicitação', 'solicit*', 'gostaria', 'quero|queremos|queria saber', 'como faco|proceder|funciona|obter|solicitar', 'preciso|precisamos', 'duvida', 'requeiro', 'peco|pedimos|pede', 'informac*'],
+            n_sugestao:    ['sugestão', 'sugiro', 'sugestao', 'sugerimos', 'proponho', 'deveria|deveriam', 'seria bom|interessante|importante'],
+            n_elogio:      ['elogio', 'elogi*', 'parabeni*', 'parabens', 'agradec*'],
+            n_como_denunciar: ['dúvida sobre como denunciar', 'como ~3 denunciar|denuncia'],
+            n_lai:         ['acesso à informação', 'lei de acesso a informacao', '=lai', 'acesso a informacao'],
+
+            // Quem escreve / como chegou
+            o_interno: ['vínculo interno', '^sou servidor*', '^sou terceirizad*', '^sou estagiari*', '^sou colaborador*', '^sou funcionari*', '^meu chefe', '^minha chefe', '^minha chefia', '^meu setor', '^minha unidade', '^meu coordenador', '^minha coordenadora', '^meu diretor', '^minha diretora', '^meu superior', '^minha superiora', '^meu gerente', 'colega* de trabalho', 'orgao de origem', 'gestao de pessoas', 'lotad*', 'trabalho ~1 coordenacao|ministerio|secretaria|diretoria'],
+            o_equipe:  ['registro feito pela equipe', 'manifestante', 'cidadao|cidada|usuario|usuaria|denunciante|demandante|requerente|interessado|interessada ~1 relata|informa|solicita|questiona|reclama|entrou|pede|denuncia|afirma|alega|ligou|compareceu', 'entrou em contato', '^por telefone', 'recebid* ~1 email|mail|telefone|whatsapp|carta|oficio', 'registrad* presencialmente', 'demanda recebida', 'manifestacao recebida|registrada', '^em atendimento presencial', '^em atendimento telefonico', 'atendimento telefonico|presencial realizado', 'identificou se', 'orientado|orientada ~1 registrar|procurar|aguardar|acessar', 'encaminho reclamacao|manifestacao|denuncia|demanda', 'ligou informando|relatando|reclamando|solicitando'],
+            p_entidade: ['entidade/proponente', '^somos uma', '^somos proponentes', '^nossa associacao', '^nossa entidade', '^nossa federacao', '^nosso clube', '^nosso instituto', '^nosso projeto', '^sou proponente', '^sou presidente'],
+            p_familiar: ['familiar', '^meu filho', '^minha filha', '^meu marido', '^minha esposa', '^meu neto', '^minha neta'],
+
+            // Referências gerais
+            atleta:      ['atleta', 'atleta*', 'paratleta*', 'esportista*', 'bolsista*'],
+            esporte_ref: ['esporte', 'esporte', 'esportiv*', 'desport*', 'atleta*', 'paradesport*'],
+            pagamento:   ['pagamento', 'pagamento', 'pago|paga|pagam|pagar|pagaram|pagou|pagos|pagas', 'parcela', 'deposit*', '^nao caiu'],
+            atraso:      ['atraso', 'atraso|atrasos|atrasad*|atrasou|atrasando|atrazad*|atrazo'],
+            nao_pagamento: ['não pagamento', '^nao caiu', 'nao recebi|recebeu|receberam|recebemos|recebo|recebe ~2 bolsa|bolca|parcela|pagamento|beneficio|valor|dinheiro|premio|premiacao|salario|deposito', 'nao ~1 depositad*', '^nao paga', '^nao pagam', '^nao pagou', '^nao pagaram', 'sem receber', '^nao foi pago', '^nao foi paga'],
+            erro:        ['erro', 'erro'],
+
+            // Bolsa Atleta
+            bolsa_atleta: ['Bolsa Atleta', 'bolsa|bolca atleta', 'bolsa|bolca podio'],
+            bolsa:        ['bolsa', 'bolsa|bolca', 'bolsista'],
+            bolsa_ctx:    ['pagamento, benefício ou inscrição', 'atraso|atrasos|atrasad*|atrasou|atrazad*|atrazo', 'pagamento', 'parcela', 'caiu', 'deposit*', 'receb*', 'beneficio', 'contemplad*', 'termo de adesao', 'informe de rendimentos', 'categoria', 'renov*', 'suspens*', 'plano esportivo', 'treinar', 'gestante|gestacao|gravida|puerperio', 'dinheiro', 'valor', 'descont*', 'ranking', 'pontuacao', 'acumular|acumulo'],
+            apoio_fin:    ['apoio financeiro', 'ajuda|apoio|auxilio financeiro|financeira', 'ajuda de custo'],
+            bolsa_outra:  ['outra bolsa', 'bolsa familia', 'bolsa ~1 estudo|estudos|valores|pesquisa|mestrado|doutorado', '=prouni', '=fies', '=capes', '=cnpq'],
+            receb_indevido: ['recebimento indevido', 'recebimento indevido', 'recebe|recebendo|recebeu ~3 indevidamente', 'sem estar treinando|competindo', 'sem treinar|competir', 'parou de competir|treinar', '^nao compete mais', '^nao treina mais'],
+
+            // Sistemas
+            sis_ref:        ['sistema', 'sistema', '=site|=sites', '=portal', 'plataforma', 'aplicativo', '=app', '=pagina', '=link', '=login', '=senha'],
+            falha_tecnica:  ['falha técnica', 'fora do ar', 'apresenta|apresentando|apresentou erro', '^da erro', '^deu erro', '^dando erro', 'mensagem de erro', 'erro ~2 login|acesso|sistema|site|pagina|404|500', 'trava|travou|travando|travado|travada', 'nao abre|carrega|funciona|anexa|envia|salva|exibe|aceita|gera|deixa|permite|conclui|finaliza', 'nao consigo|conseguimos|consegui|consegue|conseguem ~1 acessar|logar|entrar|anexar|enviar|emitir|cadastrar|concluir|finalizar|acompanhar|protocolar|baixar|abrir', '=link ~2 quebrado', 'instabilidade', 'indisponivel', '=bug', 'esqueci ~1 senha', 'recuperar ~1 senha'],
+            sis_slie:       ['SLIE', '=slie', 'sistema lei incentivo', 'sistema ~1 =lie'],
+            portal_mesp:    ['site/portal do Ministério', '=site|=portal|=pagina ~1 ministerio|mesp', '=site|=portal ~2 esporte'],
+            protocolo_digital: ['Protocolo Digital', 'protocolo digital', 'protocolar ~4 oficio|documento|requerimento|processo', 'peticionamento', 'sistema ~1 protocolo'],
+            falabr:         ['Fala.BR', 'fala br', 'falabr'],
+            registrar_manif: ['registro de manifestação', 'registrar|registro|fazer|abrir ~2 manifestacao|denuncia|reclamacao'],
+            acesso_conta:   ['acesso à conta', '=senha', '=login', 'acompanhar|consultar ~2 protocolo|manifestacao'],
+
+            // Atendimento
+            ouvidoria:     ['Ouvidoria', 'ouvidoria', 'ouvidor|ouvidora'],
+            disque:        ['Disque Esporte', 'disque esporte'],
+            telefone_mesp: ['telefone do Ministério', 'telefone ~3 ministerio|mesp', '=0800', 'central de atendimento', 'liguei|ligamos|ligando ~3 ministerio', 'ministerio ~4 telefone|telefones', 'falar ~3 ministerio'],
+            manif_resposta: ['resposta à manifestação', 'manifestacao|protocolo ~8 resposta|retorno|respondid*|respondessem|responderam|respondeu|encerrad*|arquivad*', 'resposta|retorno|respondeu|responderam ~4 manifestacao|protocolo', 'denuncia|reclamacao|solicitacao|pedido ~3 arquivad*|encerrad*|respondid*'],
+            sem_resposta:  ['falta de resposta', 'sem resposta|retorno', 'nao tive|obtive|recebi|houve|teve|tivemos ~1 resposta|retorno', 'ninguem respond*|retorn*', 'nao respond*', 'prazo ~2 venceu|vencido|expirou|esgotado', 'encerrad* sem', 'resposta generica|incompleta|insatisfatoria|padrao|evasiva', 'sem que respondessem', 'nao foi|foram respondid*', 'ainda nao respond*'],
+            atend_ruim:    ['atendimento ruim', 'ninguem atende', 'nao atende|atendem|atenderam|atendeu', 'nao consigo|consegui|conseguimos ~2 atendimento|orientacao|contato|falar|resposta', 'grosseir*', 'mal atendid*|educad*', 'desligou|desligaram', 'descaso', 'nao soube|souberam informar|orientar|responder|explicar', 'so da ocupado', 'ligacao cai|caiu', 'so chama|chamam', 'telefone|telefones ~2 mudo|ocupado|ocupados', 'ironic*', 'nao registrou|registraram ~2 reclamacao|manifestacao|denuncia|pedido', '^na espera', 'espera ~2 minutos|horas', 'demora ~2 atender|atendimento'],
+            atend_ref:     ['atendimento', 'atendimento', 'atendente', 'atendid*'],
+            contato_ref:   ['dados de contato', 'telefone', 'email', 'e mail', 'endereco', 'horario', 'contato', 'whatsapp'],
+
+            // Lei de Incentivo / Projetos / Editais
+            lie:          ['Lei de Incentivo ao Esporte', 'lei incentivo esporte', 'lei incentivo', '=lie', 'projeto incentivado', 'incentivo fiscal', 'incentivos fiscais', 'deducao ~2 imposto', 'captacao ~1 recurso', 'captar recurso', 'recibo ~1 captacao', 'prazo ~1 captacao', 'abater|deduzir|descontar|abatimento|desconto ~3 imposto', 'renuncia fiscal', 'incentivador', 'doar|doacao|doacoes ~4 projeto esportivo|incentivado|aprovado', 'lei 11 438', 'destinar|destinacao|direcionar ~3 imposto', 'imposto devido', 'parte do imposto'],
+            patrocinio:   ['patrocínio', 'patrocin*'],
+            projeto:      ['projeto', 'projeto', 'proposta'],
+            proj_esportivo: ['projeto esportivo', 'projeto esportivo|desportivo', 'projetos esportivos|desportivos', 'projeto ~2 esporte'],
+            transferegov: ['Transferegov', 'transferegov', 'transfere gov', '=siconv'],
+            emenda:       ['emenda parlamentar', 'emenda parlamentar', 'emendas parlamentares', 'emenda ~1 deputad*|senador*'],
+            convenio:     ['convênio / parceria', 'convenio', 'termo de fomento', 'termo de colaboracao', 'acordo de cooperacao', 'parceria', 'plano de trabalho'],
+            edital:       ['edital / chamamento', 'edital', 'chamamento', 'chamada publica', 'selecao publica', 'credenciamento'],
+
+            // Infraestrutura
+            equip_esportivo: ['equipamento esportivo', '=quadra|=quadras', 'ginasio', '=estadio|=estadios', 'centro olimpico', 'vila olimpica', 'centro de iniciacao ao esporte', '=cie', 'areninha', 'campo society', 'campo de futebol', 'campinho', 'pista de atletismo|skate', 'piscina', 'centro de treinamento', 'praca ~1 esporte|esportes', 'complexo esportivo', '=arena', 'equipamento esportivo', 'equipamentos esportivos', 'infraestrutura esportiva', 'espaco esportivo', 'poliesportiv*', 'academia ao ar livre', 'centro esportivo', 'parque olimpico', 'centro paralimpico', 'velodromo', 'tatame', 'aparelhos ~3 praca|academia|ginastica', 'pista ~1 corrida|caminhada|ciclismo|bicicross'],
+            obra:         ['obra / reforma', '=obra|=obras', 'reforma*', 'constru*', 'alicerce', 'empreiteira', 'construtora'],
+            infra_estado: ['estado de conservação', 'abandonad*', 'iluminacao', '=piso', 'cobertura', 'buraco', 'interditad*', 'parada|parado|paradas|parados|paralisad*', 'inacabad*', 'deteriorad*', 'precari*', 'manutencao', '=mato', 'goteira', 'infiltrac*', 'acessibilidade', 'depredad*', 'vandal*', 'pessimo estado', 'mau estado', 'retomad*', 'quebrad*', 'enferrujad*', 'rachad*', 'vazia|vazio', 'fechad*', '^servindo de', 'sem uso', 'alagad*', 'sem agua|luz', 'perigos*', 'desab*', 'entulho', 'invadid*'],
+            // Corrupção — indícios e objetos
+            irr_forte: ['indício de desvio ou fraude', 'desvio|desvios|desviou|desviaram|desviad*|desviando|desviar', 'superfatur*', 'sobrepreco', 'fraud*', 'lavagem de dinheiro', 'licitacao|pregao|contratac*|edital ~3 direcion*', 'direcion* ~3 licitacao|pregao|contratac*|empresa', '=laranja|=laranjas', 'empresa|empresas|obra|obras|funcionario|funcionarios fantasma|fantasmas', 'nota fria', 'notas frias', 'peculato', 'corrup*', 'enriquecimento ilicito', 'improbidade', 'rachadinha', '=cartel', 'conluio', 'mau uso', 'uso indevido', 'malversacao', 'sem licitacao', 'nunca|nao saiu do papel', 'nao executou|executaram|executada|executado', 'nao foram prestados|entregues', 'nao compareceu', 'embolsou|embolsaram', 'roubo|roubou|roubaram|roubalheira|roubando', 'propina', 'suborn*', 'caixa dois', 'desvio de finalidade', 'apropriacao indebita', 'falsific*', 'adulter*', 'forjad*|forjou|forjaram', 'empresa de fachada', 'cartas marcadas', 'licitacao|pregao|concorrencia ~2 fraudad*|viciad*|montad*|dirigid*|arranjad*|combinad*', 'nao|nunca foram|foi ~1 entregue|entregues|prestado|prestados|executado|executados|executada|construido|construida', 'lista|listas|nota|notas|recibo|recibos ~2 falsa|falsas|falso|falsos', 'ficou|ficaram com ~1 dinheiro', 'mensalinho', 'sem concorrencia', 'sem processo licitatorio', 'dispensa indevida', 'fracionamento', 'ficou|ficaram|fica|ficam com ~3 verba|verbas|dinheiro|recurso|recursos|valor|parte', 'dinheiro|verba|verbas|recurso|recursos ~4 sumiu|sumiram|desapareceu|desapareceram', 'sumiu|sumiram|desapareceu|desapareceram ~3 dinheiro|verba|verbas|recurso|recursos', '^por fora', 'acumul* ~2 cargo|cargos', 'sob medida', 'preco|valor|precos|valores ~2 mercado', 'dobro|triplo ~2 preco|valor', 'vezes ~1 preco|valor', 'adiantado|adiantada|antecipado|antecipada ~6 abandon*', 'abandonou|abandonaram ~1 obra|servico', 'pago|paga|pagos|pagou|pagaram integralmente ~8 so existe|nunca|nao existe|nada|abandon*|alicerce'],
+            irr_fraca: ['suspeita de irregularidade', 'irregular*', 'suspeit*', '^em desacordo', 'coisa errada', 'ilegal*', 'ilicit*', 'indevid*', '=esquema', 'aconteceu com ~1 dinheiro', 'foi parar ~1 dinheiro', 'cade ~1 dinheiro', 'sumiu|sumiram', 'falta de transparencia', 'pessima qualidade', 'favorec*', 'empresa ~3 criada|aberta|constituida|registrada', '^ja pagaram', '^ja pagou', '^ja receberam', '^ja recebeu', 'pago|paga|pagou|pagaram integralmente', 'recebeu tudo', 'sem prestar contas', 'duvidos*'],
+            contrato_obj: ['contrato / licitação', 'sem concorrencia', 'contrato', 'contratac*', 'contratad*', 'contratou|contrataram|contratar', 'licitac*', 'pregao', 'nota fiscal', 'notas fiscais', 'fornecedor', 'fiscal de contrato', 'atest*', 'compraram|comprou|compramos|adquiriu|adquiriram|aquisicao', 'construtora', 'empreiteira', 'empresa contratada|responsavel|vencedora'],
+            repasse_obj:  ['repasse / parceria', 'repass*', 'convenio', 'termo de fomento', 'termo de colaboracao', 'parceria', '=ong|=ongs|=osc|=oscip', 'transferencia voluntaria', 'emenda parlamentar'],
+            rec_publicos: ['recursos públicos', 'dinheiro publico', 'verba publica', 'verbas publicas', 'recurso publico', 'recursos publicos', 'erario', 'cofres publicos', 'dinheiro|verba|verbas|recurso|recursos ~1 ministerio|governo|povo|contribuinte|federal|federais'],
+            rec_gen:      ['recursos', 'recurso', 'verba', 'dinheiro'],
+            bens_publicos: ['bem ou despesa pública', 'carro|veiculo|viatura oficial', 'diaria', 'passagens', 'passagem aerea', 'cartao corporativo', 'bem publico', 'bens publicos', 'patrimonio publico', 'celular funcional', 'uniforme|uniformes|material|materiais|equipamento|equipamentos|kit|kits ~1 doado|doados|doada|doadas|cedido|cedidos', 'motorista', 'carro|veiculo|viatura ~1 ministerio|orgao|prefeitura|secretaria|governo', 'maquina publica', 'estrutura ~1 ministerio|publica', 'servidores|funcionarios|terceirizados ~3 particular|particulares|pessoal|pessoais', 'pago|paga|pagos|pagas|custeado|custeada|custeados|bancado|bancada|bancados ~2 orgao|ministerio|governo|prefeitura|secretaria|erario|contribuinte'],
+            uso_particular: ['uso particular', 'fins particulares|pessoais', 'uso particular|pessoal', 'viagens pessoais|particulares', 'despesas pessoais', 'interesse proprio|pessoal', 'beneficio proprio', 'proveito proprio', 'campanha politica|eleitoral', 'fins politicos|eleitorais|eleitoreiros', 'promocao pessoal', 'levar|buscar ~2 filho|filhos|filha|filhas|familia|esposa|marido', 'servico|servicos particular|particulares|pessoal|pessoais', 'fins proprios', 'casa ~1 dele|dela|propria', 'contas|gastos|compras|despesas pessoais|particulares', '^a passeio', 'viagem|viagens|viajou|viajaram ~3 passeio|turismo|lazer|particular|pessoal'],
+            nepotismo: ['nepotismo / favorecimento de familiar', 'nepotismo', 'nomeou|nomeado|nomeada|nomeacao|nomear|contratou|contratar|contratacao|empregou ~4 esposa|marido|filho|filha|irmao|irma|cunhad*|sobrinh*|parente*|familiar*|namorad*|conjuge|companheir*|genro|nora|sogro|sogra|primo|prima|tio|tia|neto|neta|afilhad*|compadre', 'empresa|firma|empreiteira|construtora|ong|entidade|entidades ~2 esposa|marido|filho|filha|irmao|irma|cunhad*|sobrinh*|parente*|familiar*|amigo|amiga|conhecido|conhecidos|genro|nora|sogro|sogra|primo|prima|tio|tia|neto|neta|afilhad*|compadre|socio', 'favorec* ~3 familiar*|parente*|amigo|amigos|conhecido|conhecidos', 'cabide de emprego', 'socio|socia|dono|dona|proprietario|proprietaria ~3 assessor|assessora|prefeito|prefeita|secretario|secretaria|vereador|vereadora|servidor|servidora|diretor|diretora|parente|irmao|irma|cunhad*|esposa|marido|filho|filha|amigo|amiga', 'colocou|colocar|pos|botou|arrumou|arranjou ~1 filha|filho|esposa|marido|irmao|irma|cunhad*|sobrinh*|parente|genro|nora|namorad* ~4 trabalhar|emprego|cargo|vaga|empresa|terceirizada'],
+            jornada:   ['descumprimento de jornada', 'so aparece|vem|comparece ~4 ponto', 'bate|bater ~1 ponto ~3 embora', 'nao cumpre|cumprem ~1 horario|jornada|carga', 'nao comparece|aparece ~2 trabalho|trabalhar', 'recebe sem trabalhar', 'servidor|servidora|funcionario|funcionaria fantasma'],
+            troca:     ['troca de favores', '^em troca de', '^em troca'],
+            vantagem:  ['propina / vantagem indevida', 'propina', 'suborn*', 'vantagem indevida', 'vantagens indevidas', 'beneficio indevido', 'beneficios indevidos', 'parte ~2 salario|salarios', 'devolver|devolvem|devolva ~2 salario|salarios', 'cobra|cobrando|cobrou|pedindo|pediu|exigindo|exigiu ~2 dinheiro|propina|comissao|porcentagem|percentual', 'favorecimento indevido', 'trafico de influencia', 'conflito de interesse|interesses', 'agrado|agrados', 'caixinha', 'cafezinho', 'por baixo dos panos', 'pede|pedem|pediu|pedindo ~2 presente|presentes|dinheiro|valor ~3 agilizar|liberar|aprovar|facilitar'],
+            // Apostas
+            aposta:      ['apostas', 'aposta|apostar|apostei|apostou|apostando|apostador|apostadora|apostadores', '=bet|=bets', 'tigrinho', 'cassino', 'jogo de azar', 'jogos de azar', 'betano', 'sportingbet', '=blaze', 'bet365', 'pixbet', 'quota fixa', 'viciad* ~2 jogo|jogos'],
+            manipulacao: ['manipulação de resultado', 'manipul* ~2 resultado|resultados|jogo|jogos|partida|partidas|placar', 'manipulacao', 'resultado|resultados combinado|combinados|arranjado|comprado|manipulado|manipulados|fabricado', 'combin* ~2 resultado|placar', 'entregou|entregar|entregaram|entregando ~1 jogo|partida', 'jogo|partida comprad*|combinad*|vendid*|arranjad*', 'vendeu|venderam|vender ~2 jogo|resultado|partida', '^de proposito', 'penalti|penaltis inexistente|inexistentes', 'receb* dinheiro ~4 perder|cartao|penalti|apostador|apostadores', 'mala branca|preta', 'perdeu|perder|perderam|perdendo ~1 proposito', 'corpo mole', 'facilit* ~2 jogo|partida|resultado|vitoria|gol', 'ofereceu|oferecer|ofereceram|pagou|pagaram|recebeu|receberam|deram dinheiro ~4 goleiro|jogador|jogadores|arbitro|juiz|adversario|adversaria|time|equipe', 'suborn*|comprou|compraram|comprar ~3 arbitro|juiz|jogador|jogadores|goleiro|resultado|jogo|partida', 'recebeu|receberam|ganhou|ganharam ~1 tomar|levar|perder|errar|entregar|facilitar ~3 cartao|penalti|gol|jogo|partida', 'placar|resultado ~2 acertado|combinado|arranjado|definido|decidido', 'acert* ~2 placar|resultado'],
+            // Entidades
+            entidade_gen: ['entidade esportiva', 'confederacao', 'federacao', 'clube', '=liga ~1 futsal|futebol|esportiva|desportiva|basquete|volei|handebol|amadora|municipal|nacional', 'associacao esportiva|desportiva|atletica', 'entidade esportiva|desportiva', 'entidades esportivas|desportivas', 'comite olimpico|paralimpico', 'agremiacao'],
+            entidade_palavra: ['entidade', 'entidade', 'associacao', 'instituto'],
+            governanca:   ['gestão da entidade', 'eleicao', 'presidente', 'mandato', 'perpetu*', 'estatuto', 'assembleia', 'filiad*', 'dirigente', '=taxa|=taxas', 'anuidade', 'salario', 'transparencia', '^nao presta contas', 'intervencao', 'fiscaliza*', 'entidade privada', 'desfili*', 'cobra|cobram|cobrando', 'exige|exigem ~1 pagamento', 'gestao temeraria', 'direitos trabalhistas', 'divida', 'inadimpl*', 'receber ~2 dinheiro|recurso|recursos|verba|verbas ~1 publico|publicos|publica|publicas', 'convoc*', 'ranking', 'satisfacao', 'repassa|repassam|repassou', 'liberar|liberacao|libera ~2 registro|passe|atleta|transferencia', 'registro ~2 atleta|jogador|filho|filha', 'por amizade', 'panelinha', 'escolheu|escolha|escolhidos|convocou|convocados ~5 amizade|politica|apadrinh*'],
+            certificacao: ['certificação de entidade', 'certidao ~1 registro cadastral', 'registro cadastral', 'certificac*', 'lei pele', 'lei geral do esporte'],
+
+            // Competições e demais temas de Esporte
+            competicao:   ['competição / evento esportivo', 'competicao', 'campeonato', 'torneio', 'olimpiada|olimpiadas escolar|escolares|estudantil|estudantis', 'jogos escolares|universitarios|abertos|regionais|estudantis|indigenas', 'jogos da juventude', '=jebs|=jubs', '=copa', 'corrida de rua', 'maratona', 'evento esportivo', 'eventos esportivos', 'etapa ~3 circuito|campeonato|copa|corrida|torneio', 'circuito ~2 nacional|estadual|brasileiro|corrida|corridas|rua|mundial', 'seletiva', 'jogos ~1 cidade|municipio|interior|estaduais|municipais|comunitarios', 'festival ~1 esportivo|esporte|esportes', 'rodada', 'brasileirao', 'meia maratona', 'triatlo|triathlon', 'prova ~1 ciclismo|atletismo|natacao|rua|pedestre'],
+            evento:       ['evento', 'evento'],
+            comp_org:     ['organização do evento', 'alter* ~2 data|regulamento|local|horario', 'mud* ~3 data|regulamento', 'adiou|adiad*|adiamento', 'cancel*', 'calendario', 'inscrev*|inscri*', 'regulamento', 'organizac*|organizad*', 'arbitragem', 'ambulancia', 'premiacao', 'apoio ~3 participar', 'passagens', '=provas', 'realizacao', 'desclassific*', 'arbitr*', 'etapa', 'tabela', 'sumula', 'medalha', 'trofeu'],
+            olimpiadas:   ['Jogos Olímpicos', '=olimpiadas', 'jogos olimpicos', 'ciclo olimpico', 'los angeles 2028', 'paris 2024', 'delegacao olimpica', 'time brasil'],
+            olimp_fraco:  ['referência olímpica', '=olimpiada', 'atleta olimpico', 'atletas olimpicos', 'esporte olimpico', 'modalidade olimpica'],
+            olimp_outra:  ['olimpíada escolar ou de conhecimento', 'olimpiada|olimpiadas escolar|escolares|estudantil|estudantis|matematica|conhecimento|ciencias|xadrez|portugues|historia|brasileira'],
+            paralimpiadas: ['Jogos Paralímpicos', 'paralimpiada|paraolimpiada', 'jogos paralimpicos|paraolimpicos', 'ciclo paralimpico'],
+            paralimp_fraco: ['referência paralímpica', 'atleta paralimpico|paraolimpico', 'atletas paralimpicos|paraolimpicos', 'esporte paralimpico', 'paralimpic*|paraolimpic*'],
+            fut_fem:      ['futebol feminino', 'futebol feminino', 'futebol ~1 mulheres', 'jogadoras ~3 futebol', 'selecao feminina ~1 futebol', 'brasileirao feminino', 'feminino|feminina ~1 futebol', 'futebol ~2 feminino|feminina', 'meninas|mulheres ~3 futebol', 'futebol ~3 meninas|mulheres'],
+            paradesporto: ['paradesporto', 'paradesport*', 'paratleta*', 'esporte adaptado', 'esportes adaptados', 'pessoa|pessoas com deficiencia', '=pcd|=pcds', 'deficiencia visual|fisica|intelectual|auditiva|motora|multipla', 'tem deficiencia', 'cadeirante', 'cadeira de rodas', 'autis*', 'sindrome de down', 'goalball', 'esporte inclusivo', 'paralisia cerebral', 'com deficiencia', 'amputad*', 'tetraplegic*|paraplegic*', 'baixa visao', 'espectro autista'],
+            programa_social: ['programa social de esporte', 'programa|nucleo|projeto ~3 segundo tempo', '=pst', '=pelc', 'esporte lazer cidade', 'vida saudavel', 'esporte comunitario'],
+            seg_tempo:    ['Segundo Tempo', 'segundo tempo'],
+            jogo_ctx:     ['contexto de jogo', '=jogo|=jogos', 'partida', 'minuto', '=gol|=gols', 'penalti', 'placar', 'arbitro', 'zagueiro', 'atacante', 'goleiro', '=44|=45|=30|=40 ~0 segundo'],
+            projeto_social: ['projeto social', 'projeto social', 'projetos sociais', 'projeto ~2 comunidade|bairro', 'acao social'],
+            comunidade:   ['comunidade', 'comunidade', 'bairro', 'criancas', 'idosos', 'periferia', 'zona rural', 'carentes'],
+            nucleo:       ['núcleo', 'nucleo'],
+            escolinha:    ['escolinha', 'escolinha'],
+            doacao_material: ['doação de material esportivo', 'doacao ~3 material|materiais|bola|bolas|uniforme|uniformes|rede|redes|colete|coletes|equipamento|equipamentos|kit|kits', 'material esportivo', 'materiais esportivos', 'kit esportivo', 'kits esportivos'],
+            esporte_lazer: ['esporte educacional / de participação', 'esporte lazer', 'esporte educacional', 'esporte amador', 'esporte ~1 escola|escolas', 'esporte social'],
+            rede:         ['Rede de Desenvolvimento do Esporte', 'rede desenvolvimento esporte'],
+            doping:       ['controle de dopagem', 'doping', 'dopagem', 'antidop*', 'anabolizante', 'substancia proibida', 'substancias proibidas', '=abcd'],
+
+            // Assédio — tipo
+            assedio_gen:     ['assédio (tipo não informado)', 'assedi*|asedi*|acedi*'],
+            ass_moral_exp:   ['assédio moral', 'assedi*|asedi* moral|morais|moralmente|institucional'],
+            ass_sexual_exp:  ['assédio / violência sexual', 'assedi*|asedi*|abuso|abusos|abusou|importunac*|violencia sexual|sexuais|sexualmente', 'estupr*', 'conotacao|teor|cunho|carater sexual', 'favor|favores sexual|sexuais', 'sexualmente', 'pedofil*', 'alici*', 'conduta|ato|atos|natureza sexual|sexuais'],
+            ato_sexual:      ['contato físico sem consentimento', 'passou|passava|passar|passando ~1 mao', 'partes intimas', 'tocou|tocava|tocar|tocando|toque|toques ~3 consentimento|intima|intimas|corpo|seios|pernas', 'beij*', '^a forca', 'apalp*', 'encox*', 'agarrou|agarrar|agarrava|agarrando', 'sem consentimento', 'tentou ~1 beij*|agarr*|tocar|abracar', 'esfreg*', 'caricia', 'tocou|tocava|tocar|toque|toques ~4 inapropriad*|indevid*|inadequad*|malicios*', '^tocou em mim', '^me tocou', '^tocou nela', '^tocou nele'],
+            conot_sexual:    ['comentários ou mensagens de teor sexual', 'comentario|comentarios ~3 corpo|roupa|roupas|aparencia', 'mensagem|mensagens|foto|fotos|video|videos ~3 intima|intimas|intimo|intimos|inapropriad*|obscen*|pornograf*', '=nudes', 'piada|piadas|piadinha|piadinhas ~3 sexual|sexuais', 'convite|convites intimo|intimos', 'insinuac*', 'cantada', 'proposta indecente', 'obscen*', 'pornograf*', 'elogio|elogios ~3 corpo|aparencia|roupa', 'mensagem|mensagens ~4 corpo', 'pediu|pedia|pedindo|pedem|exigiu ~1 foto|fotos|nudes', 'olhares', 'pelad*', 'filma*|fotograf*|espion* ~4 vestiario|banho|trocando', 'coisas|palavras|frases|gestos obscenas|obscenos|indecentes|pornograficas', 'pedindo|pede|pediu|pedem ~1 foto|fotos'],
+            investida:       ['investida pessoal insistente', 'chamou|chama|convidou|convida|chamando ~2 sair|motel|jantar', '^sair com ele', '^sair com ela', '^saisse com', '^sair comigo', 'insiste|insistiu|insistindo ~3 sair|encontro|encontros|abracar', 'esperando|espera|esperava ~3 saida', 'me segue|seguiu|seguindo', 'dar em cima', 'da|dando|deu em cima', 'convida|convidou|convidam ~4 jantar|sair|motel|beber'],
+            abuso_gen:       ['abuso', 'abuso|abusos|abusou|abusava|abusada|abusado|abusar|abusador'],
+            menor:           ['criança ou adolescente', 'menor|menores de idade', 'crianca', 'adolescente', 'filha', 'filho', 'meninas|meninos', '=14|=15|=16|=17|=13|=12 anos', '=13|=12|=11|=10 anos', 'aluno|alunos|aluna|alunas'],
+            humilhacao:      ['humilhação / gritos / xingamentos', 'humilha|humilham|humilhou|humilhava|humilhad*|humilhac*|humilhando|humilhar', 'xing*', 'grita|gritam|gritou|gritava|gritos|gritando|gritar', '^aos berros', 'ridiculariz*', 'chama|chamou|chamava|chamam|chamando ~1 burr*|preguicos*|incompetent*|inutil|inuteis|gord*|incapaz*|idiota*|imbecil*|lixo|vagabund*|fracassad*|ignorante*', 'ofend*|ofens*', 'insult*', 'deboch*', 'frente ~1 todos|colegas|time|equipe|grupo', 'desqualific*', 'menosprez*', 'rasgou|rasgados|rasgado|rasga', 'desprez*', 'me ignora|ignorou|ignoram', 'ignora ~2 email|emails|mensagens|pedidos', 'trata|tratam|tratou|tratada|tratado|tratados|tratadas ~1 mal|desprezo|grosseria|gritos|berros', 'maltrat*', 'inferioriz*', 'desmoraliz*', 'difam*', 'calun*', 'chacota', 'zomb*', 'apelido|apelidos', 'bullying', 'hostil*', 'chama|chamou|chamava|chamam|chamando ~1 frac*|mole|moles|covarde*|lerd*|fei*', 'me diminui|diminuiu|diminuir', 'ambiente toxico', 'ridiculo', 'expoe|expos|expor|exposta|exposto|expostos ~3 vergonha|todos|colegas|equipe', 'ofensa|ofensas'],
+            perseguicao:     ['perseguição / isolamento', 'persegu*', 'isola|isolou|isolando|isolada|isolado|isolamento', 'exclui|excluiu|excluida|excluido|exclusao ~3 reunioes|equipe|grupo|atividades', 'retirada|retirou|retiraram|tirou|tiraram ~4 atribuicoes|funcoes|tarefas', 'sobrecarreg*', 'tarefas|metas impossiveis|abusivas|inatingiveis', '^fala mal', 'boicot*', 'represalia', 'retali*', 'retirad* ~4 projetos|atividades', 'tiraram|tirou|cortaram|cortou ~2 gratificacao|funcao', 'proibe|proibiu|proibida|proibido ~3 falar|conversar', 'deixando ~3 banco', 'vinganc*', 'pior nota', 'avaliacao ~3 injusta|baixa|ruim|vinganca|represalia', 'abuso de poder|autoridade', 'coag*|coacao', 'pressao psicologica', 'terror|tortura psicologico|psicologica', 'castig*', 'obriga|obrigou|obrigam|obrigava ~4 lesionad*|machucad*|doente|doentes|dor', 'treinar|competir|jogar lesionad*|machucad*', 'transferid* ~3 castigo|punicao|represalia', 'me pune|puniu', 'geladeira', 'sem tarefas|atribuicoes|funcao|funcoes', 'esvazi*', 'ociosidade', 'acabar|prejudicar|destruir ~2 carreira', 'encurral*', 'transferida|transferido ~2 setor|unidade|area'],
+            ameaca:          ['ameaça', 'ameac*'],
+            violencia_fis:   ['agressão física', 'agress*', 'agrediu|agredida|agredido|agredidos|agredidas|agridem|agride', 'espanc*', 'violencia fisica', '=soco|=socos|=tapa|=tapas', 'bate|batia|bateu|batem|batendo ~2 aluno|alunos|aluna|alunas|atleta|atletas|crianca|criancas|menino|meninos|menina|meninas|jogador|jogadores|jogadora|jogadoras', 'empurr*', 'castigo fisico', 'castigos fisicos', 'punicao fisica', 'apanhou|apanha|apanhava|apanharam', 'surra', 'bateu|batia|bate|bater ~2 mim|filho|filha|menino|menina'],
+            constrangimento: ['constrangimento / intimidação', 'constrang*', 'vexatori*', 'intimidac*|intimidad*|intimida|intimidou'],
+            discriminacao:   ['discriminação', 'racis*', 'discrimin*', 'preconceit*', 'homofob*', 'transfob*', 'xenofob*', 'injuria racial', 'machis*', 'misogin*', 'capacitis*', 'recusou|recusaram|negou|negaram ~3 aceita*|matricula*|inscri*'],
+
+            // Assédio — ambiente
+            amb_esp_forte:  ['ambiente esportivo', 'atleta*', 'paratleta*', 'treinador*', 'clube', 'federacao', 'confederacao', '=selecao', 'jogador*', 'delegacao', 'vestiario', 'treino|treinos', 'treina|treinam|treinava', 'escolinha', 'campeonato', 'comissao tecnica', 'massagista', 'preparador fisico', 'dirigente', 'arbitro', 'ginast*', 'centro de treinamento', 'torcida', 'educacao fisica', 'olheiro', 'peneira', 'escola de futebol', 'categoria|categorias de base', 'sub ~0 =11|=13|=15|=17|=20'],
+            amb_esp_fraco:  ['contexto esportivo', 'equipe', '=time|=times', 'tecnico|tecnica', 'competicao', 'aula', 'aluno|aluna', 'professor|professora', 'partida'],
+            amb_trab_forte: ['ambiente de trabalho no serviço público', 'servidor|servidora', 'terceirizad*', 'estagiari*', 'chefe', 'chefia', 'superior|superiora hierarquico|hierarquica', 'coordenador|coordenadora', 'gerente', '=setor|=setores', 'unidade', '=orgao', 'colega|colegas de trabalho', 'ambiente de trabalho', '^no trabalho', 'reparticao', 'gestao de pessoas', 'avaliacao de desempenho', 'comissionad*', 'encarregad*', 'colaborador|colaboradora', 'coordenacao geral', 'demitir|demitiu|demissao|demitida|demitido', 'exoner*', 'fiscal ~1 contrato', 'atribuicoes', 'diretoria', 'reunioes', 'divisao', 'gabinete', 'coordenacao', 'chefe ~1 divisao|gabinete|setor|secao'],
+            amb_trab_fraco: ['contexto de trabalho', 'trabalho', 'diretor|diretora', 'colegas', 'funcionari*', 'supervisor|supervisora', 'ministerio', 'secretaria', 'acesso ~2 sistema|sistemas|rede|email|computador', 'denunciei|denunciou ~3 irregularidade|irregularidades|chefia|chefe|gestor|gestora'],
+
+            // Fora do escopo do Ministério
+            alheio: ['assunto de outro órgão', '=inss', '=sus', 'receita federal', 'bolsa familia', 'posto de saude', 'hospital', 'detran', 'auxilio brasil', 'cadunico', '=fgts', 'seguro desemprego', '=enem', '=prouni', '=fies', 'minha casa minha vida', 'aposentadoria', 'buraco ~2 rua', 'iluminacao publica', 'carteira de trabalho', 'passaporte', 'restituicao', 'conta de luz|agua', '=iptu|=ipva', 'transporte publico'],
         };
 
-        const classificationSuggestionRules = [
-            { a: 'atendimento_publico', s: 'Disque Esporte', strong: ['disque esporte', 'telefone do esporte', 'ligar para ouvidoria'], context: ['ligacao', 'telefone', 'contato'], weak: ['atendimento'] },
-            { a: 'atendimento_publico', s: 'Ouvidoria', strong: ['ouvidoria', 'atendimento da ouvidoria', 'falar com a ouvidoria'], context: ['ouvidoria'], weak: ['atendimento'] },
-            { a: 'atendimento_publico', s: 'Fala.BR', strong: ['fala br', 'falabr', 'registrar uma manifestacao', 'registrar manifestacao', 'plataforma fala'], context: ['manifestacao', 'protocolo', 'registro'], weak: [] },
-            { a: 'assedio_moral', s: 'Relação entre agentes públicos',
-              strong: ['assedio moral', 'assedio institucional', 'assedio moral no trabalho', 'assedio moral no servico publico', 'humilha', 'humilhacao', 'humilhado', 'humilhada', 'humilhante', 'humilhacoes', 'persegue', 'perseguicao', 'perseguido', 'perseguida', 'constrangimento', 'constrangido', 'constrangida'],
-              context: ['servidor', 'servidora', 'servidores', 'chefe', 'chefia', 'superior', 'superiores', 'gerente', 'coordenador', 'coordenadora', 'trabalho', 'ambiente de trabalho', 'servico publico', 'orgao publico', 'ministerio', 'reparticao', 'colegas', 'estagiario', 'estagiaria', 'supervisor', 'supervisora', 'funcionario', 'funcionaria', 'funcionarios'],
-              weak: ['assedio'] },
-            { a: 'assedio_sexual', s: 'Relação entre agentes públicos',
-              strong: ['assedio sexual', 'assedio sexual no trabalho', 'abuso sexual', 'importunacao sexual', 'assediado sexualmente', 'assediada sexualmente', 'assediando sexualmente', 'tocou sem consentimento', 'toque sem consentimento', 'me tocou', 'comentarios sexuais', 'comentario sexual', 'cantada indesejada', 'cantadas indesejadas', 'proposta indecente', 'chantagem sexual'],
-              context: ['servidor', 'servidora', 'servidores', 'chefe', 'chefia', 'superior', 'superiores', 'gerente', 'coordenador', 'coordenadora', 'trabalho', 'ambiente de trabalho', 'servico publico', 'orgao publico', 'ministerio', 'reparticao', 'colegas', 'estagiario', 'estagiaria', 'supervisor', 'supervisora', 'funcionario', 'funcionaria', 'funcionarios'],
-              weak: ['assedio', 'sexual'] },
-            { a: 'esporte', s: 'Bolsa Atleta',
-              strong: ['bolsa atleta', 'bolsa-atleta', 'programa bolsa atleta', 'pagamento da bolsa atleta', 'pagamento do bolsa atleta', 'beneficio bolsa atleta', 'auxilio bolsa atleta', 'parcela da bolsa atleta', 'parcela do bolsa atleta', 'bolsa podio'],
-              context: ['atleta', 'atletas', 'pagamento', 'atraso', 'atrasada', 'atrasado', 'atrasados', 'atrasadas', 'receber', 'recebimento', 'recebi', 'beneficio', 'deposito', 'depositado', 'sistema bolsa atleta', 'parcela', 'mes', 'meses', 'pagar', 'pagam'],
-              weak: ['bolsa'] },
-            { a: 'esporte', s: 'Entidades Desportivas', strong: ['entidade desportiva', 'entidade esportiva', 'confederacao', 'federacao', 'clube esportivo', 'liga esportiva', 'associacao esportiva', 'cbf', 'cbv', 'cbat', 'cbb', 'cbj', 'cbt', 'cbtm', 'cob', 'cpb', 'fifa', 'coi', 'ipc', 'conmebol', 'cbd', 'cbda', 'cbc', 'cbg', 'cbh', 'cbsb', 'cbtkd', 'cbw', 'confederacao brasileira de futebol', 'confederacao brasileira de volei', 'confederacao brasileira de atletismo', 'comite olimpico do brasil', 'comite paralimpico brasileiro'], context: ['confederacao', 'federacao', 'clube', 'liga', 'associacao', 'entidade', 'time', 'equipe'], weak: [] },
-            { a: 'esporte', s: 'Competições e Eventos Esportivos', strong: ['competicao esportiva', 'evento esportivo', 'campeonato esportivo', 'torneio esportivo', 'alterou a data', 'mudou a data', 'alteracao de data', 'alterar a data', 'adiou a competicao', 'cancelou a competicao'], context: ['competicao', 'campeonato', 'torneio', 'evento', 'data'], weak: ['competicao', 'campeonato', 'torneio', 'evento'] },
-            { a: 'esporte', s: 'Olimpíadas e Ciclo Olímpico', strong: ['olimpiada', 'jogos olimpicos', 'ciclo olimpico', 'jogos olimpicos de paris', 'jogos olimpicos de los angeles'], context: ['olimpico', 'olimpiada', 'cob'], weak: [] },
-            { a: 'esporte', s: 'Paralimpíadas e Ciclo Paralímpico', strong: ['paralimpiada', 'jogos paralimpicos', 'ciclo paralimpico', 'jogos paralimpicos de paris'], context: ['paralimpico', 'paralimpiada', 'cpb'], weak: [] },
-            { a: 'esporte', s: 'Futebol Feminino', strong: ['futebol feminino', 'futebol das mulheres', 'brasileirao feminino'], context: ['futebol', 'mulheres'], weak: [] },
-            { a: 'esporte', s: 'Paradesporto', strong: ['paradesporto', 'esporte para pessoas com deficiencia', 'esporte para pessoa com deficiencia', 'esporte adaptado'], context: ['paradesporto', 'acessibilidade', 'inclusao'], weak: [] },
-            { a: 'esporte', s: 'Esporte Comunitário', strong: ['esporte comunitario', 'projeto comunitario', 'esporte para a comunidade', 'esporte na comunidade'], context: ['comunidade', 'quadra', 'materiais'], weak: [] },
-            { a: 'esporte', s: 'Lei de Incentivo ao Esporte', strong: ['lei de incentivo ao esporte', 'lei de incentivo', 'incentivo ao esporte', 'projeto incentivado', 'captacao de recursos', 'lic'], context: ['proponente', 'proposta', 'documentacao', 'captacao', 'patrocinio'], weak: ['incentivo'] },
-            { a: 'esporte', s: 'Projetos Esportivos', strong: ['projeto esportivo', 'projetos esportivos', 'aprovacao de projeto'], context: ['projeto', 'proponente', 'prestacao de contas', 'termo de fomento'], weak: [] },
-            { a: 'esporte', s: 'Editais e Chamamentos', strong: ['edital', 'chamamento publico', 'chamamento', 'edital de credenciamento'], context: ['edital', 'chamamento', 'inscricao', 'prazo', 'resultado', 'recurso'], weak: [] },
-            { a: 'esporte', s: 'Infraestrutura Esportiva', strong: ['infraestrutura esportiva', 'centro olimpico', 'ginasio esportivo', 'quadra esportiva', 'construcao de quadra', 'reforma de ginasio', 'obra parada', 'obra inacabada', 'obra abandonada', 'obra nao terminada', 'construcao parada', 'reforma parada', 'obra nao iniciada', 'obra atrasada', 'obra interditada', 'obra embargada'], context: ['ginasio', 'quadra', 'reforma', 'manutencao', 'acessibilidade', 'obra', 'construcao', 'prefeitura', 'municipio', 'estado'], weak: [] },
-            { a: 'corrupcao', s: 'Infraestrutura Esportiva', strong: ['obra superfaturada', 'superfaturamento de obra', 'desvio de verba em obra', 'obra fantasma', 'licitacao de obra', 'empreiteira', 'propina em obra', 'obra irregular', 'recursos desviados obra', 'desvio de recursos na construcao', 'fraude em licitacao de obra'], context: ['obra', 'reforma', 'construcao', 'licitacao', 'contrato', 'verba', 'recurso', 'desvio', 'superfaturado', 'propina', 'corrupcao', 'irregularidade'], weak: [] },
-            { a: 'esporte', s: 'Rede de Desenvolvimento do Esporte *', strong: ['rede de desenvolvimento do esporte'], context: ['capacitacao', 'orientacao'], weak: [] },
-            { a: 'esporte', s: 'Tecnologia da Informação e Sistemas', strong: ['sistema bolsa atleta', 'sistema da lei de incentivo', 'slie', 'sistema slie', 'sistema de protocolo'], context: ['sistema', 'erro', 'falha', 'acesso', 'portal', 'site'], weak: [] },
-            { a: 'esporte_seguro', s: 'Assédio moral no ambiente esportivo', strong: ['assedio moral', 'assedio moral no ambiente esportivo', 'assedio moral no esporte', 'humilha', 'humilhacao', 'humilhado', 'humilhada', 'humilhante', 'humilhacoes', 'persegue', 'perseguicao', 'perseguido', 'perseguida', 'chama de incapaz', 'incapaz', 'constrangimento'], context: ['ambiente esportivo', 'esporte', 'esportivo', 'atleta', 'atletas', 'clube', 'treinador', 'treinadora', 'treinamento', 'comissao tecnica', 'equipe', 'campeonato', 'competicao', 'competicoes', 'torneio', 'vestiario', 'time', 'jogador', 'jogadora', 'jogadores', 'tecnico', 'tecnica', 'professor de educacao fisica'], weak: ['assedio'] },
-            { a: 'esporte_seguro', s: 'Assédio sexual no ambiente esportivo', strong: ['assedio sexual', 'assedio sexual no ambiente esportivo', 'assedio sexual no esporte', 'abuso sexual', 'importunacao sexual', 'comentarios sexuais', 'comentario sexual', 'tocou sem consentimento', 'toque sem consentimento', 'me tocou', 'sem consentimento', 'assediado sexualmente', 'assediada sexualmente', 'assediando sexualmente'], context: ['ambiente esportivo', 'esporte', 'esportivo', 'atleta', 'atletas', 'clube', 'treinador', 'treinadora', 'treinamento', 'comissao tecnica', 'equipe', 'campeonato', 'competicao', 'competicoes', 'torneio', 'vestiario', 'time', 'jogador', 'jogadora', 'jogadores', 'tecnico', 'tecnica', 'professor de educacao fisica'], weak: ['assedio', 'sexual'] },
-            { a: 'ti_sistemas', s: 'Protocolo Digital', strong: ['protocolo digital', 'sistema de protocolo'], context: ['protocolo', 'documento', 'erro', 'falha', 'acesso'], weak: [] },
-            { a: 'ti_sistemas', s: 'Portal do Ministério do Esporte', strong: ['portal do ministerio do esporte', 'site do ministerio do esporte', 'portal do mesp', 'site do mesp'], context: ['portal', 'site', 'acesso', 'erro', 'falha'], weak: [] },
-            { a: 'premios_apostas', s: 'Manipulação de resultados', strong: ['manipulacao de resultados', 'manipulacao de resultado', 'manipular resultado', 'manipular o resultado', 'resultado combinado', 'resultado previamente combinado', 'combinar o resultado', 'combinar resultado', 'pagar jogadores', 'pagamento a jogadores', 'pagar atletas', 'favorecer uma equipe', 'favorecer equipe', 'alterar deliberadamente o resultado', 'alterar o resultado', 'fraude em uma partida', 'fraude em partida', 'fraude em competicao', 'fraude em uma competicao', 'jogo comprado', 'partida combinada', 'resultado manipulado'], context: ['manipulacao', 'resultado', 'aposta', 'apostas', 'bets', 'partida', 'jogadores', 'pagamento', 'competicao', 'campeonato', 'equipe', 'favorecer', 'fraude'], weak: [] },
-            { a: 'premios_apostas', s: 'Regulamentação e Fiscalização', strong: ['apostas esportivas', 'aposta esportiva', 'casa de aposta', 'casas de apostas', 'regulamentacao de apostas', 'fiscalizacao de apostas', 'bets', 'betano', 'sportingbet', 'blaze'], context: ['aposta', 'apostas', 'bets', 'fiscalizacao', 'regulamentacao'], weak: [] },
-            { a: 'corrupcao', s: 'Contratos e Contratações Públicas', strong: ['contrato publico', 'contratos publicos', 'contratacao publica', 'licitacao', 'pregao', 'empresa contratada', 'dispensa de licitacao'], context: ['contrato', 'contratacao', 'licitacao', 'pregao', 'pagamento', 'obra'], weak: [] },
-            { a: 'corrupcao', s: 'Parcerias e Repasses', strong: ['repasse de recursos', 'repasse de recurso', 'convenio', 'parceria', 'termo de fomento', 'termo de colaboracao'], context: ['repasse', 'repasses', 'convenio', 'parceria', 'proponente'], weak: [] },
-            { a: 'corrupcao', s: 'Gestão de Recursos Públicos', strong: ['recursos publicos', 'recurso publico', 'dinheiro publico', 'verba publica', 'desvio de recursos', 'gestao de recursos publicos', 'desvio de verba'], context: ['recursos', 'verba', 'dinheiro', 'desvio', 'prestacao de contas'], weak: [] },
-            { a: 'corrupcao', s: 'Conduta e Benefícios Indevidos', strong: ['nepotismo', 'favorecimento de familiar', 'beneficio indevido', 'vantagem indevida', 'favorecimento indevido', 'propina', 'suborno'], context: ['nepotismo', 'familiar', 'favorecimento', 'vantagem', 'servidor'], weak: [] }
+        // Conceitos cuja menção negada deve ser descartada ("não se trata de assédio").
+        const SG_NEGAVEIS = new Set(['assedio_gen', 'ass_moral_exp', 'ass_sexual_exp', 'abuso_gen', 'irr_forte', 'irr_fraca', 'manipulacao', 'nepotismo', 'vantagem', 'discriminacao']);
+
+        // Conceitos derivados (combinações reutilizadas nas regras).
+        const SG_DERIVADOS = {
+            irr:          'irr_forte || irr_fraca',
+            suspeita:     'irr_fraca || (n_denuncia && !n_como_denunciar)',
+            corr_grave:   'irr_forte || vantagem || nepotismo || jornada || (troca && amb_trab_forte)',
+            obra_obj:     'equip_esportivo || obra',
+            entidade:     'entidade_esp || entidade_gen',
+            falha_sis:    'falha_tecnica && (sis_ref || sis_slie || portal_mesp || protocolo_digital || falabr)',
+            sis_programa: 'sis_slie || (sis_ref && (bolsa_atleta || lie))',
+        };
+
+        // Entidades: [sigla, nome, tag do catálogo (ou null), padrões extras]
+        const SG_ENTIDADES = [
+            ['cbf', 'Confederação Brasileira de Futebol', 'Confederação Brasileira de Futebol (CBF)'],
+            ['cbat', 'Confederação Brasileira de Atletismo', 'Confederação Brasileira de Atletismo (CBAt)'],
+            ['cbtm', 'Confederação Brasileira de Tênis de Mesa', 'Confederação Brasileira de Tênis de Mesa (CBTM)'],
+            ['cbbt', 'Confederação Brasileira de Beach Tennis', 'Confederação Brasileira de Beach Tennis'],
+            ['cbjj', 'Confederação Brasileira de Jiu-Jitsu', 'Confederação Brasileira de Jiu-Jitsu'],
+            ['cbsk', 'Confederação Brasileira de Skateboarding', 'Confederação Brasileira de Skateboarding', ['confederacao brasileira skate|skateboard']],
+            ['cbv', 'Confederação Brasileira de Voleibol', null, ['confederacao brasileira volei']],
+            ['cbb', 'Confederação Brasileira de Basketball', null, ['confederacao brasileira basquete|basquetebol']],
+            ['cbj', 'Confederação Brasileira de Judô', null],
+            ['cbt', 'Confederação Brasileira de Tênis', null],
+            ['cbda', 'Confederação Brasileira de Desportos Aquáticos', null],
+            ['cbc', 'Confederação Brasileira de Ciclismo', null],
+            ['cbg', 'Confederação Brasileira de Ginástica', null],
+            ['cbhb', 'Confederação Brasileira de Handebol', null],
+            ['cbtkd', 'Confederação Brasileira de Taekwondo', null],
+            ['cob', 'Comitê Olímpico do Brasil', null, ['comite olimpico brasileiro']],
+            ['cpb', 'Comitê Paralímpico Brasileiro', null, ['comite paralimpico brasil']],
+            ['coi', 'Comitê Olímpico Internacional', null],
+            ['fifa', 'FIFA', null],
+            ['conmebol', 'CONMEBOL', null],
         ];
 
-        const CLASSIFICATION_NO_FUZZY = new Set(['assedio', 'campeonato', 'competicao', 'competicoes', 'torneio', 'evento', 'equipe', 'atleta', 'atletas', 'esporte', 'esportivo', 'clube', 'resultado', 'resultados', 'pagamento', 'partida', 'federacao', 'confederacao', 'treinador', 'data', 'jogo', 'jogos', 'sistema', 'portal', 'site', 'acesso', 'erro', 'falha', 'projeto', 'edital', 'recurso', 'servidor', 'contrato', 'aposta', 'apostas', 'fraude', 'jogadores', 'sem', 'uma', 'para', 'com', 'que']);
+        // ───────────────────────────── 4. TAGS ─────────────────────────────
+        // t: tag do catálogo · p: padrões no texto · se: expressão sobre conceitos · g: grupo (o termo mais longo vence)
+        const SG_TAGS = [
+            // Modalidades
+            { t:'Futebol', g:'mod', p:['futebol'] }, { t:'Futebol de Mesa', g:'mod', p:['futebol de mesa', 'futmesa'] },
+            { t:'Hipismo', g:'mod', p:['hipismo'] }, { t:'Atletismo', g:'mod', p:['atletismo'] },
+            { t:'Basquete', g:'mod', p:['basquete|basquetebol|basketball'] }, { t:'Boxe', g:'mod', p:['=boxe|boxeador*'] },
+            { t:'Canoagem', g:'mod', p:['canoagem'] }, { t:'Ciclismo', g:'mod', p:['ciclismo|ciclista'] }, { t:'Esgrima', g:'mod', p:['esgrima'] },
+            { t:'Esports', g:'mod', p:['esports', 'esportes|jogos eletronicos'] },
+            { t:'Ginástica artística', g:'mod', p:['ginastica artistica'] }, { t:'Hóquei Sobre Grama', g:'mod', p:['hoquei'] },
+            { t:'Judô', g:'mod', p:['=judo|judoca'] }, { t:'Levantamento de peso', g:'mod', p:['levantamento de peso', 'halterofilismo'] },
+            { t:'Natação', g:'mod', p:['natacao|nadador|nadadora'] }, { t:'Skate', g:'mod', p:['=skate|skatista'] }, { t:'Surfe', g:'mod', p:['=surfe|=surf|surfista'] },
+            { t:'Taekwondo', g:'mod', p:['taekwondo'] }, { t:'Tênis', g:'mod', p:['=tenis|tenista'] }, { t:'Tênis de Mesa', g:'mod', p:['tenis de mesa', 'mesatenista'] },
+            { t:'Tiro Esportivo', g:'mod', p:['tiro esportivo'] }, { t:'Vela', g:'mod', p:['iatismo', 'vela ~1 olimpica|esportiva'] }, { t:'Vôlei', g:'mod', p:['volei|voleibol'] },
+            // Entidades (genéricas)
+            { t:'Confederação', p:['confederacao'] }, { t:'Federação', p:['federacao'] }, { t:'Associação', p:['associacao'] }, { t:'Clube', p:['clube'] },
+            { t:'Liga', p:['=liga ~1 futsal|futebol|esportiva|desportiva|basquete|volei|handebol|amadora|municipal|nacional'] },
+            { t:'Entidades Desportivas', p:['entidade esportiva|desportiva', 'entidades esportivas|desportivas'] },
+            // Pessoas
+            { t:'Atletas', p:['atleta*', 'paratleta*', 'bolsista*', 'jogador|jogadora|jogadores|jogadoras'] }, { t:'Servidor', p:['servidor|servidora'] },
+            { t:'Torcedor', p:['torcedor|torcedora|torcida'] }, { t:'Proponente', p:['proponente'] },
+            // Natureza da demanda
+            { t:'Informação', p:['informac*'] }, { t:'Orientação', p:['orientac*', 'como faco|proceder|funciona|obter|solicitar', 'duvida'] },
+            { t:'Inscrição', p:['inscri*|inscrev*'] }, { t:'Cadastro', p:['cadastr*'] }, { t:'Documentação', p:['documentac*', 'documento'] },
+            { t:'Pré-requisitos', p:['requisito', 'criterio'] },
+            { t:'Resultado', p:['resultado ~2 edital|selecao|chamamento|bolsa|preliminar|final|inscricao', 'lista ~2 contemplados|aprovados|selecionados', 'contemplados'] },
+            { t:'Recurso', p:['recurso ~1 contra|administrativo', 'possivel|entrar|interpor|cabe|apresentar ~1 recurso', 'recorrer'] },
+            { t:'Revisão', p:['revisao', 'reavaliac*', 'reanalise'] }, { t:'Renovação', p:['renov*'] },
+            { t:'Certificação', p:['certificac*', 'registro cadastral'] }, { t:'Certificado', p:['certificado'] },
+            { t:'Legislação', p:['legislac*', 'lei pele', 'lei geral do esporte', 'decreto', 'portaria'] },
+            { t:'Edital', p:['edital', 'chamamento'] }, { t:'Prazo', p:['prazo'] }, { t:'Fiscalização', p:['fiscaliz*'] },
+            { t:'Prestação de contas', p:['prestacao de contas', 'presta|prestou|prestar|prestam contas'] }, { t:'Repasse', p:['repass*'] },
+            { t:'Pagamento', se:'pagamento' }, { t:'Patrocínio', p:['patrocin*'] }, { t:'Execução', p:['execucao', 'executad*', 'executou'] },
+            { t:'Contratação', p:['contrato', 'contratac*', 'contratad*', 'contratou', 'licitac*', 'pregao'] },
+            { t:'Proposta', p:['proposta'] }, { t:'Projeto', p:['projeto'] }, { t:'Prorrogação', p:['prorrog*'] },
+            { t:'Transporte', p:['transporte', 'passagens', 'passagem aerea'] },
+            { t:'Dados Bancários', p:['dados bancarios', 'conta bancaria|corrente', 'agencia e conta'] },
+            { t:'Termo de Fomento', p:['termo de fomento'] }, { t:'Termo de Adesão', p:['termo de adesao'] }, { t:'Termo de Responsabilidade', p:['termo de responsabilidade'] },
+            { t:'Protocolo', p:['protocolo', 'protocolar'] }, { t:'Manuais', p:['manual'] },
+            { t:'Bolsa Atleta', se:'bolsa_atleta' }, { t:'Bolsa Pódio', p:['bolsa podio'] },
+            { t:'Bolsa Gestante e Puerpério', p:['gestante|gestacao|gravida|puerperio', 'licenca maternidade'] },
+            { t:'Sistema Bolsa Atleta', se:'sis_ref && (bolsa_atleta || bolsa)' }, { t:'Sistema da Lei de Incentivo ao Esporte (SLIE)', se:'sis_slie' },
+            // Problemas / irregularidades
+            { t:'Erro', se:'erro || falha_sis' }, { t:'Inconsistência', p:['inconsist*', 'divergen*'] },
+            { t:'Suposta Irregularidade', se:'irr' }, { t:'Suposto Nepotismo', se:'nepotismo' }, { t:'Recebimento Indevido', se:'receb_indevido' },
+            { t:'Não pagamento', se:'nao_pagamento' }, { t:'Descumprimento', p:['descumpr*', '^em desacordo', 'nao cumpr*'] },
+            { t:'Discriminação', se:'discriminacao' }, { t:'Violência', p:['violencia', 'agress*', 'agrediu|agredida|agredido', 'espanc*'] }, { t:'Abuso', se:'abuso_gen' },
+            { t:'Ofensas', p:['xing*', 'ofend*|ofens*', 'insult*'] }, { t:'Suposta Manipulação de Resultados', se:'manipulacao' },
+            { t:'Desinformação/Fake News', p:['fake news', 'noticia falsa', 'noticias falsas', 'desinformac*'] }, { t:'Golpes e Fraudes Online', p:['golpe', 'estelionat*', 'site falso', 'perfil falso'] },
+            { t:'Falta de clareza', p:['falta de clareza', 'nao consegui|conseguimos ~1 orientacao', 'nao soube|souberam informar|orientar|explicar', 'resposta generica|confusa|evasiva', 'informacao|informacoes confusa|confusas|contraditoria|contraditorias'] },
+            // Infraestrutura
+            { t:'Infraestrutura', p:['infraestrutura'] }, { t:'Equipamentos', p:['equipamento'] }, { t:'Ginásio', p:['ginasio'] },
+            { t:'Quadra Esportiva', p:['=quadra|=quadras', 'poliesportiv*'] }, { t:'Centro Olímpico', p:['centro olimpico'] },
+            { t:'Reforma', p:['reforma*'] }, { t:'Manutenção', p:['manutencao'] }, { t:'Construção', p:['constru*'] },
+            { t:'Acessibilidade', p:['acessibilidade', 'acessivel'] }, { t:'Inauguração', p:['inaugur*'] },
+            { t:'Doação de Material Esportivo', se:'doacao_material' }, { t:'Materiais', p:['material'] },
+            // Inclusão
+            { t:'Inclusão', p:['inclusao', 'inclusivo|inclusiva'] }, { t:'Paradesporto', se:'paradesporto' }, { t:'Academia', p:['academia'] },
+            // Comunicação / documentos / fluxo
+            { t:'Disque Esporte', se:'disque' }, { t:'Fala.BR', se:'falabr' }, { t:'Redes Sociais', p:['redes sociais', 'instagram', 'facebook', 'tiktok', 'youtube'] },
+            { t:'Contatos - MESP', se:'telefone_mesp' }, { t:'Agenda', p:['=agenda|agendar|agendamento'] }, { t:'Audiência - MESP', p:['audiencia|reuniao ~3 ministro|ministra|secretario|secretaria|ministerio'] },
+            { t:'Declaração', p:['declaracao'] }, { t:'Listagem', p:['listagem'] }, { t:'Estatuto', p:['estatuto'] }, { t:'Regimento', p:['regimento'] },
+            { t:'Informe de Rendimentos', p:['informe|comprovante de rendimentos'] },
+            { t:'Manifestação Anterior', p:['manifestacao|protocolo anterior', '^ja registrei', '^ja reclamei', '^ja denunciei', 'reitero'] },
+            { t:'Alheio ao MESP', se:'alheio' },
+            // Unidades citadas
+            { t:'ABCD - Controle de Dopagem', se:'doping' }, { t:'CE - Comissão de Ética', p:['comissao de etica'] }, { t:'Coger - Corregedoria', p:['corregedoria'] },
+        ];
+        // Ordem de prioridade quando o texto traz muitas tags (as primeiras ficam pré-marcadas).
+        const SG_TAG_PRIORIDADE = ['problemas', 'especificas', 'modalidades', 'natureza', 'infra', 'entidades_esp', 'pessoas', 'inclusao', 'comunicacao', 'documentos', 'unidades', 'fluxo'];
+        const SG_MAX_TAGS_TEXTO = 6;
 
-        function normalizeClassificationText(value) {
-            return String(value || '').toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g, '')
-                .replace(/f\s*a\s*l\s*a\s*\.\s*b\s*r/g, 'fala br')
-                .replace(/[^a-z0-9\s]/g, ' ').replace(/\s+/g, ' ').trim();
+        // ───────────────────────────── 2. REGRAS ─────────────────────────────
+        // ev:     [expressão, peso 0–1, explicação]  — evidências a favor (combinadas sem dupla contagem)
+        // contra: [expressão, fator, explicação]      — reduz a pontuação quando o texto aponta para outro lugar
+        // fixas:  tags sempre pré-marcadas para o subassunto
+        const SG_REGRAS = [
+            { a:'esporte', s:'Bolsa Atleta', fixas:['Bolsa Atleta', 'SNE - Excelência Esportiva'],
+              criterio:'Demandas sobre o benefício: pagamento, inscrição, renovação, resultado, termo de adesão e prestação de contas do bolsista.',
+              ev:[['bolsa_atleta', .9, 'Menção direta ao programa Bolsa Atleta'], ['bolsa && atleta', .55, 'Fala de bolsa no contexto de atleta'], ['bolsa && bolsa_ctx', .6, 'Bolsa ligada a pagamento, benefício, inscrição ou renovação'], ['atleta && apoio_fin && !bolsa', .5, 'Atleta pedindo apoio financeiro (confirme se a demanda é sobre a Bolsa Atleta)'], ['bolsa && !bolsa_atleta', .45, 'O teor fala em bolsa (confirme se é a Bolsa Atleta)']],
+              contra:[['falha_sis && !(pagamento || nao_pagamento || atraso)', .55, 'O problema relatado é falha de sistema, não o benefício em si'], ['bolsa_outra', .15, 'Parece tratar de outra bolsa, não da Bolsa Atleta']] },
+            { a:'esporte', s:'Entidades Desportivas', fixas:[],
+              criterio:'Gestão, eleições, estatuto, cobranças, certificação ou suspeitas envolvendo confederações, federações, ligas e clubes.',
+              ev:[['entidade && governanca', .85, 'Entidade esportiva com questão de gestão, eleição, estatuto ou cobrança'], ['entidade && irr', .75, 'Suspeita de irregularidade envolvendo entidade esportiva'], ['entidade_esp', .55, 'Entidade esportiva citada pelo nome'], ['entidade_gen', .45, 'O teor trata de uma entidade esportiva (sem outro tema identificado)'], ['certificacao && (entidade || entidade_palavra)', .8, 'Certificação ou registro cadastral de entidade']],
+              contra:[['bolsa_atleta', .5, 'O assunto central é a Bolsa Atleta'], ['manipulacao', .5, 'O relato é de manipulação de resultado'], ['aposta', .6, 'O relato envolve apostas'], ['corr_grave', .6, 'Há indício de corrupção de agente público'], ['falha_sis', .6, 'O problema relatado é falha de sistema'], ['equip_esportivo && (obra || infra_estado)', .6, 'O assunto central é obra ou equipamento esportivo']] },
+            { a:'esporte', s:'Competições e Eventos Esportivos', fixas:[],
+              criterio:'Organização, calendário, inscrição, regulamento, estrutura ou apoio para competições e eventos esportivos.',
+              ev:[['competicao', .72, 'Menção a competição, campeonato ou evento esportivo'], ['competicao && comp_org', .6, 'Questão de organização: data, inscrição, regulamento, estrutura ou apoio'], ['evento && esporte_ref && !competicao', .45, 'Evento ligado ao esporte']],
+              contra:[['bolsa_atleta', .5, 'O assunto central é a Bolsa Atleta'], ['manipulacao', .5, 'O relato é de manipulação de resultado'], ['aposta', .6, 'O relato envolve apostas'], ['(olimpiadas && !olimp_outra) || paralimpiadas', .6, 'Trata de Jogos Olímpicos/Paralímpicos, que têm subassunto próprio'], ['fut_fem', .7, 'Trata de futebol feminino, que tem subassunto próprio'], ['entidade && governanca', .75, 'A queixa é sobre a entidade organizadora'], ['corr_grave', .6, 'Há indício de corrupção']] },
+            { a:'esporte', s:'Olimpíadas e Ciclo Olímpico', fixas:['SNE - Excelência Esportiva'],
+              criterio:'Jogos Olímpicos, preparação e ciclo olímpico.',
+              ev:[['olimpiadas', .88, 'Menção aos Jogos Olímpicos ou ao ciclo olímpico'], ['olimp_fraco', .4, 'Referência a atleta ou esporte olímpico']],
+              contra:[['olimp_outra', .3, 'Parece ser olimpíada escolar ou de conhecimento, não os Jogos Olímpicos'], ['bolsa_atleta', .6, 'O assunto central é a Bolsa Atleta'], ['entidade && governanca', .7, 'A queixa é sobre a entidade']] },
+            { a:'esporte', s:'Paralimpíadas e Ciclo Paralímpico', fixas:['Paradesporto', 'SNPAR - Paradesporto'],
+              criterio:'Jogos Paralímpicos, preparação e ciclo paralímpico.',
+              ev:[['paralimpiadas', .9, 'Menção aos Jogos Paralímpicos ou ao ciclo paralímpico'], ['paralimp_fraco', .45, 'Referência a atleta ou esporte paralímpico']],
+              contra:[['bolsa_atleta', .6, 'O assunto central é a Bolsa Atleta']] },
+            { a:'esporte', s:'Futebol Feminino', fixas:['Futebol', 'SNFDT - Futebol e Direitos do Torcedor'],
+              criterio:'Políticas, estrutura e competições do futebol feminino.',
+              ev:[['fut_fem', .88, 'Menção ao futebol feminino']], contra:[] },
+            { a:'esporte', s:'Paradesporto', fixas:['Paradesporto', 'SNPAR - Paradesporto'],
+              criterio:'Esporte para pessoas com deficiência: acesso, programas, inclusão.',
+              ev:[['paradesporto', .82, 'Menção a paradesporto ou a pessoa com deficiência no esporte'], ['paralimpiadas || paralimp_fraco', .35, 'Contexto paralímpico']],
+              contra:[['bolsa_atleta', .5, 'O assunto central é a Bolsa Atleta'], ['corr_grave', .6, 'Há indício de corrupção']] },
+            { a:'esporte', s:'Esporte Comunitário', fixas:['SNEAELIS - Esporte Amador/Inclusão'],
+              criterio:'Programas e projetos sociais de esporte e lazer (Segundo Tempo, PELC, Vida Saudável), núcleos e doação de material.',
+              ev:[['programa_social', .88, 'Programa social de esporte citado (Segundo Tempo, PELC, Vida Saudável…)'], ['seg_tempo && !jogo_ctx && !programa_social', .7, 'Menção ao Segundo Tempo'], ['projeto_social', .6, 'Projeto social'], ['doacao_material', .65, 'Pedido ou doação de material esportivo'], ['nucleo && (esporte_ref || comunidade)', .5, 'Núcleo de esporte'], ['escolinha && (comunidade || projeto_social)', .5, 'Escolinha em projeto ou comunidade'], ['esporte_lazer', .45, 'Esporte educacional, amador ou de lazer'], ['projeto && comunidade && esporte_ref', .5, 'Projeto de esporte voltado à comunidade']],
+              contra:[['lie', .6, 'Trata da Lei de Incentivo'], ['edital', .7, 'Trata de edital ou chamamento'], ['equip_esportivo && (obra || infra_estado)', .7, 'O assunto central é obra ou equipamento esportivo'], ['paradesporto', .75, 'Trata de paradesporto'], ['corr_grave', .6, 'Há indício de corrupção'], ['manipulacao || aposta', .4, 'O relato é sobre apostas ou manipulação de resultado']] },
+            { a:'esporte', s:'Lei de Incentivo ao Esporte', fixas:['DPPIE - Incentivo ao Esporte'],
+              criterio:'Projetos incentivados: apresentação, análise, captação, prorrogação, patrocínio com incentivo fiscal.',
+              ev:[['lie', .9, 'Menção à Lei de Incentivo ao Esporte ou a projeto incentivado'], ['patrocinio && (projeto || esporte_ref)', .5, 'Patrocínio de projeto esportivo'], ['sis_slie', .5, 'Sistema da Lei de Incentivo (SLIE)']],
+              contra:[['falha_sis', .6, 'O problema relatado é falha de sistema'], ['corr_grave', .6, 'Há indício de corrupção de agente público']] },
+            { a:'esporte', s:'Projetos Esportivos', fixas:['Projeto'],
+              criterio:'Projetos fora da Lei de Incentivo: propostas via Transferegov, emendas, convênios e parcerias sem indício de irregularidade.',
+              ev:[['proj_esportivo', .6, 'Projeto esportivo'], ['transferegov', .75, 'Proposta enviada pelo Transferegov'], ['emenda', .7, 'Emenda parlamentar'], ['convenio && !irr && !uso_particular', .55, 'Convênio, parceria ou termo de fomento (sem indício de irregularidade)'], ['projeto && esporte_ref', .35, 'Projeto ligado ao esporte'], ['projeto && modalidade', .3, 'Projeto de uma modalidade esportiva']],
+              contra:[['lie', .5, 'Trata da Lei de Incentivo'], ['edital', .7, 'Trata de edital ou chamamento'], ['programa_social', .6, 'Trata de programa social de esporte'], ['corr_grave', .6, 'Há indício de corrupção']] },
+            { a:'esporte', s:'Editais e Chamamentos', fixas:['Edital'],
+              criterio:'Editais e chamamentos públicos: inscrição, prazo, resultado, recurso.',
+              ev:[['edital', .85, 'Menção a edital ou chamamento público']],
+              contra:[['bolsa_atleta', .5, 'O edital citado é o da Bolsa Atleta'], ['contrato_obj', .6, 'É edital de licitação, não de chamamento'], ['portal_mesp && falha_tecnica', .6, 'O problema relatado é falha no site'], ['irr && contrato_obj', .5, 'Há suspeita de irregularidade em licitação'], ['corr_grave', .6, 'Há indício de corrupção']] },
+            { a:'esporte', s:'Infraestrutura Esportiva', fixas:['Infraestrutura', 'DIE - Infraestrutura do Esporte'],
+              criterio:'Construção, reforma, conservação e acessibilidade de quadras, ginásios e outros equipamentos — sem indício de desvio.',
+              ev:[['equip_esportivo && (obra || infra_estado)', .85, 'Equipamento esportivo com obra, reforma ou problema de conservação'], ['equip_esportivo', .45, 'Menção a equipamento esportivo (quadra, ginásio, centro esportivo)'], ['obra && esporte_ref && !equip_esportivo', .45, 'Obra ligada ao esporte']],
+              contra:[['irr_forte', .6, 'Há indício de desvio ou fraude — veja Corrupção › Infraestrutura Esportiva'], ['nepotismo || vantagem', .6, 'Há indício de favorecimento ou vantagem indevida'], ['irr_fraca && contrato_obj', .7, 'Há suspeita sobre a contratação da obra'], ['irr_fraca && rec_publicos && !contrato_obj', .9, 'O teor questiona o uso do dinheiro']] },
+            { a:'esporte', s:'Rede de Desenvolvimento do Esporte *', fixas:[],
+              criterio:'Demandas sobre a Rede de Desenvolvimento do Esporte.',
+              ev:[['rede', .9, 'Menção direta à Rede de Desenvolvimento do Esporte']], contra:[] },
+            { a:'esporte', s:'Tecnologia da Informação e Sistemas', fixas:[],
+              criterio:'Falhas nos sistemas dos programas finalísticos (Sistema Bolsa Atleta, SLIE).',
+              ev:[['sis_programa && falha_tecnica', .72, 'Falha em sistema de programa finalístico (Bolsa Atleta, SLIE)'], ['sis_programa', .35, 'Menção a sistema de programa finalístico']], contra:[] },
+
+            { a:'ti_sistemas', s:'Protocolo Digital', fixas:['Protocolo'],
+              criterio:'Uso e falhas do Protocolo Digital.',
+              ev:[['protocolo_digital', .85, 'Menção ao Protocolo Digital'], ['protocolo_digital && falha_tecnica', .5, 'Falha ao protocolar ou consultar']], contra:[] },
+            { a:'ti_sistemas', s:'Portal do Ministério do Esporte', fixas:[],
+              criterio:'Falhas de acesso, erro ou indisponibilidade no site e nos sistemas do Ministério.',
+              ev:[['portal_mesp && falha_tecnica', .85, 'Falha no site ou portal do Ministério'], ['portal_mesp', .45, 'Menção ao site ou portal do Ministério'], ['sis_programa && falha_tecnica', .78, 'Falha em sistema de programa do Ministério'], ['sis_ref && falha_tecnica', .5, 'Falha de acesso ou erro em sistema']],
+              contra:[['protocolo_digital', .4, 'O sistema citado é o Protocolo Digital'], ['falabr', .35, 'O sistema citado é o Fala.BR'], ['aposta', .3, 'O sistema citado é de apostas']] },
+
+            { a:'atendimento_publico', s:'Disque Esporte', fixas:['Disque Esporte'],
+              criterio:'Queixas, elogios ou dúvidas sobre o atendimento telefônico — não vale quando o Disque Esporte é só o canal por onde a demanda chegou.',
+              ev:[['disque && (atend_ruim || atend_ref)', .85, 'Queixa ou comentário sobre o atendimento do Disque Esporte'], ['disque && (interrogacao || contato_ref)', .65, 'Dúvida sobre o Disque Esporte'], ['disque', .45, 'O teor cita o Disque Esporte'], ['telefone_mesp && atend_ruim', .7, 'Dificuldade de contato telefônico com o Ministério']],
+              contra:[['o_equipe && !atend_ruim', .35, 'O Disque Esporte aparece como canal de entrada, não como assunto']] },
+            { a:'atendimento_publico', s:'Ouvidoria', fixas:['Ouvidoria - MESP'],
+              criterio:'Queixas, elogios ou dúvidas sobre o atendimento e as respostas da própria Ouvidoria — não vale só porque o texto se dirige à Ouvidoria.',
+              ev:[['ouvidoria && (atend_ruim || sem_resposta)', .85, 'Queixa sobre o atendimento ou a resposta da Ouvidoria'], ['ouvidoria && (atend_ref || n_elogio)', .7, 'Comentário ou elogio sobre o atendimento da Ouvidoria'], ['ouvidoria && contato_ref', .6, 'Pedido de contato ou horário da Ouvidoria'], ['manif_resposta', .72, 'Fala da resposta (ou da falta de resposta) a uma manifestação'], ['ouvidoria && manif_resposta', .5, 'Resposta dada pela Ouvidoria']],
+              contra:[['falabr && falha_tecnica', .6, 'A dificuldade é no uso do Fala.BR'], ['o_equipe && !ouvidoria', .6, 'Registro transcrito pela equipe: a menção a manifestação pode ser só encaminhamento']] },
+            { a:'atendimento_publico', s:'Fala.BR', fixas:['Fala.BR'],
+              criterio:'Dúvidas e dificuldades de uso da plataforma Fala.BR (registrar, acompanhar, anexar, senha).',
+              ev:[['falabr && (falha_tecnica || registrar_manif || acesso_conta)', .87, 'Dúvida ou dificuldade no uso do Fala.BR'], ['falabr', .5, 'Menção ao Fala.BR'], ['registrar_manif && interrogacao', .4, 'Pergunta sobre como registrar manifestação']],
+              contra:[['o_equipe', .5, 'O Fala.BR aparece como canal de entrada, não como assunto']] },
+
+            { a:'premios_apostas', s:'Regulamentação e Fiscalização', fixas:['SNAEDE - Apostas Esportivas'],
+              criterio:'Casas e sites de apostas: autorização, pagamento de prêmios, publicidade, irregularidades.',
+              ev:[['aposta', .82, 'Menção a apostas, bets ou casas de apostas']],
+              contra:[['manipulacao', .55, 'O relato descreve manipulação de resultado']] },
+            { a:'premios_apostas', s:'Manipulação de resultados', fixas:['Suposta Manipulação de Resultados', 'SNAEDE - Apostas Esportivas'],
+              criterio:'Combinação ou manipulação de resultado de jogo, com ou sem ligação a apostas.',
+              ev:[['manipulacao', .9, 'Indício de combinação ou manipulação de resultado'], ['manipulacao && aposta', .5, 'Ligação com apostadores']], contra:[] },
+
+            { a:'corrupcao', s:'Contratos e Contratações Públicas', fixas:['Suposta Irregularidade'],
+              criterio:'Suspeita ou indício de irregularidade em contrato, licitação ou pregão. Sem indício de irregularidade, não é Corrupção.',
+              ev:[['irr_forte && contrato_obj', .85, 'Indício de fraude ou desvio em contrato ou licitação'], ['suspeita && contrato_obj', .7, 'Suspeita ou denúncia sobre contrato ou licitação']],
+              contra:[['obra_obj', .8, 'Envolve obra ou equipamento esportivo — veja Corrupção › Infraestrutura Esportiva'], ['repasse_obj', .85, 'Envolve repasse ou parceria']] },
+            { a:'corrupcao', s:'Infraestrutura Esportiva', fixas:['Suposta Irregularidade', 'Infraestrutura'],
+              criterio:'Suspeita ou indício de desvio, fraude ou superfaturamento em obra ou equipamento esportivo.',
+              ev:[['irr_forte && obra_obj', .9, 'Indício de desvio, fraude ou superfaturamento em obra ou equipamento esportivo'], ['suspeita && obra_obj && contrato_obj', .7, 'Suspeita sobre a contratação de obra esportiva'], ['(nepotismo || vantagem) && obra_obj', .85, 'Favorecimento ou vantagem indevida ligada a obra esportiva'], ['suspeita && obra_obj', .45, 'Suspeita ou denúncia envolvendo obra esportiva'], ['irr_fraca && obra_obj && rec_publicos', .3, 'Questiona o destino do recurso da obra']],
+              contra:[] },
+            { a:'corrupcao', s:'Parcerias e Repasses', fixas:['Suposta Irregularidade'],
+              criterio:'Suspeita ou indício de irregularidade em convênio, termo de fomento, parceria ou repasse a entidade.',
+              ev:[['irr_forte && repasse_obj', .87, 'Indício de desvio ou inexecução em repasse, convênio ou parceria'], ['suspeita && repasse_obj', .72, 'Suspeita ou denúncia sobre repasse, convênio ou parceria'], ['uso_particular && repasse_obj', .8, 'Uso particular de recurso de repasse ou parceria']],
+              contra:[['obra_obj', .85, 'Envolve obra ou equipamento esportivo']] },
+            { a:'corrupcao', s:'Gestão de Recursos Públicos', fixas:['Suposta Irregularidade'],
+              criterio:'Desvio ou mau uso de dinheiro, bens, diárias e passagens públicas, quando não há contrato, repasse ou obra específicos.',
+              ev:[['irr_forte && rec_publicos', .85, 'Indício de desvio ou mau uso de recursos públicos'], ['irr && rec_gen', .55, 'Suspeita envolvendo recursos'], ['bens_publicos && (uso_particular || irr_forte)', .82, 'Uso de bem, diária ou passagem pública para fim particular ou indevido'], ['uso_particular && rec_gen && amb_trab_forte', .55, 'Uso particular de recurso por agente público']],
+              contra:[['obra_obj', .7, 'Envolve obra ou equipamento esportivo'], ['contrato_obj', .75, 'Envolve contrato ou licitação'], ['repasse_obj', .7, 'Envolve repasse ou parceria'], ['nepotismo || vantagem', .8, 'O fato central é favorecimento ou vantagem indevida'], ['aposta || manipulacao', .3, 'O relato é sobre apostas ou manipulação de resultado']] },
+            { a:'corrupcao', s:'Conduta e Benefícios Indevidos', fixas:['Suposta Irregularidade', 'Suposta Conduta Inadequada'],
+              criterio:'Nepotismo, favorecimento, propina e outras vantagens indevidas de agente público.',
+              ev:[['nepotismo', .85, 'Indício de nepotismo ou favorecimento de familiar ou conhecido'], ['vantagem', .85, 'Indício de propina, vantagem ou benefício indevido'], ['troca && (amb_trab_forte || contrato_obj || repasse_obj || certificacao || edital || lie)', .8, 'Favor concedido em troca de vantagem'], ['jornada', .6, 'Relato de servidor que não cumpre a jornada']],
+              contra:[['obra_obj && (irr_forte || contrato_obj)', .8, 'Envolve obra ou equipamento esportivo'], ['repasse_obj && irr_forte', .85, 'Envolve repasse ou parceria'], ['manipulacao', .35, 'O relato é de manipulação de resultado esportivo']] },
+        ];
+
+        // Classes de assédio (pontuadas por sgPontuarAssedio: tipo × ambiente).
+        const SG_ASSEDIO = {
+            'assedio_moral|Relação entre agentes públicos': { fixas:['Assédio Moral', 'Suposta Conduta Inadequada'], criterio:'Humilhação, perseguição ou constrangimento reiterado entre agentes públicos, no ambiente de trabalho.' },
+            'assedio_sexual|Relação entre agentes públicos': { fixas:['Assédio Sexual', 'Suposta Conduta Inadequada'], criterio:'Conduta de conotação sexual não consentida entre agentes públicos, no ambiente de trabalho.' },
+            'esporte_seguro|Assédio moral no ambiente esportivo': { fixas:['Assédio Moral', 'Suposta Conduta Inadequada'], criterio:'Humilhação, perseguição ou constrangimento praticado no ambiente esportivo (treino, clube, seleção, competição).' },
+            'esporte_seguro|Assédio sexual no ambiente esportivo': { fixas:['Assédio Sexual', 'Suposta Conduta Inadequada'], criterio:'Conduta de conotação sexual não consentida no ambiente esportivo (treino, clube, seleção, competição).' },
+        };
+
+        // Perguntas que ajudam o analista a decidir entre duas sugestões próximas.
+        const SG_DUVIDAS = [
+            [/^esporte_seguro/, /^assedio_/, 'O fato ocorreu no ambiente esportivo (treino, clube, competição) ou entre agentes públicos, no trabalho?'],
+            [/Assédio moral|^assedio_moral/, /Assédio sexual|^assedio_sexual/, 'A conduta relatada tem conotação sexual? Se sim, prevalece assédio sexual.'],
+            [/^esporte\|Infraestrutura/, /^corrupcao\|/, 'O teor só reclama da situação da obra ou aponta desvio, fraude ou favorecimento? Só no segundo caso é Corrupção.'],
+            [/^ti_sistemas\|Portal/, /^esporte\|Tecnologia/, 'A árvore tem dois lugares para falha de sistema. Use “Esporte › Tecnologia da Informação e Sistemas” se a unidade tratar sistemas de programas (Bolsa Atleta, SLIE) separadamente do portal.'],
+            [/^(ti_sistemas|esporte\|Tecnologia)/, /^esporte\|(Bolsa|Lei)/, 'A demanda é sobre a falha do sistema ou sobre o benefício/projeto em si?'],
+            [/Regulamentação/, /Manipulação/, 'Há relato de resultado combinado ou alterado de propósito? Se sim, prevalece Manipulação de resultados.'],
+            [/^atendimento_publico/, /^(esporte|corrupcao|premios|ti_)/, 'A queixa é sobre o atendimento do canal ou sobre o assunto que a pessoa foi tratar?'],
+            [/^corrupcao\|Contratos/, /^corrupcao\|Conduta/, 'O fato central é a irregularidade na contratação ou o favorecimento pessoal de alguém?'],
+            [/^corrupcao\|/, /^corrupcao\|/, 'Qual é o objeto da denúncia: contrato/licitação, repasse a entidade, obra esportiva, uso de bens e recursos, ou vantagem pessoal?'],
+            [/Entidades Desportivas/, /Competições/, 'A queixa é sobre a gestão da entidade ou sobre a organização de uma competição específica?'],
+            [/Lei de Incentivo/, /Projetos Esportivos/, 'O projeto usa incentivo fiscal (Lei de Incentivo) ou recursos diretos do Ministério (convênio, emenda, Transferegov)?'],
+            [/Esporte Comunitário/, /Projetos Esportivos|Infraestrutura/, 'O pedido é sobre um programa/projeto social em funcionamento ou sobre proposta de projeto ou obra?'],
+        ];
+
+        // ───────────────────────────── 3. MOTOR ─────────────────────────────
+        function sgNorm(s) { return String(s || '').toLowerCase().normalize('NFD').replace(/[̀-ͯ]/g, ''); }
+        function sgEsc(s) { return String(s).replace(/[&<>"']/g, c => ({ '&':'&amp;', '<':'&lt;', '>':'&gt;', '"':'&quot;', "'":'&#39;' }[c])); }
+
+        function sgTokenizar(raw) {
+            const toks = []; const re = /[\p{L}\p{N}]+/gu; let m;
+            while ((m = re.exec(raw))) { const n = sgNorm(m[0]); if (n) toks.push({ n, s: m.index, e: m.index + m[0].length, stop: SG_STOP.has(n) }); }
+            return toks;
         }
 
-        function classificationSimilarity(a, b) {
-            if (a === b) return 1;
-            if (!a || !b) return 0;
-            if (a.length < 4 || b.length < 4) return 0;
-            const prev = Array.from({ length: b.length + 1 }, (_, i) => i);
-            for (let i = 1; i <= a.length; i++) {
-                const cur = [i];
-                for (let j = 1; j <= b.length; j++) {
-                    cur[j] = Math.min(cur[j - 1] + 1, prev[j] + 1, prev[j - 1] + (a[i - 1] === b[j - 1] ? 0 : 1));
-                }
-                for (let j = 0; j < cur.length; j++) prev[j] = cur[j];
-            }
-            return 1 - (prev[b.length] / Math.max(a.length, b.length));
+        function sgVariantes(w) {
+            const v = [w, w + 's'];
+            if (/ao$/.test(w)) { const b = w.slice(0, -2); v.push(b + 'oes', b + 'aes', b + 'aos'); }
+            if (/[aeou]l$/.test(w)) v.push(w.slice(0, -1) + 'is');
+            if (/il$/.test(w)) v.push(w.slice(0, -2) + 'is', w.slice(0, -2) + 'eis');
+            if (/m$/.test(w)) v.push(w.slice(0, -1) + 'ns');
+            if (/[rzs]$/.test(w)) v.push(w + 'es');
+            return v;
         }
 
-        function fuzzyAllowed(word, token) {
-            if (word.length < 5 || token.length < 5) return false;
-            if (CLASSIFICATION_NO_FUZZY.has(word) || CLASSIFICATION_NO_FUZZY.has(token)) return false;
-            if (Math.abs(word.length - token.length) > 2) return false;
-            return true;
-        }
-        function fuzzyThreshold(word) { return word.length >= 6 ? 0.84 : 0.8; }
+        const SG_VOCAB = new Set(SG_PALAVRAS_COMUNS), SG_PREFIXOS = new Set();
 
-        function hasPhrase(normalizedText, phraseTokens) {
-            return (' ' + normalizedText + ' ').includes(' ' + phraseTokens.join(' ') + ' ');
-        }
-
-        function areMorphVariants(word1, word2) {
-            if (word1 === word2) return true;
-            if (word1.length < 5 || word2.length < 5) return false;
-            const minLen = Math.min(word1.length, word2.length);
-            let common = 0;
-            for (let i = 0; i < minLen; i++) {
-                if (word1[i] === word2[i]) common++;
-                else break;
-            }
-            if (common < 5) return false;
-            if (common < minLen - 2) return false;
-            return true;
-        }
-
-        function classificationPhraseMatch(text, phrase, tokens) {
-            const p = normalizeClassificationText(phrase).split(' ').filter(Boolean);
-            if (!p.length) return { matched: false, approx: false, score: 0 };
-            const normalized = normalizeClassificationText(text);
-            if (hasPhrase(normalized, p)) return { matched: true, approx: false, score: 1 };
-
-            if (p.length === 1) {
-                for (const t of tokens) {
-                    if (t !== p[0] && areMorphVariants(t, p[0])) {
-                        return { matched: true, approx: true, score: 0.95 };
-                    }
-                }
-                if (!fuzzyAllowed(p[0], p[0])) return { matched: false, approx: false, score: 0 };
-                let best = 0;
-                tokens.forEach(t => {
-                    if (!fuzzyAllowed(p[0], t) || t === p[0]) return;
-                    const sim = classificationSimilarity(t, p[0]);
-                    if (sim >= fuzzyThreshold(p[0]) && sim > best) best = sim;
+        function sgCompilarPadrao(texto) {
+            let src = sgNorm(texto).trim(); const strict = src.startsWith('^'); if (strict) src = src.slice(1);
+            const els = []; let gap = 0;
+            src.split(/\s+/).forEach(parte => {
+                const g = /^~(\d+)$/.exec(parte); if (g) { gap = +g[1]; return; }
+                if (!strict && SG_STOP.has(parte)) return;
+                const alts = parte.split('|').filter(Boolean).map(a => {
+                    if (a.startsWith('=')) { const v = a.slice(1); SG_VOCAB.add(v); return { t: 'exa', v }; }
+                    if (a.endsWith('*')) { const v = a.slice(0, -1); SG_PREFIXOS.add(v); return { t: 'pre', v }; }
+                    const vars = new Set(sgVariantes(a)); vars.forEach(x => SG_VOCAB.add(x));
+                    return { t: 'lit', v: a, vars, fz: a.length >= 7 };
                 });
-                return best > 0 ? { matched: true, approx: true, score: best } : { matched: false, approx: false, score: 0 };
-            }
-
-            for (let i = 0; i <= tokens.length - p.length; i++) {
-                let total = 0, ok = true;
-                for (let j = 0; j < p.length; j++) {
-                    const t = tokens[i + j];
-                    if (t === p[j]) { total += 1; continue; }
-                    if (areMorphVariants(t, p[j])) { total += 0.95; continue; }
-                    if (!fuzzyAllowed(p[j], t)) { ok = false; break; }
-                    const sim = classificationSimilarity(t, p[j]);
-                    if (sim < fuzzyThreshold(p[j])) { ok = false; break; }
-                    total += sim;
-                }
-                if (ok) return { matched: true, approx: true, score: total / p.length };
-            }
-            return { matched: false, approx: false, score: 0 };
-        }
-
-        function scoreClassificationRule(rule, text, tokens) {
-            let score = 0, strongHits = 0, matched = [];
-            const add = (items, weight, isStrong) => items.forEach(item => {
-                const hit = classificationPhraseMatch(text, item, tokens);
-                if (hit.matched) {
-                    score += weight * (hit.approx ? Math.max(0.8, hit.score) : 1);
-                    if (isStrong) strongHits++;
-                    matched.push({ term: item, approx: hit.approx, kind: isStrong ? 'forte' : 'contexto' });
-                }
+                els.push({ gap, alts }); gap = 0;
             });
-            add(rule.strong, 10, true);
-            add(rule.context, 3, false);
-            add(rule.weak, 1.5, false);
-
-            if (strongHits === 0) return { score: 0, strongHits: 0, matched: [] };
-
-            if (rule.s === 'Competições e Eventos Esportivos' && /\b(assedio|abuso|humilh\w*|perseguic\w*|constrangimento|comentarios? sexuais?)\b/.test(text)) score *= 0.25;
-
-            const seen = new Set();
-            const unique = matched.filter(m => { if (seen.has(m.term)) return false; seen.add(m.term); return true; });
-            return { score: Math.round(score * 10) / 10, strongHits, matched: unique };
+            return { strict, els };
         }
 
-        function getSuggestedTags(assuntoId, subassunto) {
-            return [...new Set(recommendedTagsMap[`${assuntoId}_${subassunto}`] || [])].slice(0, 8);
+        function sgDistancia(a, b, max) {
+            if (Math.abs(a.length - b.length) > max) return max + 1;
+            let ant2 = null, ant = Array.from({ length: b.length + 1 }, (_, i) => i);
+            for (let i = 1; i <= a.length; i++) {
+                const cur = [i]; let menor = i;
+                for (let j = 1; j <= b.length; j++) {
+                    const custo = a[i - 1] === b[j - 1] ? 0 : 1;
+                    let v = Math.min(cur[j - 1] + 1, ant[j] + 1, ant[j - 1] + custo);
+                    if (ant2 && i > 1 && j > 1 && a[i - 1] === b[j - 2] && a[i - 2] === b[j - 1]) v = Math.min(v, ant2[j - 2] + 1);
+                    cur[j] = v; if (v < menor) menor = v;
+                }
+                if (menor > max) return max + 1;
+                ant2 = ant; ant = cur;
+            }
+            return ant[b.length];
         }
 
+        const sgCacheConhecida = new Map();
+        function sgPalavraConhecida(t) {
+            if (sgCacheConhecida.has(t)) return sgCacheConhecida.get(t);
+            let r = SG_VOCAB.has(t);
+            if (!r) for (const p of SG_PREFIXOS) { if (p.length >= 4 && t.startsWith(p)) { r = true; break; } }
+            sgCacheConhecida.set(t, r); return r;
+        }
+        // Erro de digitação: mesma inicial, 7+ letras, 1 troca (2 só em palavras de 13+ letras) e o termo digitado não é uma palavra conhecida.
+        function sgAprox(palavra, t) {
+            if (t.length < 6 || t[0] !== palavra[0] || sgPalavraConhecida(t)) return false;
+            const max = palavra.length >= 13 ? 2 : 1;
+            return sgDistancia(palavra, t, max) <= max;
+        }
+
+        function sgCasaElemento(el, tok) {
+            let melhor = 0;
+            for (const a of el.alts) {
+                if (a.t === 'pre') { if (tok.n.startsWith(a.v)) return 1; }
+                else if (a.t === 'exa') { if (tok.n === a.v) return 1; }
+                else if (a.vars.has(tok.n)) return 1;
+                else if (a.fz && sgAprox(a.v, tok.n)) melhor = 0.8;
+            }
+            return melhor;
+        }
+
+        // Tenta casar o padrão começando exatamente no token i. Devolve { f: último token, aprox } ou null.
+        function sgCasarEm(pad, toks, i) {
+            const tentar = (k, ini, aprox) => {
+                if (k === pad.els.length) return { f: ini - 1, aprox };
+                const el = pad.els[k]; let puladas = 0, stops = 0;
+                for (let q = ini; q < toks.length; q++) {
+                    const r = sgCasaElemento(el, toks[q]);
+                    if (r && !(k === 0 && !pad.strict && toks[q].stop)) {
+                        const resto = tentar(k + 1, q + 1, aprox || r < 1);
+                        if (resto) return resto;
+                    }
+                    if (k === 0) return null;
+                    if (toks[q].stop && !pad.strict) { if (++stops > 3 + el.gap) return null; }
+                    else if (++puladas > el.gap) return null;
+                }
+                return null;
+            };
+            return tentar(0, i, false);
+        }
+
+        function sgBuscar(padroes, toks) {
+            const achados = [];
+            for (const pad of padroes) {
+                for (let i = 0; i < toks.length; i++) {
+                    const m = sgCasarEm(pad, toks, i);
+                    if (m) { achados.push({ i, f: m.f, aprox: m.aprox }); if (achados.length >= 12) return achados; }
+                }
+            }
+            return achados;
+        }
+
+        const SG_RE_NEGACAO = /(nao se trata de|nao e|nao era|nao foi|nao houve|nao ha|nada a ver com|sem relacao com|nao envolve|nao sofri|nao sofreu|nao se refere a|nao tem relacao com|nao e caso de|nao e um caso de)( nenhum| nenhuma| qualquer| um| uma)?$/;
+        function sgNegado(toks, i) {
+            return SG_RE_NEGACAO.test(toks.slice(Math.max(0, i - 6), i).map(t => t.n).join(' '));
+        }
+
+        // Compilação única do léxico.
+        const SG_COMPILADO = (() => {
+            const conceitos = {};
+            Object.entries(SG_CONCEITOS).forEach(([id, def]) => { conceitos[id] = { rotulo: def[0], pads: def.slice(1).map(sgCompilarPadrao) }; });
+            const entidades = SG_ENTIDADES.map(([sigla, nome, tag, extras]) => ({ nome, tag, pads: ['=' + sigla, sgNorm(nome).replace(/[^a-z0-9 ]/g, ' '), ...(extras || [])].map(sgCompilarPadrao) }));
+            const tags = SG_TAGS.map(d => ({ ...d, pads: (d.p || []).map(sgCompilarPadrao) }));
+            const expr = (src) => new Function('h', 'return ' + src.replace(/[A-Za-z_][A-Za-z0-9_]*/g, id => `h("${id}")`) + ';');
+            const cacheExpr = new Map();
+            const compilar = (src) => { if (!cacheExpr.has(src)) cacheExpr.set(src, expr(src)); return cacheExpr.get(src); };
+            const derivados = {}; Object.entries(SG_DERIVADOS).forEach(([id, src]) => { derivados[id] = compilar(src); });
+            return { conceitos, entidades, tags, compilar, derivados };
+        })();
+
+        function sgOr(pesos) { return 1 - pesos.reduce((acc, p) => acc * (1 - p), 1); }
+
+        // Remove, dentro de um grupo, o achado contido em outro mais longo ("tênis" dentro de "tênis de mesa").
+        function sgFiltrarContidos(lista) {
+            return lista.filter(x => !lista.some(y => y !== x && y.i <= x.i && y.f >= x.f && (y.f - y.i) > (x.f - x.i)));
+        }
+
+        function analyzeManifestation(raw) {
+            raw = String(raw || '');
+            const toks = sgTokenizar(raw);
+            const C = SG_COMPILADO;
+            const achados = {}, negados = [];
+
+            // 1. Conceitos
+            Object.entries(C.conceitos).forEach(([id, c]) => {
+                let lista = sgBuscar(c.pads, toks);
+                if (SG_NEGAVEIS.has(id)) {
+                    const antes = lista.length;
+                    lista = lista.filter(m => !sgNegado(toks, m.i));
+                    if (antes && !lista.length) negados.push(c.rotulo);
+                }
+                if (lista.length) achados[id] = lista;
+            });
+
+            // Entidades citadas pelo nome ou sigla (a mais específica vence).
+            let entAchadas = [];
+            C.entidades.forEach(ent => sgBuscar(ent.pads, toks).forEach(m => entAchadas.push({ ...m, ent })));
+            entAchadas = sgFiltrarContidos(entAchadas);
+            if (entAchadas.length) achados.entidade_esp = entAchadas.map(({ i, f, aprox }) => ({ i, f, aprox }));
+            const entidades = [...new Set(entAchadas.map(x => x.ent))];
+
+            const flags = { interrogacao: raw.includes('?'), modalidade: false };
+            const memo = {};
+            // h(id): o conceito está presente? Registra quem contribuiu para explicar a decisão.
+            let usados = null;
+            const h = (id) => {
+                if (id in flags) return flags[id];
+                if (achados[id]) { if (usados) usados.add(id); return true; }
+                if (C.derivados[id]) {
+                    if (!(id in memo)) memo[id] = !!C.derivados[id](hSemRastro);
+                    if (memo[id] && usados) C.derivados[id](h);
+                    return memo[id];
+                }
+                if (!(id in C.conceitos) && id !== 'entidade_esp') throw new Error('Sugestor: conceito desconhecido "' + id + '"');
+                return false;
+            };
+            const hSemRastro = (id) => { const g = usados; usados = null; const r = h(id); usados = g; return r; };
+            const avaliar = (src) => { usados = new Set(); const ok = !!C.compilar(src)(h); const ids = ok ? [...usados] : []; usados = null; return { ok, ids }; };
+
+            const trecho = (m) => raw.slice(toks[m.i].s, toks[m.f].e).replace(/\s+/g, ' ');
+            const trechosDe = (ids, max = 3) => {
+                const vistos = new Set(), out = [];
+                ids.forEach(id => (achados[id] || []).slice(0, 2).forEach(m => { const t = trecho(m); const k = sgNorm(t); if (!vistos.has(k) && out.length < max) { vistos.add(k); out.push({ t, aprox: m.aprox, m }); } }));
+                return out;
+            };
+
+            // 2. Tags do texto
+            let tagAchados = [];
+            C.tags.forEach(d => {
+                if (d.se) { const r = avaliar(d.se); if (r.ok) tagAchados.push({ t: d.t, g: null, i: -1, f: -1 }); }
+                else sgBuscar(d.pads, toks).slice(0, 3).forEach(m => tagAchados.push({ t: d.t, g: d.g || null, i: m.i, f: m.f }));
+            });
+            const comGrupo = sgFiltrarContidos(tagAchados.filter(x => x.g));
+            tagAchados = tagAchados.filter(x => !x.g).concat(comGrupo);
+            if (comGrupo.some(x => x.g === 'mod')) { flags.modalidade = true; achados.esporte_ref = achados.esporte_ref || comGrupo.filter(x => x.g === 'mod').map(({ i, f }) => ({ i, f, aprox: false })); }
+            const catalogo = new Map(globalTags.map(g => [g.nome, g.tipo]));
+            const tagsTextoSet = new Set(tagAchados.map(x => x.t));
+            entidades.forEach(ent => { if (ent.tag) tagsTextoSet.add(ent.tag); if (/^Confedera/.test(ent.nome)) tagsTextoSet.add('Confederação'); });
+            const prioridade = (t) => { const p = SG_TAG_PRIORIDADE.indexOf(catalogo.get(t)); return p < 0 ? 99 : p; };
+            const tagsTexto = [...tagsTextoSet].filter(t => catalogo.has(t)).sort((x, y) => prioridade(x) - prioridade(y));
+
+            // 3. Regras temáticas
+            let cands = [];
+            SG_REGRAS.forEach(regra => {
+                const motivos = [], pesos = [];
+                regra.ev.forEach(([src, peso, texto]) => { const r = avaliar(src); if (r.ok) { pesos.push(peso); motivos.push({ texto, peso, ids: r.ids }); } });
+                if (!pesos.length) return;
+                let score = sgOr(pesos); const ressalvas = [];
+                regra.contra.forEach(([src, fator, texto]) => { if (avaliar(src).ok) { score *= fator; ressalvas.push(texto); } });
+                cands.push({ a: regra.a, s: regra.s, score, motivos, ressalvas, fixas: regra.fixas, criterio: regra.criterio });
+            });
+
+            // 4. Assédio: tipo (moral/sexual) × ambiente (esportivo / serviço público)
+            const ass = sgPontuarAssedio(h, achados);
+            ass.cands.forEach(c => { const def = SG_ASSEDIO[c.a + '|' + c.s]; cands.push({ ...c, fixas: def.fixas, criterio: def.criterio }); });
+            const melhorAssedio = Math.max(0, ...ass.cands.map(c => c.score));
+            if (melhorAssedio >= 0.55) {
+                const sexual = ass.cands.some(c => /sexual/i.test(c.s + c.a) && c.score >= 0.6);
+                cands.forEach(c => {
+                    if (c.assedio) return;
+                    if (c.a !== 'corrupcao') { c.score *= 0.4; c.ressalvas.push('O fato central relatado é assédio'); }
+                    else if (sexual) { c.score *= 0.5; c.ressalvas.push('O relato descreve conduta sexual; a “troca” faz parte do assédio'); }
+                });
+            }
+
+            // 5. Seleção e confiança
+            const alheio = !!achados.alheio;
+            cands.forEach(c => { c.score = Math.round(c.score * 100) / 100; });
+            cands.sort((x, y) => y.score - x.score);
+            const topo = cands[0];
+            const leitura = sgLeitura(h, achados, topo && topo.score >= 0.38 ? topo : null);
+            const semClasse = [];
+            if (achados.doping) semClasse.push('controle de dopagem (a árvore não tem subassunto próprio; use a tag da ABCD)');
+
+            if (!topo || topo.score < 0.38) {
+                return { vazio: true, candidates: [], leitura, tagsTexto: tagsTexto.slice(0, SG_MAX_TAGS_TEXTO), entidades: entidades.map(e => e.nome), alheio, negados, semClasse, textoCurto: toks.length < 4, destaques: [] };
+            }
+
+            const limite = ass.tipoIndefinido ? 4 : 3;
+            let mostrados = cands.filter((c, i) => i === 0 || (c.score >= 0.4 && c.score >= topo.score * 0.55)).slice(0, limite);
+
+            mostrados.forEach((c, idx) => {
+                const segundo = idx === 0 ? mostrados[1] : topo;
+                const aproxSo = c.motivos.length > 0 && c.motivos.every(mt => trechosDe(mt.ids).every(t => t.aprox));
+                let nivel = c.score >= 0.8 ? 'alta' : c.score >= 0.58 ? 'media' : 'baixa';
+                const porque = [];
+                if (idx === 0 && nivel === 'alta' && segundo && segundo.score > c.score - 0.2) { nivel = 'media'; porque.push('há outra classificação com evidência próxima'); }
+                if (idx > 0 && nivel === 'alta') nivel = 'media';
+                if (c.incerto && nivel === 'alta') nivel = 'media';
+                if (c.incerto) porque.push(c.incerto);
+                if (aproxSo && nivel === 'alta') { nivel = 'media'; porque.push('termos reconhecidos com grafia aproximada'); }
+                if (alheio && nivel === 'alta') { nivel = 'media'; porque.push('o teor também cita assunto de outro órgão'); }
+                if (idx === 0 && nivel !== 'alta' && !porque.length) porque.push(c.score >= 0.58 ? 'a evidência é indireta ou há fatores contrários' : 'a evidência é fraca: confirme no teor completo');
+                c.nivel = nivel; c.level = nivel; c.porque = porque;
+                c.motivos.sort((x, y) => y.peso - x.peso);
+                c.motivos.forEach(mt => { mt.trechos = trechosDe(mt.ids); });
+
+                // Tags: fixas do subassunto + as encontradas no texto; demais recomendadas ficam desmarcadas.
+                const fixas = c.fixas.filter(t => catalogo.has(t));
+                const incompativel = (t) => (/^Assédio (Moral|Sexual)$/.test(t) && !fixas.includes(t));
+                const doTexto = tagsTexto.filter(t => !fixas.includes(t) && !incompativel(t));
+                const marcadasTexto = doTexto.slice(0, SG_MAX_TAGS_TEXTO);
+                const outras = [...new Set([...doTexto.slice(SG_MAX_TAGS_TEXTO), ...(recommendedTagsMap[`${c.a}_${c.s}`] || [])])]
+                    .filter(t => catalogo.has(t) && !fixas.includes(t) && !marcadasTexto.includes(t)).slice(0, 8);
+                c.tags = { texto: marcadasTexto, padrao: fixas, outras };
+                c.selectedTags = new Set([...fixas, ...marcadasTexto]);
+            });
+
+            // Pergunta de desempate entre a principal e a alternativa mais forte.
+            let pergunta = null;
+            if (mostrados.length > 1) {
+                const k1 = mostrados[0].a + '|' + mostrados[0].s, k2 = mostrados[1].a + '|' + mostrados[1].s;
+                const d = SG_DUVIDAS.find(([x, y]) => (x.test(k1) && y.test(k2)) || (x.test(k2) && y.test(k1)));
+                if (d) pergunta = d[2];
+            }
+            if (ass.pergunta && mostrados[0].assedio) pergunta = ass.pergunta;
+
+            const destaques = [];
+            mostrados[0].motivos.forEach(mt => mt.ids.forEach(id => (achados[id] || []).forEach(m => destaques.push({ s: toks[m.i].s, e: toks[m.f].e }))));
+
+            return { vazio: false, candidates: mostrados, leitura, pergunta, tagsTexto, entidades: entidades.map(e => e.nome), entidadesSemTag: entidades.filter(e => !e.tag).map(e => e.nome), alheio, negados, semClasse, destaques, lowConfidence: mostrados.every(c => c.nivel === 'baixa') };
+        }
+
+        function sgPontuarAssedio(h, achados) {
+            const tem = (id) => h(id);
+            const pS = [], pM = [], mS = [], mM = [];
+            const add = (pesos, motivos, id, peso, texto) => { if (tem(id)) { pesos.push(peso); motivos.push({ texto, peso, ids: [id] }); } };
+            add(pS, mS, 'ass_sexual_exp', .93, 'Menção direta a assédio ou violência sexual');
+            add(pS, mS, 'ato_sexual', .85, 'Relato de contato físico sem consentimento');
+            add(pS, mS, 'conot_sexual', .8, 'Comentários, mensagens ou convites de teor sexual');
+            add(pS, mS, 'investida', .6, 'Investida pessoal insistente');
+            if (tem('investida') && tem('ameaca')) { pS.push(.5); mS.push({ texto: 'Investida acompanhada de ameaça', peso: .5, ids: ['ameaca'] }); }
+            if (tem('abuso_gen') && !tem('ass_sexual_exp')) { const p = tem('menor') ? .7 : .45; pS.push(p); mS.push({ texto: tem('menor') ? 'Relato de abuso envolvendo criança ou adolescente' : 'Relato de abuso (sem detalhar a natureza)', peso: p, ids: tem('menor') ? ['abuso_gen', 'menor'] : ['abuso_gen'] }); }
+            add(pM, mM, 'ass_moral_exp', .93, 'Menção direta a assédio moral');
+            add(pM, mM, 'humilhacao', .8, 'Relato de humilhação, gritos ou xingamentos');
+            add(pM, mM, 'perseguicao', .75, 'Relato de perseguição, isolamento ou retaliação');
+            add(pM, mM, 'constrangimento', .55, 'Relato de constrangimento ou intimidação');
+            add(pM, mM, 'discriminacao', .5, 'Relato de discriminação');
+            add(pM, mM, 'ameaca', .4, 'Relato de ameaça');
+            add(pM, mM, 'violencia_fis', .65, 'Relato de agressão física (a árvore não tem subassunto próprio; o mais próximo é assédio moral)');
+
+            let sexual = sgOr(pS), moral = sgOr(pM);
+            const generico = tem('assedio_gen') && !tem('ass_sexual_exp') && !tem('ass_moral_exp');
+            let tipoIndefinido = false;
+            const motivoGen = { texto: 'Menção a assédio, sem dizer se é moral ou sexual', peso: .5, ids: ['assedio_gen'] };
+            if (generico) {
+                if (sexual < 0.45 && moral < 0.4) { tipoIndefinido = true; sexual = moral = 0.6; mS.push(motivoGen); mM.push(motivoGen); }
+                else if (sexual >= 0.45 && sexual >= moral) { sexual = sgOr([sexual, .5]); mS.push(motivoGen); }
+                else { moral = sgOr([moral, .5]); mM.push(motivoGen); }
+            }
+            // Conduta sexual explícita prevalece; sinais morais costumam acompanhá-la. Se a evidência sexual é
+            // indireta e a moral é forte, os dois tipos ficam à mostra para o analista decidir.
+            let tipoMisto = false;
+            if (!tipoIndefinido && sexual >= 0.6) {
+                if (sexual >= 0.85 || moral < 0.6) moral *= 0.55;
+                else tipoMisto = true;
+            }
+            if (sexual < 0.42 && moral < 0.4) return { cands: [], tipoIndefinido: false };
+
+            // Ambiente
+            const conta = (id) => new Set((achados[id] || []).map(m => m.i)).size;
+            const S = 2 * Math.min(conta('amb_esp_forte') + (h('modalidade') ? 1 : 0), 3) + Math.min(conta('amb_esp_fraco'), 2);
+            const W = 2 * Math.min(conta('amb_trab_forte'), 3) + Math.min(conta('amb_trab_fraco'), 2);
+            const sf = conta('amb_esp_forte') + (h('modalidade') ? 1 : 0), wf = conta('amb_trab_forte');
+            let fEsp, fTrab, pergunta = null, incertoAmb = null;
+            if (S === 0 && W === 0) { fEsp = fTrab = 0.7; incertoAmb = 'o teor não indica onde o fato ocorreu'; pergunta = 'O teor não diz onde o fato ocorreu: foi no ambiente esportivo (treino, clube, competição) ou entre agentes públicos, no trabalho?'; }
+            else if (W === 0 || (S >= 2 * W && wf === 0)) { fEsp = sf ? 1 : 0.88; fTrab = 0; }
+            else if (S === 0 || (W >= 2 * S && sf === 0)) { fTrab = wf ? 1 : 0.88; fEsp = 0; }
+            else { if (S >= W) { fEsp = 0.9; fTrab = 0.7; } else { fTrab = 0.9; fEsp = 0.7; } incertoAmb = 'o teor mistura ambiente esportivo e de trabalho'; pergunta = 'O fato ocorreu no ambiente esportivo (treino, clube, competição) ou entre agentes públicos, no trabalho?'; }
+            if (tipoIndefinido) pergunta = 'O teor fala em assédio sem dizer o tipo. A conduta tem conotação sexual (assédio sexual) ou é humilhação, perseguição ou constrangimento (assédio moral)?' + (incertoAmb ? ' E ocorreu no ambiente esportivo ou no trabalho, entre agentes públicos?' : '');
+
+            const ambMotivo = (esp) => ({ texto: esp ? 'Ocorre em ambiente esportivo' : 'Ocorre entre agentes públicos, no ambiente de trabalho', peso: .1, ids: esp ? ['amb_esp_forte', 'amb_esp_fraco'] : ['amb_trab_forte', 'amb_trab_fraco'] });
+            const cands = [];
+            const novo = (a, s, base, fator, motivos, esp) => {
+                if (fator <= 0 || base < 0.4) return;
+                const incerto = tipoIndefinido ? 'o teor não diz se o assédio é moral ou sexual' : tipoMisto ? 'o relato combina condutas de assédio moral e de assédio sexual' : incertoAmb;
+                cands.push({ a, s, score: base * fator, assedio: true, incerto, motivos: [...motivos.map(m => ({ ...m })), ...(S || W ? [ambMotivo(esp)] : [])], ressalvas: [] });
+            };
+            novo('esporte_seguro', 'Assédio moral no ambiente esportivo', moral, fEsp, mM, true);
+            novo('esporte_seguro', 'Assédio sexual no ambiente esportivo', sexual, fEsp, mS, true);
+            novo('assedio_moral', 'Relação entre agentes públicos', moral, fTrab, mM, false);
+            novo('assedio_sexual', 'Relação entre agentes públicos', sexual, fTrab, mS, false);
+            return { cands, tipoIndefinido, pergunta };
+        }
+
+        // Leitura de contexto: natureza provável e de quem partiu a manifestação.
+        function sgLeitura(h, achados, topo) {
+            let natureza = null;
+            const denunciaPorClasse = topo && (topo.assedio || topo.a === 'corrupcao' || /Manipulação/.test(topo.s));
+            if (denunciaPorClasse || (h('n_denuncia') && !h('n_como_denunciar'))) natureza = 'Denúncia';
+            else if (h('n_lai')) natureza = 'Acesso à informação';
+            else if (h('n_elogio')) natureza = 'Elogio';
+            else if (h('n_reclamacao') || h('nao_pagamento') || h('falha_tecnica') || h('sem_resposta') || h('atend_ruim')) natureza = 'Reclamação';
+            else if (h('n_sugestao')) natureza = 'Sugestão';
+            else if (h('n_solicitacao') || h('interrogacao')) natureza = 'Solicitação';
+            else if (h('infra_estado')) natureza = 'Reclamação';
+
+            const classeInterna = topo && (topo.a === 'assedio_moral' || topo.a === 'assedio_sexual');
+            let origem = null;
+            if (h('o_interno') || classeInterna) origem = 'Público interno (servidor ou colaborador)';
+            else if (h('p_entidade') || achados.proponente) origem = 'Público externo (entidade ou proponente)';
+            else if (h('atleta')) origem = h('p_familiar') ? 'Público externo (familiar de atleta)' : 'Público externo (atleta ou relacionado)';
+            else if (h('p_familiar') || h('aposta')) origem = 'Público externo (cidadão)';
+            const sensivel = !!(topo && (topo.assedio || topo.a === 'corrupcao'));
+            return { natureza, origem, registroEquipe: !!achados.o_equipe, sensivel };
+        }
+
+        // ───────────────────────────── 5. INTERFACE ─────────────────────────────
         function clearClassificationSuggester() {
             const input = document.getElementById('classificationSuggesterText');
             const result = document.getElementById('classificationSuggestionResult');
             if (input) { input.value = ''; }
             if (result) { result.innerHTML = ''; result.classList.add('hidden'); }
             suggestedClassification = null;
-            window.suggesterTagsState = {};
         }
 
         function openClassificationSuggesterModal() {
@@ -1472,46 +2160,77 @@
             modal.classList.add('hidden'); modal.classList.remove('flex');
         }
 
-        function renderSuggestionCard(candidate, index, isBest) {
-            const assunto = classificationTree.find(a => a.id === candidate.a);
-            const tags = getSuggestedTags(candidate.a, candidate.s);
-            const strongEvidence = candidate.matched.filter(m => m.kind === 'forte').slice(0, 6);
-            const contextEvidence = candidate.matched.filter(m => m.kind === 'contexto').slice(0, 4);
-            const evidenceChip = (m) => `<span class="inline-block mr-1 mb-1 px-1.5 py-0.5 rounded ${m.kind === 'forte' ? 'bg-slate-800 text-slate-200' : 'bg-slate-900 text-slate-500'}">${m.term}${m.approx ? ' (aprox.)' : ''}</span>`;
+        const SG_NIVEL = { alta: { rotulo: 'Confiança alta', n: 3 }, media: { rotulo: 'Confiança média', n: 2 }, baixa: { rotulo: 'Confiança baixa', n: 1 } };
 
-            if (!candidate.selectedTags) candidate.selectedTags = new Set(tags);
-            window.suggesterTagsState = window.suggesterTagsState || {};
-            window.suggesterTagsState[index] = candidate.selectedTags;
+        function sgTextoDestacado(raw, destaques) {
+            const spans = destaques.slice().sort((x, y) => x.s - y.s || y.e - x.e); let out = '', pos = 0;
+            spans.forEach(sp => { if (sp.s < pos) return; out += sgEsc(raw.slice(pos, sp.s)) + '<mark class="sg-mark">' + sgEsc(raw.slice(sp.s, sp.e)) + '</mark>'; pos = sp.e; });
+            return out + sgEsc(raw.slice(pos));
+        }
 
-            const allSuggestedTags = new Set(tags);
-            if (candidate.detectedEntities && candidate.detectedEntities.length > 0) {
-                candidate.detectedEntities.forEach(t => allSuggestedTags.add(t));
-            }
+        function sgChipLeitura(rotulo, valor) {
+            return `<span class="sg-chip"><span class="sg-chip-k">${sgEsc(rotulo)}</span>${sgEsc(valor)}</span>`;
+        }
 
-            const tagsHtml = allSuggestedTags.size > 0 ? Array.from(allSuggestedTags).map(t => {
-                const isSel = candidate.selectedTags.has(t);
-                return `<button type="button" onclick="toggleSuggesterTag(${index}, '${t.replace(/'/g, "\\'")}')" class="px-2 py-1 rounded-md border transition text-[10px] flex items-center gap-1 ${isSel ? 'bg-amber-500 text-slate-950 font-bold border-amber-300 shadow-sm' : 'bg-slate-800 text-slate-400 border-slate-700 hover:bg-slate-700'}"><span>${isSel ? '✓' : '+'}</span><span>${t}</span></button>`;
-            }).join('') : '<span class="text-[10px] text-slate-500">Nenhuma recomendação cadastrada.</span>';
-
+        function sgRenderLeitura(res, raw) {
+            const l = res.leitura, chips = [];
+            if (l.natureza) chips.push(sgChipLeitura('Natureza provável', l.natureza));
+            if (l.origem) chips.push(sgChipLeitura('Origem provável', l.origem));
+            if (l.registroEquipe) chips.push(sgChipLeitura('Registro', 'transcrito pela equipe'));
+            if (l.sensivel) chips.push('<span class="sg-chip sg-chip-alerta">Conteúdo sensível</span>');
+            const notas = [];
+            if (res.entidadesSemTag && res.entidadesSemTag.length) notas.push(`Entidade citada sem tag própria no catálogo: ${sgEsc(res.entidadesSemTag.join(', '))}.`);
+            if (res.negados && res.negados.length) notas.push(`Desconsiderado por estar negado no texto: ${sgEsc(res.negados.join(', '))}.`);
+            if (res.semClasse && res.semClasse.length) notas.push(`Tema identificado: ${sgEsc(res.semClasse.join('; '))}.`);
+            if (res.alheio) notas.push('O teor cita assunto que costuma ser de outro órgão — avalie a tag “Alheio ao MESP”.');
+            const temDestaque = res.destaques && res.destaques.length;
+            if (!chips.length && !notas.length && !temDestaque) return '';
             return `
-        <div class="rounded-2xl border ${isBest ? 'border-emerald-700/60 bg-emerald-950/20' : 'border-slate-700 bg-slate-950/50'} overflow-hidden">
-          <div class="px-4 py-3 border-b border-slate-800 flex flex-wrap items-center justify-between gap-2">
-            <div>
-              <div class="text-[10px] uppercase tracking-wider font-bold ${isBest ? 'text-emerald-400' : 'text-slate-500'}">${isBest ? 'Sugestão principal' : 'Outra possibilidade'}</div>
-              <div class="text-base font-extrabold text-white mt-0.5">${assunto?.nome || candidate.a}</div>
+            <div class="sg-caixa">
+              <div class="sg-rotulo">Leitura do teor</div>
+              ${chips.length ? `<div class="flex flex-wrap gap-1.5 mt-2">${chips.join('')}</div>` : ''}
+              ${res.destaques && res.destaques.length ? `<div class="sg-texto mt-2">${sgTextoDestacado(raw, res.destaques)}</div><p class="sg-sub mt-1">Em destaque: os trechos que sustentam a sugestão principal.</p>` : ''}
+              ${notas.map(n => `<p class="sg-sub mt-1.5">${n}</p>`).join('')}
+            </div>`;
+        }
+
+        function sgRenderTags(c, index) {
+            const botao = (t) => {
+                const sel = c.selectedTags.has(t);
+                return `<button type="button" onclick="toggleSuggesterTag(${index}, '${sgEsc(t).replace(/&#39;/g, "\\'")}')" aria-pressed="${sel}" class="px-2 py-1 rounded-md border transition text-[10px] flex items-center gap-1 ${sel ? 'bg-amber-500 text-slate-950 font-bold border-amber-300 shadow-sm' : 'bg-slate-800 text-slate-400 border-slate-700 hover:bg-slate-700'}"><span>${sel ? '✓' : '+'}</span><span>${sgEsc(t)}</span></button>`;
+            };
+            const grupo = (titulo, lista) => lista.length ? `<div class="mt-2"><div class="sg-sub mb-1">${titulo}</div><div class="flex flex-wrap gap-1.5">${lista.map(botao).join('')}</div></div>` : '';
+            const total = c.tags.texto.length + c.tags.padrao.length + c.tags.outras.length;
+            return `<div><div class="sg-rotulo">Tags</div>
+              ${total ? grupo('Encontradas no teor', c.tags.texto) + grupo('Padrão do subassunto', c.tags.padrao) + grupo('Outras possíveis (desmarcadas)', c.tags.outras) : '<p class="sg-sub mt-1">Nenhuma tag identificada.</p>'}
+            </div>`;
+        }
+
+        function renderSuggestionCard(c, index, principal) {
+            const assunto = classificationTree.find(a => a.id === c.a);
+            const nv = SG_NIVEL[c.nivel];
+            const medidor = [1, 2, 3].map(i => `<span class="sg-seg${i <= nv.n ? ' on' : ''}"></span>`).join('');
+            const motivos = c.motivos.map(mt => `<li class="sg-motivo"><span class="sg-check">✓</span><span>${sgEsc(mt.texto)}${mt.trechos.length ? ' — ' + mt.trechos.map(t => `<q class="sg-q">${sgEsc(t.t)}</q>${t.aprox ? ' (grafia aproximada)' : ''}`).join(', ') : ''}</span></li>`).join('');
+            const ressalvas = [...new Set(c.ressalvas)].map(r => `<li class="sg-motivo"><span class="sg-warn">!</span><span>${sgEsc(r)}</span></li>`).join('');
+            return `
+        <div class="sg-card${principal ? ' sg-card-principal' : ''}">
+          <div class="sg-card-head">
+            <div class="min-w-0">
+              <div class="sg-rotulo">${principal ? 'Sugestão principal' : 'Alternativa'}</div>
+              <div class="sg-titulo">${sgEsc(assunto?.nome || c.a)} <span class="sg-sep">›</span> ${sgEsc(c.s)}</div>
             </div>
-            <span class="px-2.5 py-1 rounded-full bg-slate-800 border border-slate-700 text-slate-300 text-[10px] font-bold">Evidência: ${candidate.level}</span>
+            <div class="sg-conf sg-conf-${c.nivel}" title="Força da evidência e distância para as alternativas">
+              <span class="sg-medidor">${medidor}</span><span>${nv.rotulo}</span>
+            </div>
           </div>
           <div class="p-4 space-y-3">
-            <div><div class="text-[10px] uppercase tracking-wider text-slate-500 font-bold">Subassunto</div><div class="text-sm text-slate-100 font-bold mt-1">${candidate.s}</div></div>
-            <div><div class="text-[10px] uppercase tracking-wider text-slate-500 font-bold mb-2">Tags recomendadas</div>
-              <div class="flex flex-wrap gap-1.5">${tagsHtml}</div>
+            <div>
+              <div class="sg-rotulo">Por que</div>
+              <ul class="mt-1 space-y-1">${motivos}${ressalvas}</ul>
+              ${c.porque.length ? `<p class="sg-nota mt-1.5">${c.nivel === 'alta' ? 'Atenção' : 'Não é alta porque'}: ${sgEsc(c.porque.join('; '))}.</p>` : ''}
             </div>
-            <div><div class="text-[10px] uppercase tracking-wider text-slate-500 font-bold">Evidências do fato principal</div>
-              <p class="text-xs text-slate-400 mt-1">${strongEvidence.length ? strongEvidence.map(evidenceChip).join('') : 'Nenhuma evidência forte.'}</p>
-            </div>
-            ${contextEvidence.length ? `<div><div class="text-[10px] uppercase tracking-wider text-slate-500 font-bold">Contexto secundário</div><p class="text-xs text-slate-500 mt-1">${contextEvidence.map(evidenceChip).join('')}</p></div>` : ''}
-            ${candidate.generic ? '<p class="text-[11px] text-amber-300">O teor menciona assédio sem especificar se foi moral ou sexual.</p>' : ''}
+            <p class="sg-sub"><span class="font-bold">Critério do subassunto:</span> ${sgEsc(c.criterio)}</p>
+            ${principal ? sgRenderTags(c, index) : `<details ${c.tagsAbertas ? 'open' : ''} ontoggle="sgGuardarDetalhe(${index}, this.open)"><summary class="sg-sub cursor-pointer select-none">Ver tags desta alternativa (${c.selectedTags.size} marcadas)</summary><div class="mt-2">${sgRenderTags(c, index)}</div></details>`}
             <div class="flex justify-end pt-1">
               <button type="button" onclick="applySuggestedClassification(${index})" class="px-3 py-1.5 rounded-lg bg-govblue-600 hover:bg-govblue-500 text-white text-xs font-bold">Aplicar esta classificação</button>
             </div>
@@ -1519,28 +2238,58 @@
         </div>`;
         }
 
-        function toggleSuggesterTag(index, tagName) {
-            const state = window.suggesterTagsState?.[index];
-            if (!state) return;
-            if (state.has(tagName)) state.delete(tagName); else state.add(tagName);
-            if (suggestedClassification && suggestedClassification.candidates[index]) {
-                suggestedClassification.candidates[index].selectedTags = state;
-            }
+        function renderSuggestionResult() {
             const result = document.getElementById('classificationSuggestionResult');
-            if (result && suggestedClassification) {
+            const res = suggestedClassification;
+            if (!result || !res) return;
+            result.classList.remove('hidden');
+            const limpar = '<div class="flex justify-end gap-2 pt-1"><button type="button" onclick="clearClassificationSuggester()" class="px-3 py-1.5 rounded-lg bg-slate-800 hover:bg-slate-700 text-slate-300 text-xs border border-slate-700">Limpar teor</button></div>';
+
+            if (res.vazio) {
+                const tags = res.tagsTexto || [];
+                const motivo = res.textoCurto ? 'O teor é curto demais para indicar um assunto.'
+                    : res.alheio ? 'O teor parece tratar de assunto de outro órgão, fora da árvore do Ministério do Esporte.'
+                    : 'O teor não traz termos que liguem a manifestação, com segurança, a um subassunto da árvore.';
                 result.innerHTML = `
                 <div class="space-y-3">
-                  <div class="rounded-xl border border-slate-800 bg-slate-950/60 p-3">
-                    <div class="text-xs font-bold text-white">Foram encontradas ${suggestedClassification.candidates.length} possibilidade${suggestedClassification.candidates.length > 1 ? 's' : ''} de classificação.</div>
-                    <p class="text-[11px] text-slate-500 mt-1">A sugestão considera primeiro os termos que descrevem o fato principal.</p>
-                    ${suggestedClassification.lowConfidence ? '<p class="text-[11px] text-amber-300 mt-1">Evidência insuficiente. Recomenda-se revisão manual.</p>' : ''}
+                  <div class="sg-aviso">
+                    <strong>Sem sugestão de classificação</strong>
+                    <p class="sg-sub mt-1.5">${motivo} Melhor classificar manualmente do que seguir um palpite.</p>
+                    ${tags.length ? `<div class="mt-3"><div class="sg-rotulo mb-1.5">Tags encontradas no teor</div><div class="flex flex-wrap gap-1.5">${tags.map(t => `<span class="sg-chip">${sgEsc(t)}</span>`).join('')}</div>
+                      <button type="button" onclick="applySuggestedTagsOnly()" class="mt-3 px-3 py-1.5 rounded-lg bg-slate-800 hover:bg-slate-700 text-slate-300 text-xs border border-slate-700">Marcar estas tags na ficha</button></div>` : ''}
                   </div>
-                  ${suggestedClassification.candidates.map((candidate, i) => renderSuggestionCard(candidate, i, i === 0)).join('')}
-                  <div class="flex justify-end gap-2 pt-1">
-                    <button type="button" onclick="clearClassificationSuggester()" class="px-3 py-1.5 rounded-lg bg-slate-800 hover:bg-slate-700 text-slate-300 text-xs border border-slate-700">Limpar teor</button>
-                  </div>
+                  ${sgRenderLeitura(res, res.raw)}
+                  ${limpar}
                 </div>`;
+                return;
             }
+
+            const n = res.candidates.length;
+            result.innerHTML = `
+            <div class="space-y-3">
+              ${sgRenderLeitura(res, res.raw)}
+              ${res.pergunta ? `<div class="sg-pergunta"><span class="font-bold">Para decidir:</span> ${sgEsc(res.pergunta)}</div>` : ''}
+              ${res.candidates.map((c, i) => renderSuggestionCard(c, i, i === 0)).join('')}
+              <p class="sg-sub">${n > 1 ? `${n} possibilidades, da mais para a menos provável. ` : ''}Sugestão por regras: a decisão final é de quem analisa a manifestação.</p>
+              ${limpar}
+            </div>`;
+        }
+
+        function sgGuardarDetalhe(index, aberto) {
+            const c = suggestedClassification?.candidates?.[index];
+            if (c) c.tagsAbertas = aberto;
+        }
+
+        function toggleSuggesterTag(index, tagName) {
+            const c = suggestedClassification?.candidates?.[index];
+            if (!c) return;
+            if (c.selectedTags.has(tagName)) c.selectedTags.delete(tagName); else c.selectedTags.add(tagName);
+            renderSuggestionResult();
+        }
+
+        function sgAtualizarFicha() {
+            renderRecommendedTags(); renderTagsCloud(); renderWideTagsGrid();
+            updateWideModalSelectedBadges(); updateSimulationPreview();
         }
 
         function applySuggestedClassification(index = 0) {
@@ -1548,13 +2297,18 @@
             if (!candidate) return;
             const assunto = classificationTree.find(a => a.id === candidate.a);
             if (!assunto || !assunto.subassuntos.includes(candidate.s)) return;
-            const tagsToApply = candidate.selectedTags ? Array.from(candidate.selectedTags) : getSuggestedTags(candidate.a, candidate.s);
+            const tagsToApply = Array.from(candidate.selectedTags);
             selectAssunto(candidate.a);
             selectSubassunto(candidate.s);
             selectedTags = new Set(tagsToApply.filter(t => globalTags.some(g => g.nome === t)));
-            renderRecommendedTags(); renderTagsCloud(); renderWideTagsGrid();
-            updateWideModalSelectedBadges(); updateSimulationPreview();
-            window.suggesterTagsState = {};
+            sgAtualizarFicha();
+            closeClassificationSuggesterModal();
+        }
+
+        function applySuggestedTagsOnly() {
+            const tags = suggestedClassification?.tagsTexto || [];
+            tags.forEach(t => { if (globalTags.some(g => g.nome === t)) selectedTags.add(t); });
+            sgAtualizarFicha();
             closeClassificationSuggesterModal();
         }
 
@@ -1565,105 +2319,12 @@
             const raw = input.value.trim();
             if (!raw) {
                 result.classList.remove('hidden');
-                result.innerHTML = '<div class="rounded-xl border border-amber-700/50 bg-amber-950/20 p-4 text-sm text-amber-200">Informe o teor da manifestação antes de clicar em <strong>Classificar</strong>.</div>';
+                result.innerHTML = '<div class="sg-aviso"><p class="sg-nota">Informe o teor da manifestação antes de clicar em Classificar.</p></div>';
                 suggestedClassification = null; return;
             }
-
-            const text = normalizeClassificationText(raw);
-            const tokens = text.split(' ').filter(Boolean);
-
-            let detectedEntities = [];
-            for (const [key, entityName] of Object.entries(entityDictionary)) {
-                if (new RegExp(`\\b${key}\\b`, 'i').test(text) || classificationPhraseMatch(text, entityName, tokens).matched) {
-                    detectedEntities.push(entityName);
-                }
-            }
-
-            let scored = classificationSuggestionRules
-                .map(rule => ({ a: rule.a, s: rule.s, ...scoreClassificationRule(rule, text, tokens) }))
-                .filter(x => x.score > 0);
-
-            const hasAnyTypedHarassment = scored.some(x => ['esporte_seguro', 'assedio_moral', 'assedio_sexual'].includes(x.a));
-            const genericAssedio = classificationPhraseMatch(text, 'assedio', tokens).matched && !hasAnyTypedHarassment;
-
-            if (genericAssedio) {
-                const sportsTerms = ['treinador', 'treinadora', 'atleta', 'atletas', 'clube', 'equipe', 'campeonato', 'competicao', 'torneio', 'esporte', 'esportivo', 'vestiario', 'comissao tecnica', 'treinamento', 'jogador', 'jogadora'];
-                const workTerms = ['servidor', 'servidora', 'servidores', 'chefe', 'chefia', 'superior', 'gerente', 'coordenador', 'coordenadora', 'trabalho', 'ambiente de trabalho', 'colegas', 'reparticao', 'ministerio', 'orgao publico', 'servico publico', 'funcionario', 'funcionaria'];
-                const hasSportsCtx = sportsTerms.some(t => classificationPhraseMatch(text, t, tokens).matched);
-                const hasWorkCtx = workTerms.some(t => classificationPhraseMatch(text, t, tokens).matched);
-
-                scored = scored.filter(x => !['esporte_seguro', 'assedio_moral', 'assedio_sexual'].includes(x.a) || x.strongHits > 0);
-
-                const genericMsg = 'assédio (tipo não especificado)';
-                const addGeneric = (a, s) => {
-                    if (!scored.some(x => x.a === a && x.s === s)) {
-                        scored.push({ a, s, score: 8, strongHits: 0, generic: true, matched: [{ term: genericMsg, approx: false, kind: 'forte' }] });
-                    }
-                };
-
-                if (hasSportsCtx) {
-                    addGeneric('esporte_seguro', 'Assédio moral no ambiente esportivo');
-                    addGeneric('esporte_seguro', 'Assédio sexual no ambiente esportivo');
-                }
-                if (hasWorkCtx || !hasSportsCtx) {
-                    addGeneric('assedio_moral', 'Relação entre agentes públicos');
-                    addGeneric('assedio_sexual', 'Relação entre agentes públicos');
-                }
-            }
-
-            if (detectedEntities.length > 0 && !scored.some(x => x.s === 'Entidades Desportivas')) {
-                scored.push({ a: 'esporte', s: 'Entidades Desportivas', score: 12, strongHits: 1, matched: [{ term: 'Entidade Esportiva Mencionada', approx: false, kind: 'forte' }] });
-            }
-
-            scored.sort((a, b) => b.score - a.score);
-
-            if (!scored.length || scored[0].score < 5) {
-                suggestedClassification = null;
-                result.classList.remove('hidden');
-                result.innerHTML = '<div class="rounded-xl border border-slate-700 bg-slate-950/60 p-4"><strong class="text-white text-sm">⚠️ Não há evidência suficiente para sugerir uma classificação.</strong><p class="text-xs text-slate-400 mt-2">Classifique manualmente no simulador. O teor não é salvo.</p></div>';
-                return;
-            }
-
-            const best = scored[0];
-            let candidates = scored.filter((x, i) => i === 0 || (x.score >= Math.max(5, best.score * 0.58) && (x.strongHits > 0 || x.generic)));
-
-            scored.forEach(x => {
-                if (candidates.length >= 4) return;
-                if (x.strongHits >= 1 && x.score >= 10 && !candidates.some(c => c.a === x.a)) candidates.push(x);
-            });
-            candidates = candidates.slice(0, 4);
-
-            candidates.forEach((c, i) => {
-                if (c.generic) c.level = 'baixa (tipo não especificado)';
-                else if (candidates.length > 1 && i === 0) c.level = 'média (há alternativas)';
-                else if (c.strongHits >= 1 && c.score >= 12) c.level = 'alta';
-                else c.level = 'baixa';
-                c.detectedEntities = detectedEntities;
-            });
-            const lowConfidence = candidates.every(c => c.level.startsWith('baixa'));
-
-            suggestedClassification = { candidates, lowConfidence };
-            window.suggesterTagsState = {};
-
-            candidates.forEach(c => {
-                c.selectedTags = new Set(getSuggestedTags(c.a, c.s));
-                if (c.detectedEntities) c.detectedEntities.forEach(t => c.selectedTags.add(t));
-            });
-
-            result.classList.remove('hidden');
-            result.innerHTML = `
-        <div class="space-y-3">
-          <div class="rounded-xl border border-slate-800 bg-slate-950/60 p-3">
-            <div class="text-xs font-bold text-white">Foram encontradas ${candidates.length} possibilidade${candidates.length > 1 ? 's' : ''} de classificação.</div>
-            <p class="text-[11px] text-slate-500 mt-1">A sugestão considera primeiro os termos que descrevem o fato principal.</p>
-            ${detectedEntities.length ? `<p class="text-[11px] text-emerald-400 mt-1 font-bold">Entidades detectadas: ${detectedEntities.join(', ')}</p>` : ''}
-            ${lowConfidence ? '<p class="text-[11px] text-amber-300 mt-1">Evidência insuficiente. Revisão manual recomendada.</p>' : ''}
-          </div>
-          ${candidates.map((candidate, index) => renderSuggestionCard(candidate, index, index === 0)).join('')}
-          <div class="flex justify-end gap-2 pt-1">
-            <button type="button" onclick="clearClassificationSuggester()" class="px-3 py-1.5 rounded-lg bg-slate-800 hover:bg-slate-700 text-slate-300 text-xs border border-slate-700">Limpar teor</button>
-          </div>
-        </div>`;
+            suggestedClassification = analyzeManifestation(raw);
+            suggestedClassification.raw = raw;
+            renderSuggestionResult();
         }
 
         document.addEventListener('DOMContentLoaded', () => {
